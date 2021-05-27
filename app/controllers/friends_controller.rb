@@ -3,11 +3,6 @@ class FriendsController < ApplicationController
     @friends = Friend.all
   end
 
-  def show
-    @friend = Friend.find(params[:id])
-
-  end
-
   def create
     @friend = Friend.new(friend_params)
     @friend.user = current_user
@@ -16,6 +11,15 @@ class FriendsController < ApplicationController
     else
       render :new
     end
+  end
+
+  def show
+    @friend = Friend.find(params[:id])
+
+  end
+
+  def destroy
+    
   end
 
 
