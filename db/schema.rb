@@ -10,10 +10,57 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_27_174805) do
+ActiveRecord::Schema.define(version: 2021_05_27_183611) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "events", force: :cascade do |t|
+    t.string "event_type"
+    t.date "date"
+    t.bigint "friend_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["friend_id"], name: "index_events_on_friend_id"
+  end
+
+  create_table "friends", force: :cascade do |t|
+    t.string "name"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_friends_on_user_id"
+  end
+
+  create_table "gift_ideas", force: :cascade do |t|
+    t.bigint "friend_id", null: false
+    t.bigint "gift_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["friend_id"], name: "index_gift_ideas_on_friend_id"
+    t.index ["gift_id"], name: "index_gift_ideas_on_gift_id"
+  end
+
+  create_table "gifts", force: :cascade do |t|
+    t.text "gift_url"
+    t.string "product_name"
+    t.string "photo"
+    t.float "price"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_gifts_on_user_id"
+  end
+
+  create_table "notes", force: :cascade do |t|
+    t.text "content"
+    t.bigint "friend_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["friend_id"], name: "index_notes_on_friend_id"
+    t.index ["user_id"], name: "index_notes_on_user_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -27,4 +74,11 @@ ActiveRecord::Schema.define(version: 2021_05_27_174805) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "events", "friends"
+  add_foreign_key "friends", "users"
+  add_foreign_key "gift_ideas", "friends"
+  add_foreign_key "gift_ideas", "gifts"
+  add_foreign_key "gifts", "users"
+  add_foreign_key "notes", "friends"
+  add_foreign_key "notes", "users"
 end
