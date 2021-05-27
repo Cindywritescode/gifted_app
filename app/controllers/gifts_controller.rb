@@ -1,5 +1,5 @@
 class GiftsController < ApplicationController
-  efore_action :set_gift, only: [:show, :edit, :update, :destroy]
+  before_action :set_gift, only: [:show, :edit, :update, :destroy]
 
   def new
     @gift = Gift.new
@@ -42,7 +42,7 @@ class GiftsController < ApplicationController
   private
 
   def gift_params
-    params.require(:gift).permit(:url)
+    params.require(:gift).permit(:gift_url)
   end
 
   def set_gift
