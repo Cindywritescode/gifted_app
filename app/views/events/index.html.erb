@@ -1,0 +1,9 @@
+<h1>All Events of Current User</h1>
+
+<% if @events.count == 0 %>
+  <p>No Events Yet!</p>
+<% else %>
+  <% @events.each do |event| %>
+    <p><%= event.name %></p>
+  <% end %>
+<% end %>
