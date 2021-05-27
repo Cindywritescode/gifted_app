@@ -1,1 +1,10 @@
 <h1><%= @friend.name %></h1>
+
+<h3>Gifts</h3>
+
+
+<h3>Notes</h3>
+<%= simple_form_for [@friend, @note] do |f| %>
+  <%= f.input :content %>
+  <%= f.submit class:'btn btn-primary' %>
+<% end %>

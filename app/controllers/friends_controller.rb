@@ -1,4 +1,6 @@
 class FriendsController < ApplicationController
+  before_action :find_friend, only: [:show, :destroy]
+
   def index
     @friends = Friend.all
   end
@@ -13,20 +15,20 @@ class FriendsController < ApplicationController
     end
   end
 
-  def show
-    @friend = Friend.find(params[:id])
-
-  end
+  def show; end
 
   def destroy
-    
+    @friend.destroy
+    redirect_to friends_path
   end
 
 
   private
-  
   def friend_params
     params.require(:friend).permit(:name, :user_id)
   end
 
+  def find_friend
+    @friend = Friend.find(params[:id])
+  end
 end
