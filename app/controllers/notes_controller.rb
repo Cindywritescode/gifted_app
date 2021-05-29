@@ -17,7 +17,7 @@ class NotesController < ApplicationController
     if @note.save
       redirect_to friend_path
     else
-      render :new
+      render 'friends/show'
     end
   end
 
