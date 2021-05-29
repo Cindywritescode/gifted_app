@@ -1,0 +1,12 @@
+<h1>Your Gifts</h1>
+
+<% @gifts.each do |gift| %>
+  <ul>
+    <li>
+      <%= gift.gift_url %>
+      <% gift.gift_ideas.each do |idea| %>
+      <%= Friend.find(idea.friend_id).name %>
+      <% end %>
+    </li>
+  </ul>
+<% end %>

@@ -1,0 +1,4 @@
+<%= simple_form_for([ @gift, @gift_idea ]) do |f| %>
+  <%= f.association :friend %>
+  <%= f.submit "Submit Gift Idea", class: "btn btn-primary" %>
+<% end %>
