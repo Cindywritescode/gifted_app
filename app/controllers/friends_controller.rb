@@ -2,7 +2,7 @@ class FriendsController < ApplicationController
   before_action :find_friend, only: [:show, :destroy]
 
   def index
-    @friends = Friend.all
+    @friends = Friend.where(user: current_user)
   end
 
   def create
