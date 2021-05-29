@@ -12,10 +12,12 @@ class NotesController < ApplicationController
   end
 
   def create
+    @friend = Friend.find(params[:friend_id])
     @note = Note.new(note_params)
+    @note.friend = @friend
     @note.user = current_user
     if @note.save
-      redirect_to friend_path
+      redirect_to friend_path(@friend)
     else
       render 'friends/show'
     end
