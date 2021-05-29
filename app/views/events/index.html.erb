@@ -1,0 +1,20 @@
+<h1>All Events of <%= @friend.name %></h1>
+
+<% if @events.count == 0 %>
+  <p>No Events Yet!</p>
+<% else %>
+  <ol>
+    <% @events.each do |event| %>
+      <li>
+        <p><%= event.event_type %></p>
+        <p><%= event.date %></p>
+        <p><%= link_to "Edit Event", edit_friend_event_path(id: event.id) %></p>
+        <p><%= link_to "Delete Event", friend_event_path(id: event.id),
+              method: :delete,
+              data: { confirm: "are you sure?" } %></p>
+      </li>
+    <% end %>
+  </ol>
+<% end %>
+
+<%= link_to "Create New", new_friend_event_path	%>

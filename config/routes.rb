@@ -5,8 +5,8 @@ Rails.application.routes.draw do
   resources :events
   resources :friends, except: [:edit, :update] do
     resources :notes, only: [:show, :create]  
+    resources :events, except: [:show]
   end
-
   resources :gifts do
     resources :gift_ideas, only: [:new, :create, :destroy]
   end
