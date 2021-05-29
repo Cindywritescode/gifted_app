@@ -5,3 +5,10 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+# Create Friends
+puts "create 4 friends"
+Friend.create(name: "Cindy")
+Friend.create(name: "Emily")
+Friend.create(name: "Thomas")
+Friend.create(name: "Dani")
