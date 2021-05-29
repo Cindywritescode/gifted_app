@@ -15,7 +15,9 @@ class FriendsController < ApplicationController
     end
   end
 
-  def show; end
+  def show
+    @note = Note.new
+  end
 
   def destroy
     @friend.destroy
