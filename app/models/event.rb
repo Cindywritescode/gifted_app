@@ -1,5 +1,6 @@
 class Event < ApplicationRecord
   belongs_to :friend
+  validates :friend_id, presence: true
   validates :event_type, presence: true
   validate :future_date
 

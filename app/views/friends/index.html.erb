@@ -1,0 +1,12 @@
+<h1>Your Friends</h1>
+
+<% @friends.each do |friend| %>
+  <ul>
+    <li>
+      <%= link_to friend.name, friend_path(friend) %>
+      <%= link_to 'delete', friend_path(friend), 
+      method: :delete, data: { confirm: "Are you sure you want to delete #{friend.name} from your friend list?" }, 
+      class: "btn btn-primary" %>
+    </li>
+  </ul>
+<% end %>
