@@ -2,7 +2,8 @@ class EventsController < ApplicationController
   before_action :set_event, only: [:show]
   
   def index
-    @events = Event.all
+    # Not sure if this is correct yet, maybe Events should be nested in friends?
+    @events = Event.where(friend: params[:friend_id])
   end
 
   def show; end
