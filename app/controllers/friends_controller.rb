@@ -1,8 +1,12 @@
 class FriendsController < ApplicationController
-  before_action :find_friend, only: [:show, :destroy]
+  before_action :set_friend, only: [:show, :destroy]
 
   def index
     @friends = Friend.where(user: current_user)
+  end
+
+  def new
+    @friend = Friend.new  
   end
 
   def create
@@ -15,7 +19,10 @@ class FriendsController < ApplicationController
     end
   end
 
-  def show; end
+  def show
+    @note = Note.new 
+    @notes = @friend.notes
+  end
 
   def destroy
     @friend.destroy
@@ -27,7 +34,7 @@ class FriendsController < ApplicationController
     params.require(:friend).permit(:name, :user_id)
   end
 
-  def find_friend
+  def set_friend
     @friend = Friend.find(params[:id])
   end
 end

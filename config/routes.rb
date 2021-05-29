@@ -3,9 +3,12 @@ Rails.application.routes.draw do
   root to: 'pages#home'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   resources :events
-  resources :friends, except: [:edit, :update]
-  resources :gifts, except: [:show] do
-    resources :gift_ideas, only: [:new, :create, :destroy]
+  resources :friends, except: [:edit, :update] do
+    resources :notes, only: [:show, :create]  
+    resources :events, except: [:show]
   end
-  resources :notes
+  resources :gifts, except: [:show] do
+    resources :gift_ideas, only: [:destroy]
+  end
+
 end
