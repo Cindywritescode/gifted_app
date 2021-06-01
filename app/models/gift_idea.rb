@@ -1,4 +1,4 @@
 class GiftIdea < ApplicationRecord
   belongs_to :friend
-  belongs_to :gift, dependent: :destroy
+  belongs_to :gift
 end
