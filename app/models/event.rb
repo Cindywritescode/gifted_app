@@ -6,6 +6,7 @@ class Event < ApplicationRecord
   
   TYPES = ['birthday', 'friendaversary', 'divorce party', 'graduation', 'baby shower', 'wedding']
 
+  
   validates :event_type, inclusion: { in: TYPES,
     messae: "%{value} is not a valid event type" }
 
