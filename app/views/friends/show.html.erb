@@ -7,7 +7,8 @@
     <p><%= event.event_type %>, <%= event.date %></p>
   </li>
   <% end %>
-  <%= link_to "All Events", friend_events_path(@friend) %>
+  <%= link_to "All Events", friend_events_path(@friend) %> |
+  <%= link_to '+Add New Event', new_friend_event_path(@friend)  %>
 </ul>
 
 <h3>Notes</h3>
