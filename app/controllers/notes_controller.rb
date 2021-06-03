@@ -38,8 +38,9 @@ class NotesController < ApplicationController
 
   def destroy
     @note = Note.find(params[:id])
+    friend = @note.friend
     @note.destroy
-    redirect_to friend_path
+    redirect_to friend_path(friend)
   end
 
   def note_params

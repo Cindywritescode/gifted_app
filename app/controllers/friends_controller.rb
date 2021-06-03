@@ -22,6 +22,7 @@ class FriendsController < ApplicationController
   def show
     @note = Note.new 
     @notes = @friend.notes
+    @gift_ideas = GiftIdea.where(friend_id: params[:id])
   end
 
   def destroy

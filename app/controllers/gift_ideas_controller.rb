@@ -30,4 +30,8 @@ class GiftIdeasController < ApplicationController
     params.require(:gift_idea).permit(:friend_id, :gift_id)
   end
 
+  # def index
+  #   @gift_ideas = GiftIdea.where(friend_id == params[:id])
+  # end
+
 end
