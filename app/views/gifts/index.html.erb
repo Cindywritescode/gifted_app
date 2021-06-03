@@ -1,12 +1,32 @@
 <h1>Your Gifts</h1>
 
+<h2>Unassigned Gifts</h2>
 <% @gifts.each do |gift| %>
-  <ul>
-    <li>
-      <%= gift.gift_url %>
-      <% gift.gift_ideas.each do |idea| %>
-      <%= Friend.find(idea.friend_id).name %>
-      <% end %>
-    </li>
-  </ul>
+    <% if gift.gift_ideas == [] %>
+    <ul>
+      <li>
+        <%= gift.gift_url %>
+        <%= link_to "Assign to Friend", new_gift_gift_idea_path(gift) %>
+        <%=link_to "Delete", gift_path(gift), method: :delete, data: { confirm: "Are you sure?" } %>
+      </li>
+    </ul>
+    <% end %>
 <% end %>
+
+<h2>Gift Ideas</h2>
+
+<% @gifts.each do |gift| %>
+  <% if gift.gift_ideas != [] %>
+    <ul>
+      <li>
+        <%= gift.gift_url %>
+        <% gift.gift_ideas.each do |idea| %>
+        <%= link_to Friend.find(idea.friend_id).name, friend_path(idea.friend_id) %>
+        <%=link_to "Delete", gift_gift_idea_path(id: idea.id, gift_id: gift.id), method: :delete, data: { confirm: "Are you sure?" } %>
+        <% end %>
+      </li>
+    </ul>
+  <% end %>
+<% end %>
+
+
