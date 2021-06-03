@@ -1,5 +1,6 @@
 <%= simple_form_for (@gift) do |f| %>
   <%= f.input :gift_url %>
+  <%= f.input :photo, as: :file %>
   <%= f.association :friends, as: :collection_select, :collection => Friend.where(user: current_user), :prompt => "Assign to a Friend", :include_blank => "(Select if none)"%>
   <%= f.submit %>
 <% end %>

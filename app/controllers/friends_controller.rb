@@ -6,7 +6,7 @@ class FriendsController < ApplicationController
   end
 
   def new
-    @friend = Friend.new  
+    @friend = Friend.new
   end
 
   def create
@@ -20,7 +20,7 @@ class FriendsController < ApplicationController
   end
 
   def show
-    @note = Note.new 
+    @note = Note.new
     @notes = @friend.notes
     @gift_ideas = GiftIdea.where(friend_id: params[:id])
   end
@@ -32,7 +32,7 @@ class FriendsController < ApplicationController
 
   private
   def friend_params
-    params.require(:friend).permit(:name, :user_id)
+    params.require(:friend).permit(:name, :user_id, :photo)
   end
 
   def set_friend
