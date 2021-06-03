@@ -13,7 +13,7 @@ class GiftsController < ApplicationController
       @gift_idea = GiftIdea.new(friend_id: friend_id, gift_id: @gift.id)
       @gift_idea.save!
       redirect_to friend_path(friend_id)
-    elsif @gift.save && friend_id.nil
+    elsif @gift.save && friend_id.nil?
       redirect_to gifts_path
     else
       render :new
@@ -33,7 +33,7 @@ class GiftsController < ApplicationController
   private
 
   def gift_params
-    params.require(:gift).permit(:gift_url, :friend_ids)
+    params.require(:gift).permit(:gift_url, :friend_ids, :photo)
   end
 
   def set_gift

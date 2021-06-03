@@ -1,9 +1,15 @@
-<h1>Gifts for <%= @friend.name %></h1>
+<h1>Gifts for <%= @friend.name %>
+  <% if @friend.photo.attached? %>
+  <%= cl_image_tag @friend.photo.key, height: 40, width: 40, gravity: :face, radius: :max, crop: :fill %></h1>
+  <% end %>
 <br>
 <h3>Gift Ideas</h3>
 <% @gift_ideas.each do |idea| %>
   <%#= Gift.find(idea.gift_id).gift_url %>
   <%= idea.gift.gift_url %>
+  <% if idea.gift.photo.attached? %>
+  <%= cl_image_tag idea.gift.photo.key, height: 300, width: 400, crop: :fill %>
+  <% end %>
 <% end %>
 
 
@@ -23,9 +29,9 @@
   <% @friend.notes.each do |note| %>
   <li>
     <p>
-    <%= note.content %> 
+    <%= note.content %>
     <%= link_to 'delete', note_path(note), method: :delete %>
-    </p> 
+    </p>
   </li>
   <% end %>
 </ul>

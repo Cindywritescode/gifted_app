@@ -6,6 +6,9 @@
     <ul>
       <li>
         <%= gift.gift_url %>
+        <% if gift.photo.attached? %>
+        <%= cl_image_tag gift.photo.key, height: 300, width: 400, crop: :fill %>
+        <% end %>
         <%= link_to "Assign to Friend", new_gift_gift_idea_path(gift) %>
         <%=link_to "Delete", gift_path(gift), method: :delete, data: { confirm: "Are you sure?" } %>
       </li>
@@ -20,7 +23,13 @@
     <ul>
       <li>
         <%= gift.gift_url %>
+        <% if gift.photo.attached? %>
+        <%= cl_image_tag gift.photo.key, height: 300, width: 400, crop: :fill %>
+        <% end %>
         <% gift.gift_ideas.each do |idea| %>
+        <% if Friend.find(idea.friend_id).photo.attached? %>
+        <%= cl_image_tag Friend.find(idea.friend_id).photo.key, height: 40, width: 40, gravity: :face, radius: :max, crop: :fill %>
+        <% end %>
         <%= link_to Friend.find(idea.friend_id).name, friend_path(idea.friend_id) %>
         <%=link_to "Delete", gift_gift_idea_path(id: idea.id, gift_id: gift.id), method: :delete, data: { confirm: "Are you sure?" } %>
         <% end %>
