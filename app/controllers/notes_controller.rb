@@ -28,9 +28,11 @@ class NotesController < ApplicationController
   end
 
   def update
+    @note = Note.find(params[:id])
     @note.update(note_params)
+    friend = @note.friend
     if @note.save
-      redirect_to friend_path
+      redirect_to friend_path(friend)
     else
       render :edit
     end
@@ -42,6 +44,8 @@ class NotesController < ApplicationController
     @note.destroy
     redirect_to friend_path(friend)
   end
+
+  private
 
   def note_params
     params.require(:note).permit(:content, :friend_id, :user_id)

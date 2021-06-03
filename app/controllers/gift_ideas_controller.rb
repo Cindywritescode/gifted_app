@@ -24,14 +24,18 @@ class GiftIdeasController < ApplicationController
     end
   end
 
+  def remove
+    @gift_idea = GiftIdea.find(params[:gift_idea_id])
+    @friend = @gift_idea.friend
+    @gift_idea.destroy
+    redirect_to friend_path(@friend)
+  end
+
+
   private
 
   def gift_idea_params
     params.require(:gift_idea).permit(:friend_id, :gift_id)
   end
-
-  # def index
-  #   @gift_ideas = GiftIdea.where(friend_id == params[:id])
-  # end
 
 end
