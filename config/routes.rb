@@ -7,8 +7,8 @@ Rails.application.routes.draw do
     resources :notes, only: [:show, :create, :edit]  
     resources :events, except: [:show]
   end
-  resources :gifts, except: [:show] do
-    resources :gift_ideas, only: [:destroy, :index]
+  resources :gifts, except: [:show, :edit, :update] do
+    resources :gift_ideas, only: [:new, :create, :destroy]
   end
   resources :notes, only: [:destroy]
 end
