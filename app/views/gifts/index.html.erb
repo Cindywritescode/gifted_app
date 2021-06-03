@@ -5,13 +5,14 @@
     <% if gift.gift_ideas == [] %>
     <ul>
       <li>
-        <%= gift.gift_url %>
+        <%= gift.product_name.nil? ? gift.gift_url : gift.product_name %>
         <%= link_to "Assign to Friend", new_gift_gift_idea_path(gift) %>
         <%=link_to "Delete", gift_path(gift), method: :delete, data: { confirm: "Are you sure?" } %>
       </li>
     </ul>
     <% end %>
 <% end %>
+<%= link_to 'Add a new gift', new_gift_path %>
 
 <h2>Gift Ideas</h2>
 
@@ -19,7 +20,7 @@
   <% if gift.gift_ideas != [] %>
     <ul>
       <li>
-        <%= gift.gift_url %>
+                <%= gift.product_name.nil? ? gift.gift_url : gift.product_name %>
         <% gift.gift_ideas.each do |idea| %>
         <%= link_to Friend.find(idea.friend_id).name, friend_path(idea.friend_id) %>
         <%=link_to "Delete", gift_gift_idea_path(id: idea.id, gift_id: gift.id), method: :delete, data: { confirm: "Are you sure?" } %>
