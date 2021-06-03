@@ -34,7 +34,7 @@
       <%= link_to 'delete', note_path(note), 
           method: :delete, 
           data: { confirm: "are you sure?" } %> |
-      <%= link_to 'edit', edit_friend_note_path(note)  %>
+      <%= link_to 'edit', edit_friend_note_path(@friend, note)  %>
     </p> 
   </li>
   <% end %>

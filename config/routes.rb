@@ -4,11 +4,11 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   resources :events
   resources :friends, except: [:edit, :update] do
-    resources :notes, only: [:show, :create, :edit, :update, :new]  
+    resources :notes, only: [:show, :create, :edit, :new]  
     resources :events, except: [:show]
   end
   resources :gifts, except: [:show, :edit, :update] do
     resources :gift_ideas, only: [:new, :create, :destroy]
   end
-  resources :notes, only: [:destroy]
+  resources :notes, only: [:destroy, :update]
 end
