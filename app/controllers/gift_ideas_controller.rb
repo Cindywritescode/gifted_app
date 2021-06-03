@@ -24,6 +24,14 @@ class GiftIdeasController < ApplicationController
     end
   end
 
+  def remove
+    @gift_idea = GiftIdea.find(params[:gift_idea_id])
+    @friend = @gift_idea.friend
+    @gift_idea.destroy
+    redirect_to friend_path(@friend)
+  end
+
+
   private
 
   def gift_idea_params

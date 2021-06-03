@@ -6,9 +6,12 @@ Rails.application.routes.draw do
   resources :friends, except: [:edit, :update] do
     resources :notes, only: [:show, :create, :edit, :new]  
     resources :events, except: [:show]
+    resources :gift_ideas, only: [:destroy]
   end
   resources :gifts, except: [:show, :edit, :update] do
-    resources :gift_ideas, only: [:new, :create, :destroy]
+    resources :gift_ideas, only: [:new, :create, :destroy] do
+      delete "remove", to: "gift_ideas#remove"
+    end
   end
   resources :notes, only: [:destroy, :update]
 end

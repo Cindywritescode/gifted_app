@@ -6,12 +6,16 @@
     <%#= Gift.find(idea.gift_id).gift_url %>
     <ul>
       <li>
-        <%= idea.gift.gift_url %>
+        <%= idea.gift.gift_url %> | 
+        <%= link_to 'delete', gift_gift_idea_remove_path(idea.gift, idea),
+          method: :delete, 
+          data: { confirm: "are you sure?" } %>  
       </li>
     </ul>
   <% end %>
-
-
+  <p>
+    <%= link_to 'See more gifts', gifts_path %>
+  </p>
 
 
 <h3>Events</h3>
