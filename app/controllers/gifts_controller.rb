@@ -12,11 +12,11 @@ class GiftsController < ApplicationController
     if @gift.save && !friend_id.nil?
       @gift_idea = GiftIdea.new(friend_id: friend_id, gift_id: @gift.id)
       @gift_idea.save!
-      redirect_to friends_path(@friend)
-    elsif @gift.save && friend_id.nil?
+      redirect_to friend_path(friend_id)
+    elsif @gift.save && friend_id.nil
       redirect_to gifts_path
     else
-      render "gifts/index"
+      render :new
     end
   end
 
@@ -24,17 +24,6 @@ class GiftsController < ApplicationController
     @gifts = Gift.where(user: current_user)
   end
 
-  def edit
-  end
-
-  def update
-    @gift.update(gift_params)
-    if @gift.save
-      render :show
-    else
-      render :edit
-    end
-  end
 
   def destroy
     @gift.destroy
