@@ -5,6 +5,7 @@ class NotesController < ApplicationController
 
   def show
     @note = Note.find(params[:id])
+    
   end
 
   def new
@@ -29,8 +30,9 @@ class NotesController < ApplicationController
 
   def update
     @note.update(note_params)
+    friend = @note.friend
     if @note.save
-      redirect_to friend_path
+      redirect_to friend_path(friend)
     else
       render :edit
     end

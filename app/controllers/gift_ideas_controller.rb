@@ -6,8 +6,4 @@ class GiftIdeasController < ApplicationController
     redirect_to friend_path(@gift_idea.gift)
   end
 
-  # def index
-  #   @gift_ideas = GiftIdea.where(friend_id == params[:id])
-  # end
-
 end
