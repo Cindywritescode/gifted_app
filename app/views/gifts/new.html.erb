@@ -3,4 +3,3 @@
   <%= f.association :friends, as: :collection_select, :collection => Friend.where(user: current_user), :prompt => "Assign to a Friend", :include_blank => "(Select if none)"%>
   <%= f.submit %>
 <% end %>
-
