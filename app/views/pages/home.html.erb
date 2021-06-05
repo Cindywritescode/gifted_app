@@ -34,7 +34,15 @@
 <p>Find something you like?</p>
 <%= link_to 'Add a gift', new_gift_path, class: "btn btn-gifted"%>
 <br>
-<%= link_to 'Upcoming events', events_path %>
+<h2>Upcoming events</h2>
+  <% @events.each do |event | %>
+    <div class="event-card">
+      <h4><%= event.date.strftime("#{event.date.day.ordinalize} %B") %></h4>
+      <%= "#{event.friend.name}'s #{event.event_type}" %>
+    </div>
+<% end %>
+
+<%= link_to 'See all upcoming events', events_path, class: "btn btn-gifted" %>
 <br>
 <%= link_to 'All my friends', friends_path %>
 <br>
