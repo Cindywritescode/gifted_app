@@ -2,17 +2,19 @@
 
   <!-- Friend Name and upcoming dates -->
   <div class="d-flex">
-    <% if @friend.photo.attached? %>
-    <%= cl_image_tag @friend.photo.key, height: 40, width: 40, gravity: :face, radius: :max, crop: :fill %>
-    <% else %>
-      <%= image_tag "https://kitt.lewagon.com/placeholder/users/random", class: "avatar-large" %>
-    <% end %>
+    <div class="align-self-center">
+      <% if @friend.photo.attached? %>
+      <%= cl_image_tag @friend.photo.key, height: 40, width: 40, gravity: :face, radius: :max, crop: :fill %>
+      <% else %>
+        <%= image_tag "https://kitt.lewagon.com/placeholder/users/random", class: "avatar", height: 40, width: 40 %>
+      <% end %>
+    </div>
     <div class="pl-3">
       <h4 class="m-0"><%= @friend.name %></h4>
       <% if @friend.events.count == 0 %>
         <p class="m-0">No Events Yet!</p>
       <% else %>
-        <ul class="p-1">
+        <ul class="p-1 m-0">
           <% @friend.events.each do |event| %>
             <li style="list-style-type: none;">
               <small class="text-muted m-0"><%= event.event_type %>: <%= event.date %></small>
