@@ -20,6 +20,7 @@ class FriendsController < ApplicationController
   end
 
   def show
+    @gifts = Gift.all
     @note = Note.new
     @notes = @friend.notes
     @gift_ideas = GiftIdea.where(friend_id: params[:id])
