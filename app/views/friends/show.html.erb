@@ -1,15 +1,15 @@
 <div class="container p-3 m-auto">
 
   <!-- Friend Name and upcoming dates -->
-  <div class="d-flex">
-    <div class="align-self-center">
+  <div class="d-flex friend-title">
+    <div class="align-self-center pl-2">
       <% if @friend.photo.attached? %>
       <%= cl_image_tag @friend.photo.key, height: 40, width: 40, gravity: :face, radius: :max, crop: :fill %>
       <% else %>
         <%= image_tag "https://kitt.lewagon.com/placeholder/users/random", class: "avatar", height: 40, width: 40 %>
       <% end %>
     </div>
-    <div class="pl-3">
+    <div class="mt-1 pl-3">
       <h4 class="m-0"><%= @friend.name %></h4>
       <% if @friend.events.count == 0 %>
         <p class="m-0">No Events Yet!</p>
