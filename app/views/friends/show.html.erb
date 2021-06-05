@@ -26,14 +26,14 @@
   </div>
 
   <% @gift_ideas.each do |idea| %>
-    <%#= Gift.find(idea.gift_id).gift_url %>
+    <% gift = Gift.find(idea.gift_id) %>
     <ul>
       <li>
-        <%= idea.product_name.nil? ? idea.gift_url : idea.product_name %>
-        <% if idea.photo.nil? %>
+        <%= gift.product_name.nil? ? gift.gift_url : gift.product_name %>
+        <% if gift.photo.nil? %>
           <%= image_tag "logo/grayscale.png", height: 200, crop: :fill %>
         <% else %>
-          <%= idea.photo %>
+          <%= gift.photo %>
         <% end %>
         <%= link_to 'delete', gift_gift_idea_remove_path(idea.gift, idea),
           method: :delete,
