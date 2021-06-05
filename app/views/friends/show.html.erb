@@ -1,10 +1,29 @@
-<h1>Gifts for <%= @friend.name %></h1>
+<h1>Gifts for <%= @friend.name %>
+  <% if @friend.photo.attached? %>
+  <%= cl_image_tag @friend.photo.key, height: 40, width: 40, gravity: :face, radius: :max, crop: :fill %></h1>
+  <% end %>
 <br>
 <h3>Gift Ideas</h3>
-<% @gift_ideas.each do |idea| %>
-  <%#= Gift.find(idea.gift_id).gift_url %>
-  <%= idea.gift.gift_url %>
-<% end %>
+
+
+  <% @gift_ideas.each do |idea| %>
+    <%#= Gift.find(idea.gift_id).gift_url %>
+    <ul>
+      <li>
+        <%= idea.gift.gift_url %>  
+        <% if idea.gift.photo.attached? %>
+          <%= cl_image_tag idea.gift.photo.key, height: 300, width: 400, crop: :fill %>
+          <% end %>
+        <%= link_to 'delete', gift_gift_idea_remove_path(idea.gift, idea),
+          method: :delete, 
+          data: { confirm: "are you sure?" } %>  
+      </li>
+    </ul>
+  <% end %>
+  <p>
+    <%= link_to 'See more gifts', gifts_path %>
+  </p>
+
 
 
 <h3>Events</h3>
@@ -23,9 +42,14 @@
   <% @friend.notes.each do |note| %>
   <li>
     <p>
-    <%= note.content %> 
-    <%= link_to 'delete', note_path(note), method: :delete %>
+
+      <%= note.content %> 
+      <%= link_to 'delete', note_path(note), 
+          method: :delete, 
+          data: { confirm: "are you sure?" } %> |
+      <%= link_to 'edit', edit_friend_note_path(@friend, note)  %>
     </p> 
+
   </li>
   <% end %>
 </ul>

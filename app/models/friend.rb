@@ -4,6 +4,7 @@ class Friend < ApplicationRecord
   has_many :gift_ideas, dependent: :destroy
   has_many :gifts, through: :gift_ideas
   has_many :notes, dependent: :destroy
+  has_one_attached :photo
 
   validates :name, presence: true
 end
