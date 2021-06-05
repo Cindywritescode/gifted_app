@@ -1,7 +1,9 @@
 <div class="container">
+<% if !user_signed_in? %>
+
 <h3>Hi, we're</h3>
 <h1>Gifted</h1>
-<p>We remember awesome gift ideas, and remind you when it's time to buy so you can relax and enjoy life.</p>
+<p>We remember awesome gift ideas, and remind you when it's time to buy.</p>
 
 <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel" data-interval="4000">
   <div class="carousel-inner">
@@ -21,14 +23,17 @@
   </div>
 </div>
 
-<%= link_to 'Add a gift', new_gift_path, class: "btn btn-primary"%>
+<%= link_to 'Add a gift', new_gift_path, class: "btn btn-gifted"%>
+<% end %>
 
 <% if user_signed_in? %>
+<%= link_to 'Add a gift', new_gift_path, class: "btn btn-gifted"%>
 <br>
 <%= link_to 'Upcoming events', events_path %>
 <br>
 <%= link_to 'All my friends', friends_path %>
 <br>
 <%= link_to 'All gifts', gifts_path %>
+
 <% end %>
 </div>
