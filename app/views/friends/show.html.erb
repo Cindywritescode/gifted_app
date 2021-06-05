@@ -20,6 +20,7 @@
               <small class="text-muted m-0"><%= event.event_type %>: <%= event.date %></small>
             </li>
           <% end %>
+<<<<<<< HEAD
         </ul>
       <% end %>
     </div>
@@ -97,3 +98,60 @@
     <% end %>
   </div><h3>Add a note</h3>
 </div>
+=======
+        <%= link_to 'delete', gift_gift_idea_remove_path(idea.gift, idea),
+          method: :delete, 
+          data: { confirm: "are you sure?" } %>  
+      </li>
+    </ul>
+  <% end %>
+  <p>
+    <%= link_to 'See more gifts', gifts_path %>
+  </p>
+
+
+
+<h3>Events</h3>
+<ul>
+  <% @friend.events.each do |event| %>
+  <li>
+    <p><%= event.event_type %>, <%= event.date %></p>
+  </li>
+  <% end %>
+  <%= link_to "All events", friend_events_path(@friend) %> |
+  <%= link_to '+Create a new event', new_friend_event_path(@friend)  %>
+</ul>
+
+<div id="notes">
+<h3>Notes</h3>
+<ul>
+  <% @friend.notes.each do |note| %>
+  <li>
+    <p id="note-<%= note.id %>">
+      <%= note.content %>
+    </p> 
+
+    <p id="delete_note-<%= note.id %>">
+      <%= link_to 'delete', note_path(note), 
+          method: :delete, 
+          remote: true,
+          data: { confirm: "are you sure?" } %> 
+    </p>
+
+    <p>
+      <%= link_to 'edit', edit_friend_note_path(@friend, note) %>
+    </p>
+
+  </li>
+  <% end %>
+</ul>
+</div>
+
+
+<h3>Add a note</h3>
+<%= simple_form_for([ @friend, @note ], remote:true) do |f| %>
+  <%= f.input :content %>
+  <%= f.submit class:'btn btn-primary' %>
+<% end %>
+
+>>>>>>> master
