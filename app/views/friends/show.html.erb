@@ -1,61 +1,85 @@
-<h1>Gifts for <%= @friend.name %>
-  <% if @friend.photo.attached? %>
-  <%= cl_image_tag @friend.photo.key, height: 40, width: 40, gravity: :face, radius: :max, crop: :fill %></h1>
-  <% end %>
-<br>
-<h3>Gift Ideas</h3>
+<div class="container p-3 m-auto">
 
-
-  <% @gift_ideas.each do |idea| %>
-    <%#= Gift.find(idea.gift_id).gift_url %>
-    <ul>
-      <li>
-        <%= idea.gift.gift_url %>  
-        <% if idea.gift.photo.attached? %>
-          <%= cl_image_tag idea.gift.photo.key, height: 300, width: 400, crop: :fill %>
+  <!-- Friend Name and upcoming dates -->
+  <div class="d-flex">
+    <% if @friend.photo.attached? %>
+    <%= cl_image_tag @friend.photo.key, height: 40, width: 40, gravity: :face, radius: :max, crop: :fill %>
+    <% else %>
+      <%= image_tag "https://kitt.lewagon.com/placeholder/users/random", class: "avatar-large" %>
+    <% end %>
+    <div class="pl-3">
+      <h4 class="m-0"><%= @friend.name %></h4>
+      <% if @friend.events.count == 0 %>
+        <p class="m-0">No Events Yet!</p>
+      <% else %>
+        <ul class="p-1">
+          <% @friend.events.each do |event| %>
+            <li style="list-style-type: none;">
+              <small class="text-muted m-0"><%= event.event_type %>: <%= event.date %></small>
+            </li>
           <% end %>
-        <%= link_to 'delete', gift_gift_idea_remove_path(idea.gift, idea),
-          method: :delete, 
-          data: { confirm: "are you sure?" } %>  
-      </li>
-    </ul>
-  <% end %>
-  <p>
-    <%= link_to 'See more gifts', gifts_path %>
-  </p>
+        </ul>
+      <% end %>
+    </div>
+  </div>
 
 
+  <br>
+  <h3>Gift Ideas</h3>
 
-<h3>Events</h3>
-<ul>
-  <% @friend.events.each do |event| %>
-  <li>
-    <p><%= event.event_type %>, <%= event.date %></p>
-  </li>
-  <% end %>
-  <%= link_to "All events", friend_events_path(@friend) %> |
-  <%= link_to '+Create a new event', new_friend_event_path(@friend)  %>
-</ul>
 
-<h3>Notes</h3>
-<ul>
-  <% @friend.notes.each do |note| %>
-  <li>
+    <% @gift_ideas.each do |idea| %>
+      <%#= Gift.find(idea.gift_id).gift_url %>
+      <ul>
+        <li>
+          <%= idea.gift.gift_url %>  
+          <% if idea.gift.photo.attached? %>
+            <%= cl_image_tag idea.gift.photo.key, height: 300, width: 400, crop: :fill %>
+            <% end %>
+          <%= link_to 'delete', gift_gift_idea_remove_path(idea.gift, idea),
+            method: :delete, 
+            data: { confirm: "are you sure?" } %>  
+        </li>
+      </ul>
+    <% end %>
     <p>
+      <%= link_to 'See more gifts', gifts_path %>
+    </p>
 
-      <%= note.content %> 
-      <%= link_to 'delete', note_path(note), 
-          method: :delete, 
-          data: { confirm: "are you sure?" } %> |
-      <%= link_to 'edit', edit_friend_note_path(@friend, note)  %>
-    </p> 
 
-  </li>
-  <% end %>
-</ul>
 
-<h3>Add a note</h3>
-<%= simple_form_for [ @friend, @note ] do |f| %>
-  <%= f.input :content %>
-  <%= f.submit class:'btn btn-primary' %>
-<% end %>
+  <h3>Events</h3>
+  <ul>
+    <% @friend.events.each do |event| %>
+    <li>
+      <p><%= event.event_type %>, <%= event.date %></p>
+    </li>
+    <% end %>
+    <%= link_to "All events", friend_events_path(@friend) %> |
+    <%= link_to '+Create a new event', new_friend_event_path(@friend)  %>
+  </ul>
+
+  <h3>Notes</h3>
+  <ul>
+    <% @friend.notes.each do |note| %>
+    <li>
+      <p>
+
+        <%= note.content %> 
+        <%= link_to 'delete', note_path(note), 
+            method: :delete, 
+            data: { confirm: "are you sure?" } %> |
+        <%= link_to 'edit', edit_friend_note_path(@friend, note)  %>
+      </p> 
+
+    </li>
+    <% end %>
+  </ul>
+
+  <div>
+    <%= simple_form_for [ @friend, @note ] do |f| %>
+      <%= f.input :content %>
+      <%= f.submit class:'btn btn-primary w-100' %>
+    <% end %>
+  </div><h3>Add a note</h3>
+</div>
