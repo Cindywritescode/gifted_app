@@ -30,6 +30,15 @@ gem 'bootsnap', '>= 1.4.2', require: false
 
 gem 'devise'
 
+# Added for background jobs
+# gem 'sidekiq'
+# gem 'sidekiq-failures', '~> 1.0'
+
+# Admin
+gem 'rails_admin', '~> 2.0'
+
+# Email testing in Development
+gem 'letter_opener', group: :development
 gem 'cloudinary', '~> 1.16.0'
 
 gem 'autoprefixer-rails', '10.2.5'
