@@ -10,13 +10,15 @@
     <%#= Gift.find(idea.gift_id).gift_url %>
     <ul>
       <li>
-        <%= idea.gift.gift_url %>  
-        <% if idea.gift.photo.attached? %>
-          <%= cl_image_tag idea.gift.photo.key, height: 300, width: 400, crop: :fill %>
-          <% end %>
+        <%= gift.product_name.nil? ? gift.gift_url : gift.product_name %>
+        <% if gift.photo.nil? %>
+          <%= image_tag "logo/grayscale.png", height: 200, crop: :fill %>
+        <% else %>
+          <%= gift.photo %>
+        <% end %>
         <%= link_to 'delete', gift_gift_idea_remove_path(idea.gift, idea),
-          method: :delete, 
-          data: { confirm: "are you sure?" } %>  
+          method: :delete,
+          data: { confirm: "are you sure?" } %>
       </li>
     </ul>
   <% end %>
