@@ -17,7 +17,7 @@ class NotesController < ApplicationController
     @note.friend = @friend
     @note.user = current_user
     if @note.save
-      redirect_to friend_path(@friend)
+      redirect_to friend_path(@friend, anchor: "note-#{@note.id}")
     else
       render 'friends/show'
     end
@@ -42,7 +42,7 @@ class NotesController < ApplicationController
     @note = Note.find(params[:id])
     friend = @note.friend
     @note.destroy
-    redirect_to friend_path(friend)
+    redirect_to friend_path(friend, anchor: "delete_note-#{@note.id}")
   end
 
   private
