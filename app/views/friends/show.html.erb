@@ -37,9 +37,9 @@
         <div class="p-2 w-50">
           <div class="card">
             <% if idea.gift.photo.attached? %>
-              <%= cl_image_tag idea.gift.photo.key, height: 300, width: 400, crop: :fill, class: "card-img-top" %>
+              <%= cl_image_tag idea.gift.photo.key, height: 120, width: 40, crop: :fill, class: "card-img-top" %>
             <% else %>
-            <%= image_tag "https://images.unsplash.com/photo-1512909006721-3d6018887383?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80" %>
+            <%= image_tag "https://images.unsplash.com/photo-1512909006721-3d6018887383?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80", height: 120, width: 40, crop: :fill, class: "card-img-top" %>
             <% end %>
             <div class="card-body">
                 <%= idea.gift.product_name %>  
