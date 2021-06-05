@@ -35,11 +35,32 @@
 <%= link_to 'Add a gift', new_gift_path, class: "btn btn-gifted"%>
 <br>
 <h2>Upcoming events</h2>
-  <% @events.each do |event | %>
-    <div class="event-card">
-      <h4><%= event.date.strftime("#{event.date.day.ordinalize} %B") %></h4>
-      <%= "#{event.friend.name}'s #{event.event_type}" %>
-    </div>
+  <% @events.each do | event | %>
+  <div class="event-card">
+  <div class="event-info">
+  <h4><%= event.date.strftime("#{event.date.day.ordinalize} %B") %></h4>
+  <%= "#{event.friend.name}'s #{event.event_type}" %>
+  </div>
+  <div class="event-emoji">
+    <% if  event.event_type == 'Birthday'%>
+      <%= "🎂" %>
+    <% elsif event.event_type == 'Friendaversary'%>
+      <%= "👯‍♀️" %>
+    <% elsif event.event_type == 'Divorce Party' %>
+      <%= "💔" %>
+    <% elsif event.event_type == 'Graduation' %>
+      <%= "🎓" %>
+    <% elsif event.event_type == 'Baby Shower' %>
+      <%= "🐣" %>
+    <% elsif event.event_type == 'Anniversary' %>
+      <%= "💍" %>
+    <% elsif event.event_type == 'Wedding' %>
+      <%= "💒" %>
+    <% else %>
+      <%= "🥳" %>
+    <% end %>
+  </div>
+</div>
 <% end %>
 
 <%= link_to 'See all upcoming events', events_path, class: "btn btn-gifted" %>

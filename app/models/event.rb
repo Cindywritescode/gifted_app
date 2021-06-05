@@ -7,6 +7,16 @@ class Event < ApplicationRecord
 
   TYPES = ['Birthday', 'Friendaversary', 'Divorce Party', 'Graduation', 'Baby Shower', 'Wedding', 'Anniversary']
 
+  # EMOJIS = {
+  #   'Birthday': 🎂,
+  #   'Friendaversary': 👯‍♀️,
+  #   'Divorce Party': 💔,
+  #   'Graduation': 🎓,
+  #   'Baby Shower': 🐣,
+  #   'Wedding': 💒,
+  #   'Anniversary': 💍,
+  # }
+
   validates :event_type, inclusion: { in: TYPES,
     message: "%{value} is not a valid event type" }
 
