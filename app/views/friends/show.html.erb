@@ -7,7 +7,7 @@
 
 
   <% @gift_ideas.each do |idea| %>
-    <%#= Gift.find(idea.gift_id).gift_url %>
+    <% gift = Gift.find(idea.gift_id) %>
     <ul>
       <li>
         <%= gift.product_name.nil? ? gift.gift_url : gift.product_name %>
@@ -46,13 +46,13 @@
   <li>
     <p id="note-<%= note.id %>">
       <%= note.content %>
-    </p> 
+    </p>
 
     <p id="delete_note-<%= note.id %>">
-      <%= link_to 'delete', note_path(note), 
-          method: :delete, 
+      <%= link_to 'delete', note_path(note),
+          method: :delete,
           remote: true,
-          data: { confirm: "are you sure?" } %> 
+          data: { confirm: "are you sure?" } %>
     </p>
 
     <p>
