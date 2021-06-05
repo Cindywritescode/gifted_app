@@ -37,25 +37,35 @@
   <%= link_to '+Create a new event', new_friend_event_path(@friend)  %>
 </ul>
 
+<div id="notes">
 <h3>Notes</h3>
 <ul>
   <% @friend.notes.each do |note| %>
   <li>
-    <p>
+    <p id="note-<%= note.id %>">
+      <%= note.content %>
+    </p> 
 
-      <%= note.content %> 
+    <p id="delete_note-<%= note.id %>">
       <%= link_to 'delete', note_path(note), 
           method: :delete, 
-          data: { confirm: "are you sure?" } %> |
-      <%= link_to 'edit', edit_friend_note_path(@friend, note)  %>
-    </p> 
+          remote: true,
+          data: { confirm: "are you sure?" } %> 
+    </p>
+
+    <p>
+      <%= link_to 'edit', edit_friend_note_path(@friend, note) %>
+    </p>
 
   </li>
   <% end %>
 </ul>
+</div>
+
 
 <h3>Add a note</h3>
-<%= simple_form_for [ @friend, @note ] do |f| %>
+<%= simple_form_for([ @friend, @note ], remote:true) do |f| %>
   <%= f.input :content %>
   <%= f.submit class:'btn btn-primary' %>
 <% end %>
+
