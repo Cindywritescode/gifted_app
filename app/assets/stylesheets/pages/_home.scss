@@ -13,6 +13,16 @@ h3 {
   border-radius: 30px;
   color: white;
   padding: 8px 24px;
-  width: 80vw
+  width: 80vw;
+  margin: 16px
+}
+
+.event-card {
+  background-color: white;
+  padding: 8px;
+  border-radius: 5px;
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px;
+  margin: 16px 0px;
+  text-align: left;
 }
 
