@@ -6,10 +6,12 @@
     <ul>
       <li>
         <%= gift.product_name.nil? ? gift.gift_url : gift.product_name %>
-        <% if gift.photo.attached? %>
-        <%= cl_image_tag gift.photo.key, height: 300, width: 400, crop: :fill %>
+        <% if gift.photo.nil? %>
+          <%= image_tag "logo/grayscale.png", height: 200, crop: :fill %>
+        <% else %>
+          <%= image_tag gift.photo, height: 200, crop: :fill %>
         <% end %>
-        
+
         <%= link_to "Assign to Friend", new_gift_gift_idea_path(gift) %>
         <%=link_to "Delete", gift_path(gift), method: :delete, data: { confirm: "Are you sure?" } %>
       </li>
@@ -26,8 +28,10 @@
       <li>
 
        <%= gift.product_name.nil? ? gift.gift_url : gift.product_name %>
-        <% if gift.photo.attached? %>
-        <%= cl_image_tag gift.photo.key, height: 300, width: 400, crop: :fill %>
+        <% if gift.photo.nil? %>
+          <%= image_tag "logo/grayscale.png", height: 200, crop: :fill %>
+        <% else %>
+          <%= gift.photo %>
         <% end %>
 
         <% gift.gift_ideas.each do |idea| %>
