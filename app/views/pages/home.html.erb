@@ -25,7 +25,8 @@
 <p>Sound good? Sign up or login to get started</p>
 <%= link_to 'Sign up', new_user_registration_path, class: "btn btn-gifted"%>
 <br>
-<%= link_to 'Log in', new_user_session_path, class %>
+<%= link_to 'Log in', new_user_session_path %>
+
 <% end %>
 
 <% if user_signed_in? %>
