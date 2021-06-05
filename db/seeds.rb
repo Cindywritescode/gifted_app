@@ -15,7 +15,8 @@ puts "--"
 emily = User.new(
   name: "Emily",
   email: "emily@me.org",
-  password: "password"
+  password: "password",
+  admin: true
 )
 emily.save!
 puts "User created: #{emily.name}"
@@ -126,7 +127,8 @@ puts "--"
 cindy = User.new(
   name: "Cindy",
   email: "cindy@me.org",
-  password: "password"
+  password: "password",
+  admin: true
 )
 cindy.save!
 puts "User created: #{cindy.name}"
@@ -241,7 +243,8 @@ puts "--"
 dani = User.new(
   name: "Daniella",
   email: "daniella@me.org",
-  password: "password"
+  password: "password",
+  admin: true
 )
 dani.save!
 puts "User created: #{dani.name}"
@@ -352,7 +355,8 @@ puts "--"
 thomas = User.new(
   name: "Thomas",
   email: "thomas@me.org",
-  password: "password"
+  password: "password",
+  admin: true
 )
 thomas.save!
 puts "User created: #{thomas.name}"
