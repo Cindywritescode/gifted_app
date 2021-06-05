@@ -270,7 +270,8 @@ puts "Friend created: #{friend6.name}"
 event5 = Event.new(
   event_type: "Baby Shower",
   date: Date.parse('2021-07-15'),
-  friend_id: friend5.id
+  friend_id: friend5.id,
+  user_id: dani.id
   )
 event5.save!
 puts "Event created: #{friend5.name}'s #{event5.event_type}"

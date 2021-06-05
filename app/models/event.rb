@@ -5,7 +5,7 @@ class Event < ApplicationRecord
   validates :event_type, presence: true
   validate :future_date
 
-  TYPES = ['birthday', 'friendaversary', 'divorce party', 'graduation', 'baby shower', 'wedding']
+  TYPES = ['Birthday', 'Friendaversary', 'Divorce Party', 'Graduation', 'Baby Shower', 'Wedding', 'Anniversary']
 
   validates :event_type, inclusion: { in: TYPES,
     message: "%{value} is not a valid event type" }

@@ -1,4 +1,4 @@
-<h1>Upcoming Events%></h1>
+<h1>Upcoming Events</h1>
 
 <% if @events.count == 0 %>
   <p>No Events Yet!</p>
@@ -6,6 +6,11 @@
   <ol>
     <% @events.each do |event| %>
       <li>
+        <% if event.friend.photo.attached? %>
+        <%=  cl_image_tag event.friend.photo.key, height: 40, width: 40, gravity: :face, radius: :max, crop: :fill %>
+        <% else %>
+        <p><%= event.friend.name %></p>
+        <% end %>
         <p><%= event.event_type %></p>
         <p><%= event.date %></p>
       </li>
