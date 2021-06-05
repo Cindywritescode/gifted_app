@@ -42,9 +42,9 @@ class EventsController < ApplicationController
     @event = Event.find(params[:id])
   end
   
-    def set_friend
-      @friend = Friend.find(params[:friend_id])
-    end
+  def set_friend
+    @friend = Friend.find(params[:friend_id])
+  end
 
   def event_params
     params.require(:event).permit(:event_type, :date)
