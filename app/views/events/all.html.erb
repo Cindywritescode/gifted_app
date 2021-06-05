@@ -1,0 +1,15 @@
+<h1>Upcoming Events%></h1>
+
+<% if @events.count == 0 %>
+  <p>No Events Yet!</p>
+<% else %>
+  <ol>
+    <% @events.each do |event| %>
+      <li>
+        <p><%= event.event_type %></p>
+        <p><%= event.date %></p>
+      </li>
+    <% end %>
+  </ol>
+<% end %>
+

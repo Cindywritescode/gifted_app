@@ -1,7 +1,7 @@
 class EventsController < ApplicationController
   before_action :set_event, only: [:edit, :update, :destroy]
   before_action :set_friend, only: [:index, :new, :create, :edit]
-  
+
   def index
     @events = Event.where(friend: params[:friend_id])
   end
@@ -35,13 +35,17 @@ class EventsController < ApplicationController
     @event.destroy
     redirect_to friend_events_path
   end
-  
+
+  def all
+    @events = Event.where(user: current_user)
+  end
+
   private
 
   def set_event
     @event = Event.find(params[:id])
   end
-  
+
     def set_friend
       @friend = Friend.find(params[:friend_id])
     end
