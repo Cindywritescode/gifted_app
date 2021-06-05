@@ -15,7 +15,8 @@ puts "--"
 emily = User.new(
   name: "Emily",
   email: "emily@me.org",
-  password: "password"
+  password: "password",
+  admin: true
 )
 emily.save!
 puts "User created: #{emily.name}"
@@ -37,7 +38,8 @@ puts "Friend created: #{friend2.name}"
 event1 = Event.new(
   event_type: "Wedding",
   date: Date.parse('2021-07-15'),
-  friend_id: friend1.id
+  friend_id: friend1.id,
+  user_id: emily.id
   )
 event1.save!
 puts "Event created: #{friend1.name}'s #{event1.event_type}"
@@ -45,7 +47,8 @@ puts "Event created: #{friend1.name}'s #{event1.event_type}"
 event2 = Event.new(
   event_type: "Birthday",
   date: Date.parse('2021-08-27'),
-  friend_id: friend2.id
+  friend_id: friend2.id,
+  user_id: emily.id
   )
 event2.save!
 puts "Event created: #{friend2.name}'s #{event2.event_type}"
@@ -126,7 +129,8 @@ puts "--"
 cindy = User.new(
   name: "Cindy",
   email: "cindy@me.org",
-  password: "password"
+  password: "password",
+  admin: true
 )
 cindy.save!
 puts "User created: #{cindy.name}"
@@ -148,7 +152,8 @@ puts "Friend created: #{friend4.name}"
 event3 = Event.new(
   event_type: "Baby Shower",
   date: Date.parse('2021-07-15'),
-  friend_id: friend3.id
+  friend_id: friend3.id,
+  user_id: cindy.id
   )
 event3.save!
 puts "Event created: #{friend3.name}'s #{event3.event_type}"
@@ -156,7 +161,8 @@ puts "Event created: #{friend3.name}'s #{event3.event_type}"
 event4 = Event.new(
   event_type: "Graduation",
   date: Date.parse('2021-08-27'),
-  friend_id: friend4.id
+  friend_id: friend4.id,
+  user_id: cindy.id
   )
 event4.save!
 puts "Event created: #{friend4.name}'s #{event4.event_type}"
@@ -241,7 +247,8 @@ puts "--"
 dani = User.new(
   name: "Daniella",
   email: "daniella@me.org",
-  password: "password"
+  password: "password",
+  admin: true
 )
 dani.save!
 puts "User created: #{dani.name}"
@@ -271,7 +278,8 @@ puts "Event created: #{friend5.name}'s #{event5.event_type}"
 event6 = Event.new(
   event_type: "Graduation",
   date: Date.parse('2021-08-27'),
-  friend_id: friend6.id
+  friend_id: friend6.id,
+  user_id: dani.id
   )
 event6.save!
 puts "Event created: #{friend6.name}'s #{event6.event_type}"
@@ -352,7 +360,8 @@ puts "--"
 thomas = User.new(
   name: "Thomas",
   email: "thomas@me.org",
-  password: "password"
+  password: "password",
+  admin: true
 )
 thomas.save!
 puts "User created: #{thomas.name}"
@@ -374,7 +383,8 @@ puts "Friend created: #{friend8.name}"
 event7 = Event.new(
   event_type: "Divorce Party",
   date: Date.parse('2021-07-15'),
-  friend_id: friend7.id
+  friend_id: friend7.id,
+  user_id: thomas.id
   )
 event7.save!
 puts "Event created: #{friend7.name}'s #{event7.event_type}"
@@ -382,7 +392,8 @@ puts "Event created: #{friend7.name}'s #{event7.event_type}"
 event8 = Event.new(
   event_type: "Graduation",
   date: Date.parse('2021-08-27'),
-  friend_id: friend8.id
+  friend_id: friend8.id,
+  user_id: thomas.id
   )
 event8.save!
 puts "Event created: #{friend6.name}'s #{event8.event_type}"
@@ -474,3 +485,4 @@ password: password
 
 puts "--"
 puts 'Finished!'
+
