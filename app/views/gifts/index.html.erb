@@ -1,26 +1,32 @@
+<div class="container p-3 m-auto">
+
+
 <h1>Your Gifts</h1>
+<div>
+<h4>Unassigned Gifts</h4>
+  <% @gifts.each do |gift| %>
+      <% if gift.gift_ideas == [] %>
+      <ul>
+        <li>
+          <%= gift.product_name.nil? ? gift.gift_url : gift.product_name %>
+          <% if gift.photo.nil? %>
+            <%= image_tag "logo/grayscale.png", height: 200, crop: :fill %>
+          <% else %>
+            <%= image_tag gift.photo, height: 200, crop: :fill %>
+          <% end %>
 
-<h2>Unassigned Gifts</h2>
-<% @gifts.each do |gift| %>
-    <% if gift.gift_ideas == [] %>
-    <ul>
-      <li>
-        <%= gift.product_name.nil? ? gift.gift_url : gift.product_name %>
-        <% if gift.photo.nil? %>
-          <%= image_tag "logo/grayscale.png", height: 200, crop: :fill %>
-        <% else %>
-          <%= image_tag gift.photo, height: 200, crop: :fill %>
-        <% end %>
+          <%= link_to "Assign to Friend", new_gift_gift_idea_path(gift) %>
+          <%=link_to "Delete", gift_path(gift), method: :delete, data: { confirm: "Are you sure?" } %>
+        </li>
+      </ul>
+      <% end %>
+  <% end %>
+  <%= link_to 'Add a new gift', new_gift_path %>
+</div>
 
-        <%= link_to "Assign to Friend", new_gift_gift_idea_path(gift) %>
-        <%=link_to "Delete", gift_path(gift), method: :delete, data: { confirm: "Are you sure?" } %>
-      </li>
-    </ul>
-    <% end %>
-<% end %>
-<%= link_to 'Add a new gift', new_gift_path %>
 
-<h2>Gift Ideas</h2>
+<div>
+<h4>Gift Ideas</h4>
 
 <% @gifts.each do |gift| %>
   <% if gift.gift_ideas != [] %>
@@ -45,5 +51,9 @@
     </ul>
   <% end %>
 <% end %>
+</div>
 
+
+
+</div>
 
