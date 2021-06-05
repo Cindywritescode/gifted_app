@@ -22,11 +22,15 @@
     </div>
   </div>
 </div>
-
-<%= link_to 'Add a gift', new_gift_path, class: "btn btn-gifted"%>
+<p>Sound good? Sign up or login to get started</p>
+<%= link_to 'Sign up', new_user_registration_path, class: "btn btn-gifted"%>
+<br>
+<%= link_to 'Log in', new_user_session_path, class %>
 <% end %>
 
 <% if user_signed_in? %>
+<h1>Hey <%= current_user.name %></h1>
+<p>Find something you like?</p>
 <%= link_to 'Add a gift', new_gift_path, class: "btn btn-gifted"%>
 <br>
 <%= link_to 'Upcoming events', events_path %>

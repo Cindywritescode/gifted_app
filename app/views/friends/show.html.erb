@@ -25,6 +25,26 @@
     </div>
   </div>
 
+  <% @gift_ideas.each do |idea| %>
+    <%#= Gift.find(idea.gift_id).gift_url %>
+    <ul>
+      <li>
+        <%= idea.product_name.nil? ? idea.gift_url : idea.product_name %>
+        <% if idea.photo.nil? %>
+          <%= image_tag "logo/grayscale.png", height: 200, crop: :fill %>
+        <% else %>
+          <%= idea.photo %>
+        <% end %>
+        <%= link_to 'delete', gift_gift_idea_remove_path(idea.gift, idea),
+          method: :delete,
+          data: { confirm: "are you sure?" } %>
+      </li>
+    </ul>
+  <% end %>
+  <p>
+    <%= link_to 'See more gifts', gifts_path %>
+  </p>
+
   <!-- Gift Idea Section -->
   <div>
     <h4 class="text-center m-0 mt-3 mb-1">Gift Ideas</h4>
