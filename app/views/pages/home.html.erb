@@ -1,7 +1,25 @@
 <div class="container">
-<h3>Hi, welcome to</h3>
+<h3>Hi, we're</h3>
 <h1>Gifted</h1>
 <p>We remember awesome gift ideas, and remind you when it's time to buy so you can relax and enjoy life.</p>
+
+<div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel" data-interval="4000">
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <%= image_tag "carousel/1.png", class: "d-block w-100" %>
+      <!-- <img class="d-block w-100" src="images/carousel/1.png" alt="First slide"> -->
+    </div>
+    <div class="carousel-item">
+      <%= image_tag "carousel/2.png", class: "d-block w-100" %>
+    </div>
+    <div class="carousel-item">
+      <%= image_tag "carousel/3.png", class: "d-block w-100" %>
+    </div>
+    <div class="carousel-item">
+      <%= image_tag "carousel/4.png", class: "d-block w-100" %>
+    </div>
+  </div>
+</div>
 
 <%= link_to 'Add a gift', new_gift_path, class: "btn btn-primary"%>
 
