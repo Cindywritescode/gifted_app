@@ -14,6 +14,10 @@ class Event < ApplicationRecord
 
   private
 
+  # after_commit :async_update # Run on create & update
+
+  private
+
   def future_date
     errors.add(:date, "Cannot be in the past") if date < Date.today
   end
