@@ -9,8 +9,8 @@
         <% if gift.gift_ideas == [] %>
             <div class="col-6 px-1 mb-2">
             
-            <%= render 'card_gift', gift_info: gift %>
-            <%#= render partial 'card_gift', locals: {gift_info: gift} %>
+              <%= render 'card_gift', gift_info: gift %>
+              <%#= render partial 'card_gift', locals: {gift_info: gift} %>
 
             </div>
         <% end %>
@@ -22,33 +22,45 @@
     <hr>
 
     <h4 class="my-3" >Gift Ideas</h4>
-    <div class="d-flex">
-      <div class="cards d-flex flex-wrap justify-content-center">
+    
+      <div class="cards d-flex flex-wrap card-deck">
 
       <% @gifts.each do |gift| %>
         <% if gift.gift_ideas != [] %>
-          <div class="card" style="width: 18rem;">
+        <div class="col-6 px-1 mb-2">
+          <div class="card h-100">
+            <%# Card-img %>
             <% if gift.photo.nil? %>
-              <%= image_tag "logo/grayscale.png", height: 200, crop: :fill %>
+              <%= image_tag "logo/grayscale.png", height: 120, crop: :fill %>
             <% else %>
               <%= gift.photo %>
             <% end %>
 
-            <div class="card-body">
-              <h5 class="card-title"><%= gift.product_name.nil? ? gift.gift_url : gift.product_name %></h5>
+            <%# Card-body %>
+            <div class="card-body p-0">
+              <h5 class="card-title p-1"><%= gift.product_name.nil? ? gift.gift_url : gift.product_name %></h5>
               <p class="card-text">£ <%= gift.price %></p>
             
               <% gift.gift_ideas.each do |idea| %>
+              
+              <%= link_to friend_path(idea.friend_id) do %>
               <% if Friend.find(idea.friend_id).photo.attached? %>
+            
+              
               <%= cl_image_tag Friend.find(idea.friend_id).photo.key, height: 40, width: 40, gravity: :face, radius: :max, crop: :fill %>
+              <% else %>
+              
+              <%= image_tag "https://kitt.lewagon.com/placeholder/users/random", class: "avatar", height: 40, width: 40 %>
               <% end %>
-              <%= link_to Friend.find(idea.friend_id).name, friend_path(idea.friend_id) %>
-              <%=link_to '<i class="far fa-trash-alt"></i>'.html_safe, gift_gift_idea_path(id: idea.id, gift_id: gift.id), method: :delete, data: { confirm: "Are you sure?" } %>
+              <%#= link_to Friend.find(idea.friend_id).name, friend_path(idea.friend_id) %>
+              <%#=link_to '<i class="far fa-trash-alt"></i>'.html_safe, gift_gift_idea_path(id: idea.id, gift_id: gift.id), method: :delete, data: { confirm: "Are you sure?" } %>
               <% end %>
+              <% end %>
+
             </div>
+          </div>
           </div>
         <% end %>
       <% end %>
-    </div>
 </div>
 
