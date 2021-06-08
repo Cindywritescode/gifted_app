@@ -15,3 +15,15 @@ a {
 .avatar-xl {
   border-radius: 50%;
 }
+
+.circle {
+  position: relative;
+  text-align: left;
+}
+
+#circle-letters {
+  font-size: 40px;
+  position: absolute;
+  top: 9px;
+  left: 14px;
+}
