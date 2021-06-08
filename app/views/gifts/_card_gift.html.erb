@@ -1,0 +1,24 @@
+              <div class="card h-100" >
+                <%# Card-img %>
+                <div class="position-relative">
+                  <% if gift_info.photo.nil? %>
+                    <%= image_tag "logo/grayscale.png", height: 120, crop: :fill %>
+                  <% else %>
+                    <%= image_tag gift_info.photo, height: 120, crop: :fill %>
+                  <% end %>
+                </div>
+                <div class="position-absolute" style= "top: 10px; right: 10px">
+                  <h3>
+                  <%= link_to '<i class="fas fa-plus-circle"></i>'.html_safe, new_gift_gift_idea_path(gift_info) %>
+                  </h3>
+                </div>
+
+                <%# Card-Body %>
+                <div class="card-body p-0">
+                  <h5 class="card-title"><%= gift_info.product_name.nil? ? gift_info.gift_url : gift_info.product_name %></h5>
+                  <div class="d-flex justify-content-between px-3">
+                    <p class="card-text">£ <%= gift_info.price %></p>
+                    <%=link_to '<i class="far fa-trash-alt"></i>'.html_safe, gift_path(gift_info), method: :delete, data: { confirm: "Are you sure?" } %>
+                  </div>
+                </div>
+              </div>

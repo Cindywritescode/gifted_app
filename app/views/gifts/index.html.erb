@@ -1,79 +1,54 @@
-<div class="container p-3 m-auto">
-  <h1>All Gifts</h1>
+<div class="container py-3 px-0 m-auto">
+    <h1>All Gifts</h1>
+
     <h4 class="mt-5 mb-3">Unassigned Gifts</h4>
-
-      <%# Cards %>
-      <div class="card-deck">
-        
-        <% @gifts.each do |gift| %>
-          <% if gift.gift_ideas == [] %>
-          <div class="card m-2" >
-            <%# Card-img %>
-            <div class="position-relative">
-              <% if gift.photo.nil? %>
-                <%= image_tag "logo/grayscale.png", height: 100, crop: :fill %>
-              <% else %>
-                <%= image_tag gift.photo, height: 100, crop: :fill %>
-              <% end %>
-            </div>
-            <div class="position-absolute" style= "top: 10px; right: 10px">
-              <h3>
-              <%= link_to '<i class="fas fa-plus-circle"></i>'.html_safe, new_gift_gift_idea_path(gift) %>
-              </h3>
-            </div>
-
-            <%# Card-Body %>
-            <div class="card-body">
-              <h5 class="card-title"><%= gift.product_name.nil? ? gift.gift_url : gift.product_name %></h5>
-              <div class="d-flex justify-content-between px-3">
-                <p class="card-text">£ <%= gift.price %></p>
-                <%=link_to '<i class="far fa-trash-alt"></i>'.html_safe, gift_path(gift), method: :delete, data: { confirm: "Are you sure?" } %>
-              </div>
-            </div>
-          </div>
-            <% end %>
-          <% end %>
-      </div>
-     
+    <%# Cards %>
+    <div class="d-flex flex-wrap card-deck">
       
-      <%= link_to 'Add more gifts', new_gift_path, class: 'btn btn-gifted' %>
-  
+      <% @gifts.each do |gift| %>
+        <% if gift.gift_ideas == [] %>
+            <div class="col-6 px-1 mb-2">
+            
+            <%= render 'card_gift', gift_info: gift %>
+            <%#= render partial 'card_gift', locals: {gift_info: gift} %>
 
-      <hr>
+            </div>
+        <% end %>
+      <% end %>
 
+    </div>
+    <%= link_to 'Add more gifts', new_gift_path, class: 'btn btn-gifted' %>
+
+    <hr>
 
     <h4 class="my-3" >Gift Ideas</h4>
     <div class="d-flex">
       <div class="cards d-flex flex-wrap justify-content-center">
 
       <% @gifts.each do |gift| %>
-      <% if gift.gift_ideas != [] %>
-
-        <div class="card" style="width: 18rem;">
-          <% if gift.photo.nil? %>
-            <%= image_tag "logo/grayscale.png", height: 200, crop: :fill %>
-          <% else %>
-            <%= gift.photo %>
-          <% end %>
-
-          <div class="card-body">
-            <h5 class="card-title"><%= gift.product_name.nil? ? gift.gift_url : gift.product_name %></h5>
-            <p class="card-text">£ <%= gift.price %></p>
-          
-            <% gift.gift_ideas.each do |idea| %>
-            <% if Friend.find(idea.friend_id).photo.attached? %>
-            <%= cl_image_tag Friend.find(idea.friend_id).photo.key, height: 40, width: 40, gravity: :face, radius: :max, crop: :fill %>
+        <% if gift.gift_ideas != [] %>
+          <div class="card" style="width: 18rem;">
+            <% if gift.photo.nil? %>
+              <%= image_tag "logo/grayscale.png", height: 200, crop: :fill %>
+            <% else %>
+              <%= gift.photo %>
             <% end %>
-            <%= link_to Friend.find(idea.friend_id).name, friend_path(idea.friend_id) %>
-            <%=link_to '<i class="far fa-trash-alt"></i>'.html_safe, gift_gift_idea_path(id: idea.id, gift_id: gift.id), method: :delete, data: { confirm: "Are you sure?" } %>
-            <% end %>
+
+            <div class="card-body">
+              <h5 class="card-title"><%= gift.product_name.nil? ? gift.gift_url : gift.product_name %></h5>
+              <p class="card-text">£ <%= gift.price %></p>
+            
+              <% gift.gift_ideas.each do |idea| %>
+              <% if Friend.find(idea.friend_id).photo.attached? %>
+              <%= cl_image_tag Friend.find(idea.friend_id).photo.key, height: 40, width: 40, gravity: :face, radius: :max, crop: :fill %>
+              <% end %>
+              <%= link_to Friend.find(idea.friend_id).name, friend_path(idea.friend_id) %>
+              <%=link_to '<i class="far fa-trash-alt"></i>'.html_safe, gift_gift_idea_path(id: idea.id, gift_id: gift.id), method: :delete, data: { confirm: "Are you sure?" } %>
+              <% end %>
+            </div>
           </div>
-        </div>
-  
-
+        <% end %>
       <% end %>
-    <% end %>
-  </div>
-
+    </div>
 </div>
 
