@@ -59,9 +59,10 @@ gift1 = Gift.new(
   gift_url: "https://www.glossier.com/products/the-skincare-edit",
   product_name: "Glossier: The Skincare Edit",
   price: (35..70).to_a.sample,
+  photo: "/glossier.jpg",
   user_id: emily.id
   )
-# gift1.photo.attach(io: File.open(File.join(Rails.root,'app/assets/images/seed/products/glossier.jpg')), filename: 'glossier.jpg')
+
 gift1.save!
 puts "Gift created: #{gift1.product_name}"
 
@@ -69,9 +70,10 @@ gift2 = Gift.new(
   gift_url: "https://sculpd.co.uk/products/sculpd",
   product_name: "Sculpd Pottery Kit",
   price: (35..70).to_a.sample,
+  photo: "/sculpd.jpg",
   user_id: emily.id
   )
-# gift2.photo.attach(io: File.open(File.join(Rails.root,'app/assets/images/seed/products/sculpd.jpg')), filename: 'sculpd.jpg')
+
 gift2.save!
 puts "Gift created: #{gift2.product_name}"
 
@@ -79,9 +81,10 @@ gift3 = Gift.new(
   gift_url: "https://support.wwf.org.uk/adopt-a-penguin",
   product_name: "WWF: Adopt a penguin",
   price: (35..70).to_a.sample,
+  photo: "/adopt.jpg",
   user_id: emily.id
   )
-# gift3.photo.attach(io: File.open(File.join(Rails.root,'app/assets/images/seed/products/adopt.jpg')), filename: 'adopt.jpg')
+
 gift3.save!
 puts "Gift created: #{gift3.product_name}"
 
@@ -175,9 +178,10 @@ gift4 = Gift.new(
   gift_url: "https://www.spacenk.com/uk/fragrance/home-fragrance/spray-diffuser/post-poo-drops",
   product_name: "Aesop Post Poo Drops",
   price: (15..70).to_a.sample,
+  photo: "/poodrops.jpg",
   user_id: cindy.id
   )
-# gift3.photo.attach(io: File.open(File.join(Rails.root,'app/assets/images/seed/products/poodrops.jpg')), filename: 'poodrops.jpg')
+
 gift4.save!
 puts "Gift created: #{gift3.product_name}"
 
@@ -185,9 +189,10 @@ gift5 = Gift.new(
   gift_url: "https://www.buyagift.co.uk/flying-experiences/sunrise-hot-air-balloon-ride",
   product_name: "Hot Air Balloon Ride",
   price: (35..70).to_a.sample,
+  photo: "/hotairballoon.jpg.jpg",
   user_id: cindy.id
   )
-# gift4.photo.attach(io: File.open(File.join(Rails.root,'app/assets/images/seed/products/hotairballoon.jpg')), filename: 'hotairballoon.jpg')
+
 gift5.save!
 puts "Gift created: #{gift4.product_name}"
 
@@ -195,9 +200,10 @@ gift6 = Gift.new(
   gift_url: "https://www.amazon.co.uk/Untitled-Animal-Unisex-Casual-Novelty/dp/B082FBWT8Y/",
   product_name: "Goose Socks",
   price: (5..70).to_a.sample,
+  photo: "/socks.jpg",
   user_id: cindy.id
   )
-# gift5.photo.attach(io: File.open(File.join(Rails.root,'app/assets/images/seed/products/adopt.jpg')), filename: 'adopt.jpg')
+
 gift6.save!
 puts "Gift created: #{gift5.product_name}"
 
@@ -290,14 +296,15 @@ event6 = Event.new(
   )
 event6.save!
 puts "Event created: #{friend6.name}'s #{event6.event_type}"
-
+file = "/images/seed/products/nickcagespoon.jpg"
 gift7 = Gift.new(
   gift_url: "https://www.etsy.com/uk/listing/782364145/nicolas-cage-face-on-wooden-spoon-nic",
   product_name: "Wooden Spoon with Nicholas Cage on it",
   price: (15..70).to_a.sample,
+  photo: "/nickcagespoon.jpg",
   user_id: dani.id
   )
-# gift7.photo.attach(io: File.open(File.join(Rails.root,'app/assets/images/seed/products/nickcagespoon.jpg')), filename: 'nickcagespoon.jpg')
+
 gift7.save!
 puts "Gift created: #{gift7.product_name}"
 
@@ -305,9 +312,10 @@ gift8 = Gift.new(
   gift_url: "https://www.patchplants.com/gb/en/plants/lemon-tree-389/",
   product_name: "Lemon Tree",
   price: (35..70).to_a.sample,
+  photo: "/lemon.jpg",
   user_id: dani.id
   )
-# gift8.photo.attach(io: File.open(File.join(Rails.root,'app/assets/images/seed/products/lemon.jpg')), filename: 'lemon.jpg')
+
 gift8.save!
 puts "Gift created: #{gift8.product_name}"
 
@@ -315,9 +323,10 @@ gift9 = Gift.new(
   gift_url: "https://www.amazon.co.uk/Untitled-Animal-Unisex-Casual-Novelty/dp/B082FBWT8Y/",
   product_name: "Goose Socks",
   price: (5..70).to_a.sample,
+  photo: "/socks.jpg",
   user_id: dani.id
   )
-# gift9.photo.attach(io: File.open(File.join(Rails.root,'app/assets/images/seed/products/adopt.jpg')), filename: 'adopt.jpg')
+
 gift9.save!
 puts "Gift created: #{gift9.product_name}"
 
@@ -411,9 +420,10 @@ gift10 = Gift.new(
   gift_url: "https://www.findmeagift.co.uk/gifts/grow-your-own-hairy-beaver.html",
   product_name: "Grow your own hairy beaver: Watercress Plant",
   price: (15..70).to_a.sample,
+  photo: "/beaver.jpg",
   user_id: thomas.id
   )
-# gift10.photo.attach(io: File.open(File.join(Rails.root,'app/assets/images/seed/products/beaver.jpg')), filename: 'beaver.jpg')
+
 gift10.save!
 puts "Gift created: #{gift10.product_name}"
 
@@ -421,9 +431,10 @@ gift11 = Gift.new(
   gift_url: "https://www.patchplants.com/gb/en/plants/lemon-tree-389/",
   product_name: "Lemon Tree",
   price: (35..70).to_a.sample,
+  photo: "/lemon.jpg",
   user_id: thomas.id
   )
-# gift11.photo.attach(io: File.open(File.join(Rails.root,'app/assets/images/seed/products/lemon.jpg')), filename: 'lemon.jpg')
+
 gift11.save!
 puts "Gift created: #{gift11.product_name}"
 
@@ -431,9 +442,10 @@ gift12 = Gift.new(
   gift_url: "https://www.amazon.co.uk/Untitled-Animal-Unisex-Casual-Novelty/dp/B082FBWT8Y/",
   product_name: "Goose Socks",
   price: (5..70).to_a.sample,
+  photo: "/socks.jpg",
   user_id: thomas.id
   )
-# gift12.photo.attach(io: File.open(File.join(Rails.root,'app/assets/images/seed/products/adopt.jpg')), filename: 'adopt.jpg')
+
 gift12.save!
 puts "Gift created: #{gift12.product_name}"
 
