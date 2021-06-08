@@ -1,20 +1,24 @@
-<h1>Upcoming Events</h1>
-
-<% if @events.count == 0 %>
-  <p>No Events Yet!</p>
-<% else %>
-  <ol>
+<div>
+  <h2>Upcoming Events</h2>
+  <% if @events.count == 0 %>
+    <p>No Events Yet!</p>
+  <% else %>
     <% @events.each do |event| %>
-      <li>
-        <% if event.friend.photo.attached? %>
-        <%=  cl_image_tag event.friend.photo.key, height: 40, width: 40, gravity: :face, radius: :max, crop: :fill %>
-        <% else %>
-        <p><%= event.friend.name %></p>
-        <% end %>
-        <p><%= event.event_type %></p>
-        <p><%= event.date %></p>
-      </li>
-    <% end %>
-  </ol>
-<% end %>
+      <div class="event-card">
+        <h4><%= event.date.strftime("#{event.date.day.ordinalize} %B") %></h4>
+          <div class="circle">
+            <% if event.friend.photo.attached? %>
+            <%=  cl_image_tag event.friend.photo.key, height: 40, width: 40, gravity: :face, radius: :max, crop: :fill %>
+            <% else %>
+            <%= image_tag "avatar/circle-512.png", height: 40, width: 40, gravity: :face, radius: :max, crop: :fill %>
+             <p><%= event.friend.name.first %><%= event.friend.name.split(' ')[1].first %></p>
+            <% end %>
+          </div>
+          <div class="event-type">
+            <%= "#{event.friend.name}'s #{event.event_type}" %>
+          </div>
+        </div>
+      <% end %>
+  <% end %>
+</div>
 
