@@ -25,6 +25,7 @@ friend1 = Friend.new(
   name: "#{Faker::Name.name}",
   user_id: emily.id
   )
+friend1.photo.attach(io: File.open(File.join(Rails.root,'app/assets/images/seed/friends/emily_friend.jpeg')), filename: 'emily_friend.jpeg')
 friend1.save!
 puts "Friend created: #{friend1.name}"
 
@@ -32,6 +33,7 @@ friend2 = Friend.new(
   name: "#{Faker::Name.name}",
   user_id: emily.id
   )
+friend2.photo.attach(io: File.open(File.join(Rails.root,'app/assets/images/seed/friends/emily_friend2.jpeg')), filename: 'emily_friend2.jpeg')
 friend2.save!
 puts "Friend created: #{friend2.name}"
 
@@ -139,6 +141,7 @@ friend3 = Friend.new(
   name: "#{Faker::Name.name}",
   user_id: cindy.id
   )
+friend3.photo.attach(io: File.open(File.join(Rails.root,'app/assets/images/seed/friends/cindy_friend.jpeg')), filename: 'cindy_friend.jpeg')
 friend3.save!
 puts "Friend created: #{friend3.name}"
 
@@ -146,6 +149,7 @@ friend4 = Friend.new(
   name: "#{Faker::Name.name}",
   user_id: cindy.id
   )
+friend4.photo.attach(io: File.open(File.join(Rails.root,'app/assets/images/seed/friends/cindy_friend2.jpeg')), filename: 'cindy_friend2.jpeg')
 friend4.save!
 puts "Friend created: #{friend4.name}"
 
@@ -257,6 +261,7 @@ friend5 = Friend.new(
   name: "#{Faker::Name.name}",
   user_id: dani.id
   )
+friend5.photo.attach(io: File.open(File.join(Rails.root,'app/assets/images/seed/friends/dani_friend.jpeg')), filename: 'dani_friend.jpeg')
 friend5.save!
 puts "Friend created: #{friend5.name}"
 
@@ -264,6 +269,7 @@ friend6 = Friend.new(
   name: "#{Faker::Name.name}",
   user_id: dani.id
   )
+friend6.photo.attach(io: File.open(File.join(Rails.root,'app/assets/images/seed/friends/dani_friend2.jpeg')), filename: 'dani_friend2.jpeg')
 friend6.save!
 puts "Friend created: #{friend6.name}"
 
@@ -371,6 +377,7 @@ friend7 = Friend.new(
   name: "#{Faker::Name.name}",
   user_id: thomas.id
   )
+friend7.photo.attach(io: File.open(File.join(Rails.root,'app/assets/images/seed/friends/thomas_friend.jpeg')), filename: 'thomas_friend.jpeg')
 friend7.save!
 puts "Friend created: #{friend7.name}"
 
@@ -378,6 +385,7 @@ friend8 = Friend.new(
   name: "#{Faker::Name.name}",
   user_id: thomas.id
   )
+friend8.photo.attach(io: File.open(File.join(Rails.root,'app/assets/images/seed/friends/thomas_friend2.jpeg')), filename: 'thomas_friend2.jpeg')
 friend8.save!
 puts "Friend created: #{friend8.name}"
 
