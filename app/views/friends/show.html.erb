@@ -48,7 +48,7 @@
                 <%= link_to truncate(idea.gift.product_name, length: 18), idea.gift.gift_url %>
               </h6>
               <div class="p-0 d-flex">
-                <p class="m-0">£<%= idea.gift.price %></p>
+                <p class="m-0"><%= idea.gift.price %></p>
                 <div class="ml-auto">
                   <%= link_to '<i class="far fa-trash-alt"></i>'.html_safe, gift_gift_idea_remove_path(idea.gift, idea),
                     method: :delete, 
@@ -103,7 +103,7 @@
         <%= image_tag gift.photo, width: 280, crop: :fill %>
       <% end %>
       <p class="m-0 d-flex flex-column">
-        <%= gift.product_name %>, £<%= gift.price %>
+        <%= gift.product_name %>, <%= gift.price %>
         <div>
           <% if GiftIdea.where(friend_id: @friend.id, gift_id: gift.id).present? %>
             <%= "You've already added this! 🎉" %>
@@ -121,7 +121,7 @@
         <%= image_tag gift.photo, width: 280, crop: :fill %>
       <% end %>
       <p class="m-0 d-flex flex-column">
-        <%= gift.product_name %>, £<%= gift.price %>
+        <%= gift.product_name %>, <%= gift.price %>
         <div>
           <% if GiftIdea.where(friend_id: @friend.id, gift_id: gift.id).present? %>
             <%= "You've already added this! 🎉" %>
@@ -139,7 +139,7 @@
         <%= image_tag gift.photo, width: 280, crop: :fill %>
       <% end %>
       <p class="m-0 d-flex flex-column">
-        <%= gift.product_name %>, £<%= gift.price %>
+        <%= gift.product_name %>, <%= gift.price %>
         <div>
           <% if GiftIdea.where(friend_id: @friend.id, gift_id: gift.id).present? %>
             <%= "You've already added this! 🎉" %>

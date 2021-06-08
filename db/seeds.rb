@@ -58,7 +58,7 @@ puts "Event created: #{friend2.name}'s #{event2.event_type}"
 gift1 = Gift.new(
   gift_url: "https://www.glossier.com/products/the-skincare-edit",
   product_name: "Glossier: The Skincare Edit",
-  price: (35..70).to_a.sample,
+  price: "£#{(35..70).to_a.sample}",
   photo: "/glossier.jpg",
   user_id: emily.id
   )
@@ -69,7 +69,8 @@ puts "Gift created: #{gift1.product_name}"
 gift2 = Gift.new(
   gift_url: "https://sculpd.co.uk/products/sculpd",
   product_name: "Sculpd Pottery Kit",
-  price: (35..70).to_a.sample,
+
+  price: "£#{(35..70).to_a.sample}",
   photo: "/sculpd.jpg",
   user_id: emily.id
   )
@@ -80,7 +81,7 @@ puts "Gift created: #{gift2.product_name}"
 gift3 = Gift.new(
   gift_url: "https://support.wwf.org.uk/adopt-a-penguin",
   product_name: "WWF: Adopt a penguin",
-  price: (35..70).to_a.sample,
+  price: "£#{(35..70).to_a.sample}",
   photo: "/adopt.jpg",
   user_id: emily.id
   )
@@ -177,7 +178,7 @@ puts "Event created: #{friend4.name}'s #{event4.event_type}"
 gift4 = Gift.new(
   gift_url: "https://www.spacenk.com/uk/fragrance/home-fragrance/spray-diffuser/post-poo-drops",
   product_name: "Aesop Post Poo Drops",
-  price: (15..70).to_a.sample,
+  price: "£#{(35..70).to_a.sample}",
   photo: "/poodrops.jpg",
   user_id: cindy.id
   )
@@ -188,7 +189,7 @@ puts "Gift created: #{gift3.product_name}"
 gift5 = Gift.new(
   gift_url: "https://www.buyagift.co.uk/flying-experiences/sunrise-hot-air-balloon-ride",
   product_name: "Hot Air Balloon Ride",
-  price: (35..70).to_a.sample,
+  price: "£#{(35..70).to_a.sample}",
   photo: "/hotairballoon.jpg.jpg",
   user_id: cindy.id
   )
@@ -199,7 +200,7 @@ puts "Gift created: #{gift4.product_name}"
 gift6 = Gift.new(
   gift_url: "https://www.amazon.co.uk/Untitled-Animal-Unisex-Casual-Novelty/dp/B082FBWT8Y/",
   product_name: "Goose Socks",
-  price: (5..70).to_a.sample,
+  price: "£#{(35..70).to_a.sample}",
   photo: "/socks.jpg",
   user_id: cindy.id
   )
@@ -300,7 +301,7 @@ file = "/images/seed/products/nickcagespoon.jpg"
 gift7 = Gift.new(
   gift_url: "https://www.etsy.com/uk/listing/782364145/nicolas-cage-face-on-wooden-spoon-nic",
   product_name: "Wooden Spoon with Nicholas Cage on it",
-  price: (15..70).to_a.sample,
+  price: "£#{(35..70).to_a.sample}",
   photo: "/nickcagespoon.jpg",
   user_id: dani.id
   )
@@ -311,7 +312,7 @@ puts "Gift created: #{gift7.product_name}"
 gift8 = Gift.new(
   gift_url: "https://www.patchplants.com/gb/en/plants/lemon-tree-389/",
   product_name: "Lemon Tree",
-  price: (35..70).to_a.sample,
+  price: "£#{(35..70).to_a.sample}",
   photo: "/lemon.jpg",
   user_id: dani.id
   )
@@ -322,7 +323,7 @@ puts "Gift created: #{gift8.product_name}"
 gift9 = Gift.new(
   gift_url: "https://www.amazon.co.uk/Untitled-Animal-Unisex-Casual-Novelty/dp/B082FBWT8Y/",
   product_name: "Goose Socks",
-  price: (5..70).to_a.sample,
+  price: "£#{(35..70).to_a.sample}",
   photo: "/socks.jpg",
   user_id: dani.id
   )
@@ -419,7 +420,7 @@ puts "Event created: #{friend6.name}'s #{event8.event_type}"
 gift10 = Gift.new(
   gift_url: "https://www.findmeagift.co.uk/gifts/grow-your-own-hairy-beaver.html",
   product_name: "Grow your own hairy beaver: Watercress Plant",
-  price: (15..70).to_a.sample,
+  price: "£#{(35..70).to_a.sample}",
   photo: "/beaver.jpg",
   user_id: thomas.id
   )
@@ -430,7 +431,7 @@ puts "Gift created: #{gift10.product_name}"
 gift11 = Gift.new(
   gift_url: "https://www.patchplants.com/gb/en/plants/lemon-tree-389/",
   product_name: "Lemon Tree",
-  price: (35..70).to_a.sample,
+  price: "£#{(35..70).to_a.sample}",
   photo: "/lemon.jpg",
   user_id: thomas.id
   )
@@ -441,7 +442,7 @@ puts "Gift created: #{gift11.product_name}"
 gift12 = Gift.new(
   gift_url: "https://www.amazon.co.uk/Untitled-Animal-Unisex-Casual-Novelty/dp/B082FBWT8Y/",
   product_name: "Goose Socks",
-  price: (5..70).to_a.sample,
+  price: "£#{(35..70).to_a.sample}",
   photo: "/socks.jpg",
   user_id: thomas.id
   )

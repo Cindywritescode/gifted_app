@@ -26,7 +26,7 @@
             <div class="card-body">
               <h5 class="card-title"><%= gift.product_name.nil? ? gift.gift_url : gift.product_name %></h5>
               <div class="d-flex justify-content-between px-3">
-                <p class="card-text">£ <%= gift.price %></p>
+                <p class="card-text"><%= gift.price %></p>
                 <%=link_to '<i class="far fa-trash-alt"></i>'.html_safe, gift_path(gift), method: :delete, data: { confirm: "Are you sure?" } %>
               </div>
             </div>
@@ -58,8 +58,7 @@
 
           <div class="card-body">
             <h5 class="card-title"><%= gift.product_name.nil? ? gift.gift_url : gift.product_name %></h5>
-            <p class="card-text">£ <%= gift.price %></p>
-
+            <p class="card-text"><%= gift.price %></p>
             <% gift.gift_ideas.each do |idea| %>
             <% if Friend.find(idea.friend_id).photo.attached? %>
             <%= cl_image_tag Friend.find(idea.friend_id).photo.key, height: 40, width: 40, gravity: :face, radius: :max, crop: :fill %>
