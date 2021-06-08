@@ -4,21 +4,24 @@
   <div class="d-flex friend-title">
     <div class="align-self-center pl-2">
       <% if @friend.photo.attached? %>
-      <%= cl_image_tag @friend.photo.key, height: 40, width: 40, gravity: :face, radius: :max, crop: :fill %>
+      <%= cl_image_tag @friend.photo.key, class: "avatar-xl", height: 80, width: 80, gravity: :face, radius: :max, crop: :fill %>
       <% else %>
-        <%= image_tag "https://kitt.lewagon.com/placeholder/users/random", class: "avatar", height: 40, width: 40 %>
+      <div class="circle">
+        <%= image_tag "avatar/circle-512.png", class: "avatar-xl", height: 80, width: 80, gravity: :face, radius: :max, crop: :fill %>
+        <p id="circle-letters"><%= @friend.name.first %><%= @friend.name.split(' ')[1].first %></p>
+      </div>
       <% end %>
     </div>
     <div class="mt-1 pl-3">
-      <h4 class="m-0"><%= @friend.name %></h4>
+      <h4 class="d-flex m-0"><%= @friend.name %></h4>
       <% if @friend.events.count == 0 %>
-        <p class="m-0">No Events Yet!</p>
+        <p class="d-flex m-0">No Events Yet!</p>
         <p><%= link_to '+Create a new event', new_friend_event_path(@friend) %></p>
       <% else %>
         <ul class="p-1 m-0">
           <% @friend.events.each do |event| %>
             <li style="list-style-type: none;">
-              <small class="text-muted m-0"><%= event.event_type %>: <%= event.date %></small>
+              <small class="d-flex flex-column text-muted m-0"><%= event.event_type %>: <%= event.date %></small>
             </li>
           <% end %>
         </ul>
@@ -42,7 +45,7 @@
             <% end %>
             <div class="card-body p-2">
               <h6 class="card-title">
-                <%= link_to idea.gift.product_name, idea.gift.gift_url %>
+                <%= link_to truncate(idea.gift.product_name, length: 18), idea.gift.gift_url %>
               </h6>
               <div class="p-0 d-flex">
                 <p class="m-0"><%= idea.gift.price %></p>
@@ -95,37 +98,55 @@
     <div class="carousel-item active">
     <% gift = @gifts.sample %>
       <% if gift.photo.nil? %>
-        <%= image_tag "logo/grayscale.png", crop: :fill, class: "card-img-top" %>
+        <%= image_tag "logo/grayscale.png", width: 280, crop: :fill %>
       <% else %>
-        <%= image_tag gift.photo, crop: :fill, class: "card-img-top" %>
+        <%= image_tag gift.photo, width: 280, crop: :fill %>
       <% end %>
-      <p>
+      <p class="m-0 d-flex flex-column">
         <%= gift.product_name %>, <%= gift.price %>
-        <%= link_to "+ Add it as a gift idea", new_gift_gift_idea_path(gift) %>
+        <div>
+          <% if GiftIdea.where(friend_id: @friend.id, gift_id: gift.id).present? %>
+            <%= "You've already added this! 🎉" %>
+          <% else %>
+            <%= link_to "+ Add it as a gift idea 🎁", new_gift_gift_idea_path(gift) %>
+          <% end %>
+        </div>
       </p>
     </div>
     <div class="carousel-item">
     <% gift = @gifts.sample %>
       <% if gift.photo.nil? %>
-        <%= image_tag "logo/grayscale.png", crop: :fill, class: "card-img-top" %>
+        <%= image_tag "logo/grayscale.png", width: 280, crop: :fill %>
       <% else %>
-        <%= image_tag gift.photo, crop: :fill, class: "card-img-top" %>
+        <%= image_tag gift.photo, width: 280, crop: :fill %>
       <% end %>
-      <p>
+      <p class="m-0 d-flex flex-column">
         <%= gift.product_name %>, <%= gift.price %>
-        <%= link_to "+ Add it as a gift idea", new_gift_gift_idea_path(gift) %>
+        <div>
+          <% if GiftIdea.where(friend_id: @friend.id, gift_id: gift.id).present? %>
+            <%= "You've already added this! 🎉" %>
+          <% else %>
+            <%= link_to "+ Add it as a gift idea 🎁", new_gift_gift_idea_path(gift) %>
+          <% end %>
+        </div>
       </p>
     </div>
     <div class="carousel-item">
     <% gift = @gifts.sample %>
       <% if gift.photo.nil? %>
-        <%= image_tag "logo/grayscale.png", crop: :fill, class: "card-img-top" %>
+        <%= image_tag "logo/grayscale.png", width: 280, crop: :fill %>
       <% else %>
-        <%= image_tag gift.photo, crop: :fill, class: "card-img-top" %>
+        <%= image_tag gift.photo, width: 280, crop: :fill %>
       <% end %>
-      <p>
+      <p class="m-0 d-flex flex-column">
         <%= gift.product_name %>, <%= gift.price %>
-        <%= link_to "+ Add it as a gift idea", new_gift_gift_idea_path(gift) %>
+        <div>
+          <% if GiftIdea.where(friend_id: @friend.id, gift_id: gift.id).present? %>
+            <%= "You've already added this! 🎉" %>
+          <% else %>
+            <%= link_to "+ Add it as a gift idea 🎁", new_gift_gift_idea_path(gift) %>
+          <% end %>
+        </div>
       </p>
     </div>
   </div>
