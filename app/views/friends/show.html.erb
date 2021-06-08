@@ -13,6 +13,7 @@
       <h4 class="m-0"><%= @friend.name %></h4>
       <% if @friend.events.count == 0 %>
         <p class="m-0">No Events Yet!</p>
+        <p><%= link_to '+Create a new event', new_friend_event_path(@friend) %></p>
       <% else %>
         <ul class="p-1 m-0">
           <% @friend.events.each do |event| %>
@@ -21,6 +22,7 @@
             </li>
           <% end %>
         </ul>
+        <small class="d-flex text-muted mb-1"><%= link_to '+Create a new event', new_friend_event_path(@friend) %></small>
       <% end %>
     </div>
   </div>
@@ -55,52 +57,86 @@
         </div>
       <% end %>
     </div>
-
-    <p><%= link_to 'See more gifts', gifts_path %></p>
-  </div>
-
-
-  <!-- Event Section -->
-  <h4>Events</h4>
-  <ul>
-    <% @friend.events.each do |event| %>
-    <li>
-      <p><%= event.event_type %>, <%= event.date %></p>
-    </li>
-    <% end %>
-    <%= link_to "All events", friend_events_path(@friend) %> |
-    <%= link_to '+Create a new event', new_friend_event_path(@friend)  %>
-  </ul>
-
-  <div id="notes">
-    <h3>Notes</h3>
-    <ul>
-      <% @friend.notes.each do |note| %>
-        <li>
-          <p id="note-<%= note.id %>">
-            <%= note.content %>
-          </p> 
-
-          <p id="delete_note-<%= note.id %>">
-            <%= link_to 'delete', note_path(note), 
-                method: :delete, 
-                remote: true,
-                data: { confirm: "are you sure?" } %> 
-          </p>
-
-          <p>
-            <%= link_to 'edit', edit_friend_note_path(@friend, note) %>
-          </p>
-
-        </li>
-      <% end %>
-    </ul>
   </div>
 
   <!-- Note Section -->
-  <h3>Add a note</h3>
-  <%= simple_form_for([ @friend, @note ], remote:true) do |f| %>
-    <%= f.input :content %>
-    <%= f.submit class:'btn btn-primary' %>
-  <% end %>
+  <div id="notes">
+    <h4 class="text-center m-0 mt-3 mb-1">Notes</h4>
+    <%= simple_form_for([ @friend, @note ], remote:true) do |f| %>
+      <%= f.input :content, placeholder: "Add a note", label: false %>
+      <%= f.submit class:'btn btn-gifted' %>
+    <% end %>
+    <div class="mt-2 row">
+      <% @friend.notes.each do |note| %>
+        <div class="p-2 w-50">
+          <div class="card card-note">
+            <div class="card-body p-2">
+              <p class="card-text" id="note-<%= note.id %>"><%= note.content %></p> 
+              <div class="d-flex">
+                <p class="m-0 ml-auto" id="delete_note-<%= note.id %>">
+                  <%= link_to '<i class="far fa-trash-alt"></i>'.html_safe, note_path(note), 
+                      method: :delete, 
+                      remote: true,
+                      data: { confirm: "are you sure?" } %> 
+                </p>
+                <p class="m-0 ml-1"><%= link_to '<i class="far fa-edit"></i>'.html_safe, edit_friend_note_path(@friend, note) %></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+  <!-- Other Gift Idea Section -->
+  <h4 class="text-center m-0 mt-3 mb-1">Other Gift Ideas</h4>
+  <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+    <% gift = @gifts.sample %>
+      <% if gift.photo.nil? %>
+        <%= image_tag "logo/grayscale.png", crop: :fill, class: "card-img-top" %>
+      <% else %>
+        <%= image_tag gift.photo, crop: :fill, class: "card-img-top" %>
+      <% end %>
+      <p>
+        <%= gift.product_name %>, £<%= gift.price %>
+        <%= link_to "+ Add it as a gift idea", new_gift_gift_idea_path(gift) %>
+      </p>
+    </div>
+    <div class="carousel-item">
+    <% gift = @gifts.sample %>
+      <% if gift.photo.nil? %>
+        <%= image_tag "logo/grayscale.png", crop: :fill, class: "card-img-top" %>
+      <% else %>
+        <%= image_tag gift.photo, crop: :fill, class: "card-img-top" %>
+      <% end %>
+      <p>
+        <%= gift.product_name %>, £<%= gift.price %>
+        <%= link_to "+ Add it as a gift idea", new_gift_gift_idea_path(gift) %>
+      </p>
+    </div>
+    <div class="carousel-item">
+    <% gift = @gifts.sample %>
+      <% if gift.photo.nil? %>
+        <%= image_tag "logo/grayscale.png", crop: :fill, class: "card-img-top" %>
+      <% else %>
+        <%= image_tag gift.photo, crop: :fill, class: "card-img-top" %>
+      <% end %>
+      <p>
+        <%= gift.product_name %>, £<%= gift.price %>
+        <%= link_to "+ Add it as a gift idea", new_gift_gift_idea_path(gift) %>
+      </p>
+    </div>
+  </div>
+  <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>
+  <p><%= link_to 'See more gifts', gifts_path %></p>
 </div>
