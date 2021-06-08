@@ -45,7 +45,7 @@
                 <%= link_to idea.gift.product_name, idea.gift.gift_url %>
               </h6>
               <div class="p-0 d-flex">
-                <p class="m-0">£<%= idea.gift.price %></p>
+                <p class="m-0"><%= idea.gift.price %></p>
                 <div class="ml-auto">
                   <%= link_to '<i class="far fa-trash-alt"></i>'.html_safe, gift_gift_idea_remove_path(idea.gift, idea),
                     method: :delete, 
@@ -100,7 +100,7 @@
         <%= image_tag gift.photo, crop: :fill, class: "card-img-top" %>
       <% end %>
       <p>
-        <%= gift.product_name %>, £<%= gift.price %>
+        <%= gift.product_name %>, <%= gift.price %>
         <%= link_to "+ Add it as a gift idea", new_gift_gift_idea_path(gift) %>
       </p>
     </div>
@@ -112,7 +112,7 @@
         <%= image_tag gift.photo, crop: :fill, class: "card-img-top" %>
       <% end %>
       <p>
-        <%= gift.product_name %>, £<%= gift.price %>
+        <%= gift.product_name %>, <%= gift.price %>
         <%= link_to "+ Add it as a gift idea", new_gift_gift_idea_path(gift) %>
       </p>
     </div>
@@ -124,7 +124,7 @@
         <%= image_tag gift.photo, crop: :fill, class: "card-img-top" %>
       <% end %>
       <p>
-        <%= gift.product_name %>, £<%= gift.price %>
+        <%= gift.product_name %>, <%= gift.price %>
         <%= link_to "+ Add it as a gift idea", new_gift_gift_idea_path(gift) %>
       </p>
     </div>
