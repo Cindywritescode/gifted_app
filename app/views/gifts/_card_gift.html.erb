@@ -1,7 +1,7 @@
 <div class="card h-100" >
   <%# Card-img %>
   <%= link_to gift_info.gift_url do %>
-    <div class="position-relative">
+    <div class="position-relative overflow-hidden" >
       <% if gift_info.photo.nil? %>
         <%= image_tag "logo/grayscale.png", height: 120, crop: :fill %>
       <% else %>
@@ -16,9 +16,9 @@
   <% end %>
   <%# Card-Body %>
   <div class="card-body p-0">
-    <h6 class="card-title text-truncate p-2 mb-0"><%= gift_info.product_name.nil? ? gift_info.gift_url : gift_info.product_name %></h6>
+    <h6 class="card-title text-truncate text-primary p-2 mb-0"><%= gift_info.product_name.nil? ? gift_info.gift_url : gift_info.product_name %></h6>
     <div class="d-flex justify-content-between px-3">
-      <p class="card-text">£ <%= gift_info.price %></p>
+      <p class="card-text mb-0">£ <%= gift_info.price %></p>
       <%=link_to '<i class="far fa-trash-alt"></i>'.html_safe, gift_path(gift_info), method: :delete, data: { confirm: "Are you sure?" } %>
     </div>
   </div>
