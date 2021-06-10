@@ -1,6 +1,6 @@
 <h1>Create a New Event</h1>
 
-<%= simple_form_for [ @friend, @event ] do |f| %>
+<%= simple_form_for [ @friend, @user, @event ] do |f| %>
   <%= f.label :event_type %>
   <%= f.select :event_type, Event::TYPES %>  
   <%= f.input :date, html5: true %>
