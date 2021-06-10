@@ -34,13 +34,13 @@
             <% if gift.photo.nil? %>
               <%= image_tag "logo/grayscale.png", height: 120, crop: :fill %>
             <% else %>
-              <%= image_tag gift.photo %>
+              <%= image_tag gift.photo, height: 120, crop: :fill %>
             <% end %>
 
             <%# Card-body %>
             <div class="card-body p-0">
               <h6 class="card-title text-truncate text-primary p-2 mb-0"><%= gift.product_name.nil? ? gift.gift_url : gift.product_name %></h6>
-              <p class="card-text">£ <%= gift.price %></p>
+              <%# <p class="card-text">£ = gift.price</p> %>
             
               <% gift.gift_ideas.each do |idea| %>
               
