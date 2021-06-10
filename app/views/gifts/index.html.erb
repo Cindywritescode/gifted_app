@@ -16,6 +16,9 @@
         <% end %>
       <% end %>
 
+      <%= link_to 'Add more gifts', new_gift_path, class: 'btn btn-gifted' %>
+
+
     </div>
     <%= link_to 'Add more gifts', new_gift_path, class: 'btn btn-gifted' %>
 
@@ -36,7 +39,6 @@
             <% else %>
               <%= image_tag gift.photo, height: 120, crop: :fill %>
             <% end %>
-
             <%# Card-body %>
             <div class="card-body p-0">
               <h6 class="card-title text-truncate text-primary p-2 mb-0"><%= gift.product_name.nil? ? gift.gift_url : gift.product_name %></h6>
@@ -59,6 +61,5 @@
           </div>
           </div>
         <% end %>
-      <% end %>
 </div>
 

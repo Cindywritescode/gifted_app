@@ -15,6 +15,7 @@ class GiftsController < ApplicationController
       etsy_info(@gift.gift_url)
       @gift.product_name = @info[0]
       @gift.photo = @info[1]
+      @gift.price = @info[2]
     end
     friend_id = @gift.friend_ids.first
     if @gift.save && !friend_id.nil?
@@ -54,8 +55,10 @@ class GiftsController < ApplicationController
     @info = []
     title = html_doc.search('title').first.text
     img = html_doc.search('img').first.attribute('src')
+    price = html_doc.css('div[data-buy-box-region="price"] p').text.scan(/\W\d+\W\d\d/)[0]
     @info << title
     @info << img.value
+    @info << price
   end
 
 end
