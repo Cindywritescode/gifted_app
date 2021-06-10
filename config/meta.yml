@@ -1,7 +1,5 @@
-config/meta.yml
-
-meta_product_name: "Gifted"
-meta_title: "Gifted - Thoughtful Gifts"
-meta_description: "Thoughtful Gifts are the best Gifts"
-meta_image: "/logo/color.png" # should exist in `app/assets/images/`
+meta_product_name: 'Gifted'
+meta_title: 'Gifted - Thoughtful Gifts'
+meta_description: 'Thoughtful Gifts are the best Gifts'
+meta_image: '/logo/color.png' # should exist in `app/assets/images/`
 # twitter_account: "@product_twitter_account"   # required for Twitter Cards
