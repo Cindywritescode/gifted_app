@@ -1,5 +1,13 @@
-<%= simple_form_for (@gift) do |f| %>
-  <%= f.input :gift_url %>
-  <%= f.association :friends, as: :collection_select, :collection => Friend.where(user: current_user), :prompt => "Assign to a Friend", :include_blank => "(Select if none)"%>
-  <%= f.submit %>
-<% end %>
+<div class="container mx-auto">
+  <div class="row justify-content-center">
+    <div class="col-m-8">
+    <h2 class=" mb-4 ">Create a New Gift</h2>
+    <%= simple_form_for (@gift) do |f| %>
+      <%= f.input :gift_url,placeholder: 'https://www.etsy.com/' %>
+      <%= f.association :friends, as: :collection_select, :collection => Friend.where(user: current_user), :prompt => "Assign to a Friend", :include_blank => "(Select if none)"%>
+      <%= f.submit "Create Gift", class: "btn  btn-gifted" %>
+    <% end %>
+
+  </div>
+  </div>
+</div>

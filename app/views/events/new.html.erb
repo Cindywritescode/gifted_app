@@ -1,9 +1,16 @@
-<h1>Create a New Event</h1>
+<div class="container mx-auto">
+  <div class="row justify-content-center">
+    <div class="col-m-8 ">
 
-<%= simple_form_for [ @friend, @user, @event ] do |f| %>
-  <%= f.label :event_type %>
-  <%= f.select :event_type, Event::TYPES %>  
-  <%= f.input :date, html5: true %>
-  <%= f.submit %>
-<% end %>
+      <h2 class="mb-4 text-primary">Create a New Event</h2>
 
+      <%= simple_form_for [ @friend, @event ] do |f| %>
+        <%= f.label :event_type %>
+        <%= f.select :event_type, Event::TYPES %>  
+        <%= f.input :date, html5: true %>
+        <%= f.submit "Create Event", class: "btn  btn-gifted" %>
+      <% end %>
+
+    </div>
+  </div>
+</div>
