@@ -15,18 +15,18 @@
             </div>
         <% end %>
       <% end %>
+      </div>
 
       <%= link_to 'Add more gifts', new_gift_path, class: 'btn btn-gifted' %>
 
 
-    </div>
-    <%= link_to 'Add more gifts', new_gift_path, class: 'btn btn-gifted' %>
+
 
     <hr>
 
     <h4 class="my-3" >Gift Ideas</h4>
-    
-      <div class="cards d-flex flex-wrap card-deck">
+    </div>
+    <div class="cards d-flex flex-wrap card-deck">
 
       
       <% @gifts.each do |gift| %>
@@ -43,7 +43,7 @@
             <div class="card-body p-0">
               <h6 class="card-title text-truncate text-primary p-2 mb-0"><%= gift.product_name.nil? ? gift.gift_url : gift.product_name %></h6>
               <%# <p class="card-text">£ = gift.price</p> %>
-            
+            <% end %>
               <% gift.gift_ideas.each do |idea| %>
               
                 <%= link_to friend_path(idea.friend_id) do %>
