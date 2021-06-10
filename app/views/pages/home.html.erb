@@ -36,6 +36,7 @@
 <br>
 <h2>Upcoming events</h2>
   <% @events.each do | event | %>
+  <%= link_to friend_path(event.friend_id) do %>
   <div class="event-card">
   <div class="event-info">
   <h4><%= event.date.strftime("#{event.date.day.ordinalize} %B") %></h4>
@@ -61,6 +62,7 @@
     <% end %>
   </div>
 </div>
+<% end %>
 <% end %>
 
 <%= link_to 'See all upcoming events', events_path, class: "btn btn-gifted" %>
