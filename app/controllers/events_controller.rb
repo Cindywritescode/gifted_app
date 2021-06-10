@@ -13,6 +13,7 @@ class EventsController < ApplicationController
   def create
     @event = Event.new(event_params)
     @event.friend = @friend
+    @event.user = current_user
     if @event.save
       redirect_to friend_events_path
     else

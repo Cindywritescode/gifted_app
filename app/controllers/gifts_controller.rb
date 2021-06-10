@@ -20,7 +20,7 @@ class GiftsController < ApplicationController
     friend_id = @gift.friend_ids.first
     if @gift.save && !friend_id.nil?
       @gift_idea = GiftIdea.new(friend_id: friend_id, gift_id: @gift.id)
-      @gift_idea.save!
+      # @gift_idea.save!
       redirect_to friend_path(friend_id)
     elsif @gift.save && friend_id.nil?
       redirect_to gifts_path
