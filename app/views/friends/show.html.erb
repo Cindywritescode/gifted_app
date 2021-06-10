@@ -51,8 +51,8 @@
                 <p class="m-0"><%= idea.gift.price %></p>
                 <div class="ml-auto">
                   <%= link_to '<i class="far fa-trash-alt"></i>'.html_safe, gift_gift_idea_remove_path(idea.gift, idea),
-                    method: :delete, 
-                    data: { confirm: "are you sure?" } %>  
+                    method: :delete,
+                    data: { confirm: "are you sure?" } %>
                 </div>
               </div>
             </div>
@@ -74,13 +74,13 @@
         <div class="p-2 w-50">
           <div class="card card-note">
             <div class="card-body p-2">
-              <p class="card-text" id="note-<%= note.id %>"><%= note.content %></p> 
+              <p class="card-text" id="note-<%= note.id %>"><%= note.content %></p>
               <div class="d-flex">
                 <p class="m-0 ml-auto" id="delete_note-<%= note.id %>">
-                  <%= link_to '<i class="far fa-trash-alt"></i>'.html_safe, note_path(note), 
-                      method: :delete, 
+                  <%= link_to '<i class="far fa-trash-alt"></i>'.html_safe, note_path(note),
+                      method: :delete,
                       remote: true,
-                      data: { confirm: "are you sure?" } %> 
+                      data: { confirm: "are you sure?" } %>
                 </p>
                 <p class="m-0 ml-1"><%= link_to '<i class="far fa-edit"></i>'.html_safe, edit_friend_note_path(@friend, note) %></p>
               </div>
@@ -159,5 +159,6 @@
     <span class="sr-only">Next</span>
   </a>
 </div>
+  <p><%= link_to 'Add a new gift', new_gift_path %></p>
   <p><%= link_to 'See more gifts', gifts_path %></p>
 </div>
