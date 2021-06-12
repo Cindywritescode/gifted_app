@@ -37,7 +37,7 @@
 <h2>Upcoming events</h2>
   <% @events.each do | event | %>
   <%= link_to friend_path(event.friend_id) do %>
-  <div class="event-card">
+  <div class="event-card" data-aos="flip-right" data-aos-duration="1000" >
     <div class="circle">
       <% if event.friend.photo.attached? %>
         <%=  cl_image_tag event.friend.photo.key, height: 60, width: 60, gravity: :face, radius: :max, crop: :fill %>
