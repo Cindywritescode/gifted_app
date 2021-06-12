@@ -35,9 +35,9 @@
           <div class="card h-100">
             <%# Card-img %>
             <% if gift.photo.nil? %>
-              <%= image_tag "logo/grayscale.png", height: 120, crop: :fill %>
+              <%= image_tag "logo/grayscale.png", height: 180, crop: :cover %>
             <% else %>
-              <%= image_tag gift.photo, height: 120, crop: :fill %>
+              <%= image_tag gift.photo, height: 180, crop: :cover %>
             <% end %>
             <%# Card-body %>
             <div class="card-body p-0">
