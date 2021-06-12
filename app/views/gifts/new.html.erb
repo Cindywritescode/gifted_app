@@ -9,7 +9,7 @@
 
       <div class="mx-3">
         <%= simple_form_for (@gift) do |f| %>
-          <%= f.input :gift_url,placeholder: 'https://www.etsy.com/', label: false %>
+          <%= f.input :gift_url, placeholder: 'https://www.etsy.com/', input_html:{ value: params[:gift_url] || @gift.gift_url }, label: false %>
           <%= f.association :friends, 
               as: :collection_select, 
               :collection => Friend.where(user: current_user), 
