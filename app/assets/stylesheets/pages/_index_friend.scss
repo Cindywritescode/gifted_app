@@ -1,0 +1,52 @@
+.friend-card {
+  background-color: white;
+  padding: 8px 8px;
+  border-radius: 5px;
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 5px 15px 0px;
+  margin: 16px 0px;
+  text-align: left;
+  display: flex;
+  flex-direction: row;
+}
+
+.delete {
+  position: relative;
+  text-align: left;
+}
+
+.friend-event-info {
+  margin-bottom: 0px;
+  position: relative;
+  text-align: left;
+  margin-right: 5px;
+  display: flex;
+  flex-direction: row;
+  padding-left: 5px;
+}
+
+.friend-event-info h6 {
+  margin: 3px;
+  padding: 0px 3px 0px 10px;
+}
+
+.friend-event-emoji {
+    font-size: 16px;
+    padding-left: 8px;
+}
+
+.friend-circle {
+  position: relative;
+}
+
+.friend-circle h1 {
+  position: absolute;
+  top: 24px;
+  left: 24px;
+  color: white;
+}
+.friend-container {
+  padding-top: 32px;
+  text-align: center;
+  padding-left :16px;
+  padding-right: 28px;
+}
