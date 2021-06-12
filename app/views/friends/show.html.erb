@@ -21,7 +21,7 @@
         <ul class="p-1 m-0">
           <% @friend.events.each do |event| %>
             <li style="list-style-type: none;">
-              <small class="d-flex flex-column text-muted m-0"><%= event.event_type %>: <%= event.date %></small>
+              <small class="d-flex text-muted m-0"><%= event.event_type %>: <%= event.date.strftime("#{event.date.day.ordinalize} %B") %></small>
             </li>
           <% end %>
         </ul>
