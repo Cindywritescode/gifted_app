@@ -2,14 +2,19 @@
   <div class="row justify-content-center">
     <div class="col-m-8 ">
 
-      <h2 class="mb-4 text-primary">Create a New Event</h2>
-
+      <div class="mb-5 mx-2">
+      <h2 class="text-primary">Create a New Event</h2>
+      <small class="text-info" >Bookmark an important date of your friend</small>
+      </div>
+    
+      <div class="mx-3">
       <%= simple_form_for [ @friend, @event ] do |f| %>
         <%= f.label :event_type %>
         <%= f.select :event_type, Event::TYPES %>  
-        <%= f.input :date, html5: true %>
+        <%= f.input :date, html5: true, label: false %>
         <%= f.submit "Create Event", class: "btn  btn-gifted" %>
       <% end %>
+      </div>
 
     </div>
   </div>
