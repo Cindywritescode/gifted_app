@@ -1,17 +1,56 @@
-<h1>Your Friends</h1>
+<div class="friend-container">
+  <h1>Your Friends</h1>
 
-<% @friends.each do |friend| %>
-  <ul>
-    <li>
-      <% if friend.photo.attached? %>
-        <%=  cl_image_tag friend.photo.key, height: 40, width: 40, gravity: :face, radius: :max, crop: :fill %>
+  <% @friends.each do |friend| %>
+    <%= link_to friend_path(friend) do %>
+    <div class="friend-card">
+      <div class="friend-circle">
+        <% if friend.photo.attached? %>
+          <%=  cl_image_tag friend.photo.key, height: 100, width: 100, gravity: :face, radius: :max, crop: :fill %>
+        <% else %>
+          <%= image_tag "avatar/circle-512.png", height: 100, width: 100, gravity: :face, radius: :max, crop: :fill %>
+          <h1><%= friend.name.first %><%= friend.name.split(' ')[1].first %></h1>
+        <% end %>
+      <div class= "delete">
+      <%= link_to friend_path(friend),
+        method: :delete, data: { confirm: "Are you sure you want to delete #{friend.name} from your friend list?" } do %>
+        <i class="fas fa-trash-alt"></i>
       <% end %>
-      <%= link_to friend.name, friend_path(friend) %>
-      <%= link_to 'delete', friend_path(friend),
-      method: :delete, data: { confirm: "Are you sure you want to delete #{friend.name} from your friend list?" },
-      class: "btn btn-primary" %>
-    </li>
-  </ul>
-<% end %>
+      </div>
+      </div>
+      <div class="friend-event-info">
+        <% if friend.events.count == 0 %>
+            <p>No Events Yet!</p>
+            <p><%= link_to '+Create a new event', new_friend_event_path(friend) %></p>
+          <% else %>
+            <% friend.events.each do |event| %>
+              <h6><%= event.date.strftime("%d/%m") %></h6> <p><%= "#{event.event_type}" %></p>
+              <div class="friend-event-emoji">
+      <% if  event.event_type == 'Birthday'%>
+        <%= "🎂" %>
+      <% elsif event.event_type == 'Friendaversary'%>
+        <%= "👯‍♀️" %>
+      <% elsif event.event_type == 'Divorce Party' %>
+        <%= "💔" %>
+      <% elsif event.event_type == 'Graduation' %>
+        <%= "🎓" %>
+      <% elsif event.event_type == 'Baby Shower' %>
+        <%= "🐣" %>
+      <% elsif event.event_type == 'Anniversary' %>
+        <%= "💍" %>
+      <% elsif event.event_type == 'Wedding' %>
+        <%= "💒" %>
+      <% else %>
+        <%= "🥳" %>
+      <% end %>
+    </div>
+          <% end %>
+        <% end %>
+      </div>
 
-<%= link_to '+ add a new friend', new_friend_path  %>
+      <% end %>
+    </div>
+    <% end %>
+    <br>
+  <%= link_to 'Add a new friend', new_friend_path, class: "btn btn-gifted"  %>
+</div>
