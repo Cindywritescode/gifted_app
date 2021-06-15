@@ -1,24 +1,34 @@
 <div class="container p-1 m-auto">
-  <h1 class="pt-2">All Gifts</h1>
 
-  <h4 class="mt-4 mb-3">Unassigned Gifts</h4>
-  <%# Cards %>
-  <div class="d-flex flex-wrap card-deck">
-      
-    <% @gifts.each do |gift| %>
-      <% if gift.gift_ideas == [] %>
-        <div class="col-6 px-2 py-1 mb-2">
-        
-          <%= render 'card_gift', gift_info: gift %>
-          <%#= render partial 'card_gift', locals: {gift_info: gift} %>
+  <h1>All Gifts</h1>
+  <%= form_tag gifts_path, method: :get do %>
+  <%= text_field_tag :query,
+    params[:query],
+    class: "form-control",
+    placeholder: "Search for a gift"
+  %>
+  <%= submit_tag "Find a gift", class: "btn btn-gifted" %>
+  <% end %>
+
+    <h4 class="mt-5 mb-3">Unassigned Gifts</h4>
+    <%# Cards %>
+    <div class="d-flex flex-wrap card-deck">
+
+      <% @gifts.each do |gift| %>
+        <% if gift.gift_ideas == [] %>
+            <div class="col-6 px-2 py-1 mb-2">
+
+              <%= render 'card_gift', gift_info: gift %>
+              <%#= render partial 'card_gift', locals: {gift_info: gift} %>
 
         </div>
       <% end %>
     <% end %>
   </div>
 
-  <%= link_to 'Add more gifts', new_gift_path, class: 'btn btn-gifted' %>
-
+ <% if !params[:query].present? %>
+      <%= link_to 'Add more gifts', new_gift_path, class: 'btn btn-gifted' %>
+ <% end %>
 
 
 
@@ -27,16 +37,16 @@
 
   <div class="cards d-flex flex-wrap card-deck">
 
-    
-    <% @gifts.each do |gift| %>
-      <% if gift.gift_ideas != [] %>
+      <% @gifts.each do |gift| %>
+        <% if gift.gift_ideas != [] %>
         <div class="col-6 px-1 mb-2">
           <div class="card h-100">
             <%# Card-img %>
             <% if gift.photo.nil? %>
-              <%= image_tag "logo/grayscale.png", height: 120, crop: :fill %>
+              <%= image_tag "logo/grayscale.png", height: 180, crop: :cover %>
             <% else %>
               <%= image_tag gift.photo, height: 120, :style => "object-fit: cover" %>
+
             <% end %>
             <%# Card-body %>
             <div class="card-body p-0">

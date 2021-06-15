@@ -30,7 +30,11 @@ class GiftsController < ApplicationController
   end
 
   def index
-    @gifts = Gift.where(user: current_user)
+    if params[:query].present?
+      @gifts = Gift.search_by_product_name(params[:query]).where(user: current_user)
+    else
+      @gifts = Gift.where(user: current_user)
+    end
   end
 
   def destroy
