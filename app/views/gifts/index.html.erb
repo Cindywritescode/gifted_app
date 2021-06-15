@@ -41,23 +41,25 @@
             <%# Card-body %>
             <div class="card-body p-0">
               <h6 class="card-title text-truncate text-primary p-2 mb-0"><%= gift.product_name.nil? ? gift.gift_url : gift.product_name %></h6>
+              <div class="d-flex px-2">
               <% gift.gift_ideas.each do |idea| %>
-                <div class="px-1 text-center" >
+                <div >
                   <%= link_to friend_path(idea.friend) do %>
                     <% if idea.friend.photo.attached? %>
+                      <div>
                       <%= cl_image_tag idea.friend.photo.key, height: 40, width: 40, gravity: :face, radius: :max, crop: :fill %>
+                      </div>
                     <% else %>
                       <div class="avatar-initials">
                         <small ><%= idea.friend.name.first %><%= idea.friend.name.split(' ')[1].first %></small>      
                       </div>
                     <% end %>
-                    
-                  <% end %>
-                    
+                  <% end %>                  
                     <%#= link_to Friend.find(idea.friend_id).name, friend_path(idea.friend_id) %>
                     <%#=link_to '<i class="far fa-trash-alt"></i>'.html_safe, gift_gift_idea_path(id: idea.id, gift_id: gift.id), method: :delete, data: { confirm: "Are you sure?" } %>
                 </div>
               <% end %>
+              </div>
             </div>
           </div>
         </div>
