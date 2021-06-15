@@ -15,6 +15,7 @@ class EventsController < ApplicationController
     @event.friend = @friend
     @event.user = current_user
     if @event.save
+      EventMailer.notify14(@event).deliver_now
       redirect_to friend_events_path
     else
       render :new

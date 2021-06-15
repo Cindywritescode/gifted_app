@@ -33,18 +33,22 @@ Rails.application.configure do
   config.active_storage.service = :cloudinary
 
   # Don't care if the mailer can't send.
-  config.action_mailer.raise_delivery_errors = false
+  config.action_mailer.raise_delivery_errors = true
 
   config.action_mailer.perform_caching = false
   
   # # Add this line next to existing config.action_mailer settings
   # config.action_mailer.delivery_method = :letter_opener
-  # config.action_mailer.perform_deliveries = true
+  config.action_mailer.perform_deliveries = true
 
   # Add this line next to existing config.action_mailer settings
-  config.action_mailer.delivery_method = :smtp
-  config.action_mailer.default_url_options = { host: "www.gifted-club.xyz" }
+  # config.action_mailer.delivery_method = :smtp
+  config.action_mailer.delivery_method = :test 
+  config.action_mailer.default_url_options = { host: 'localhost:3000' }
 
+  # config.action_mailer.default_url_options = { host: "www.gifted-club.xyz" }
+  config.action_mailer.default_options = { from: "contact@gifted-club.com" }
+  
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
 
