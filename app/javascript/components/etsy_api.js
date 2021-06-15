@@ -31,8 +31,8 @@ const insertGifts = (data, list) => {
 
 const callEtsyAPI = () => {
   const list = document.querySelector('.etsy_holder');
-  const apiKey = document.querySelector('div[data-etsy-api-key]').dataset.etsyApiKey
   if (list) {
+    const apiKey = document.querySelector('div[data-etsy-api-key]').dataset.etsyApiKey
     console.log('calling etsy api')
       fetch(`https://openapi.etsy.com/v2/listings/active?api_key=${apiKey}`)
       .then(response => response.json())
