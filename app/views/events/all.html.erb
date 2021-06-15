@@ -1,24 +1,46 @@
-<div>
-  <h2>Upcoming Events</h2>
+<div class="container">
   <% if @events.count == 0 %>
     <p>No Events Yet!</p>
   <% else %>
-    <% @events.each do |event| %>
-      <div class="event-card">
-        <h4><%= event.date.strftime("#{event.date.day.ordinalize} %B") %></h4>
-          <div class="circle">
-            <% if event.friend.photo.attached? %>
-            <%=  cl_image_tag event.friend.photo.key, height: 40, width: 40, gravity: :face, radius: :max, crop: :fill %>
-            <% else %>
-            <%= image_tag "avatar/circle-512.png", height: 40, width: 40, gravity: :face, radius: :max, crop: :fill %>
-             <p><%= event.friend.name.first %><%= event.friend.name.split(' ')[1].first %></p>
-            <% end %>
-          </div>
-          <div class="event-type">
-            <%= "#{event.friend.name}'s #{event.event_type}" %>
-          </div>
-        </div>
+<h2>All events</h2>
+  <% @events.each do | event | %>
+  <%= link_to friend_path(event.friend_id) do %>
+  <div class="event-card">
+    <div class="circle">
+      <% if event.friend.photo.attached? %>
+        <%=  cl_image_tag event.friend.photo.key, height: 60, width: 60, gravity: :face, radius: :max, crop: :fill %>
+      <% else %>
+        <%= image_tag "avatar/circle-512.png", height: 60, width: 60, gravity: :face, radius: :max, crop: :fill %>
+        <h3><%= event.friend.name.first %><%= event.friend.name.split(' ')[1].first %></h3>
       <% end %>
-  <% end %>
+    </div>
+    <div class="event-info">
+    <h4><%= event.date.strftime("#{event.date.day.ordinalize} %B") %></h4>
+    <%= "#{event.friend.name}'s #{event.event_type}" %>
+    </div>
+    <div class="event-emoji">
+      <% if  event.event_type == 'Birthday'%>
+        <%= "🎂" %>
+      <% elsif event.event_type == 'Friendaversary'%>
+        <%= "👯‍♀️" %>
+      <% elsif event.event_type == 'Divorce Party' %>
+        <%= "💔" %>
+      <% elsif event.event_type == 'Graduation' %>
+        <%= "🎓" %>
+      <% elsif event.event_type == 'Baby Shower' %>
+        <%= "🐣" %>
+      <% elsif event.event_type == 'Anniversary' %>
+        <%= "💍" %>
+      <% elsif event.event_type == 'Wedding' %>
+        <%= "💒" %>
+      <% else %>
+        <%= "🥳" %>
+      <% end %>
+    </div>
 </div>
+<% end %>
+<% end %>
+<% end %>
+</div>
+
 
