@@ -61,10 +61,10 @@
                       </div>
                     <% else %>
                       <div class="avatar-initials">
-                        <small ><%= idea.friend.name.first %><%= idea.friend.name.split(' ')[1].first %></small>      
+                        <small ><%= idea.friend.name.first %><%= idea.friend.name.split(' ')[1].first %></small>
                       </div>
                     <% end %>
-                  <% end %>                  
+                  <% end %>
                     <%#= link_to Friend.find(idea.friend_id).name, friend_path(idea.friend_id) %>
                     <%#=link_to '<i class="far fa-trash-alt"></i>'.html_safe, gift_gift_idea_path(id: idea.id, gift_id: gift.id), method: :delete, data: { confirm: "Are you sure?" } %>
                 </div>
@@ -74,9 +74,10 @@
           </div>
           </div>
         <% end %>
+        <% end %>
         <h3 class="text-center">More ideas from Etsy</h3>
           <div class="etsy_holder d-flex flex-wrap px-1 m-2 justify-content-around"></div>
-</div>
+  </div>
 
-<div data-etsy-api-key="<%= ENV['ETSY_API'] %>">
 </div>
+ <div data-etsy-api-key="<%= ENV['ETSY_API'] %>"> </div>
