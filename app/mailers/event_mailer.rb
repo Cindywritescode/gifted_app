@@ -5,9 +5,11 @@ class EventMailer < ApplicationMailer
   #
   #   en.event_mailer.notify14.subject
   #
-  def notify14(event)
+  def notify14(event = "")
     @event = event
+    # binding.pry 
 
-    mail to: "#{@event.friend.user.email}", subject: "Gifted Reminder - 14 Days!"
+
+    mail to: "hakkacindy@gmail.com", subject: "Gifted Reminder - 14 Days!"
   end
 end
