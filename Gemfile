@@ -79,3 +79,4 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'faker'
 gem 'nokogiri'
 gem 'open-uri'
+gem 'gon'
