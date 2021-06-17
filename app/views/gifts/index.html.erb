@@ -1,15 +1,17 @@
 <div class="container p-1 m-auto">
 
   <h1>All Gifts</h1>
-  <%= form_tag gifts_path, method: :get do %>
-  <%= text_field_tag :query,
-    params[:query],
-    class: "form-control",
-    placeholder: "Search for a gift"
-  %>
-  <%= submit_tag "Find a gift", class: "btn btn-gifted" %>
-  <% end %>
 
+    <%= form_tag gifts_path, method: :get do %>
+      <div class="d-flex p-3">
+        <%= text_field_tag :query,
+          params[:query],
+          class: "form-control",
+          placeholder: "Search for a gift"
+        %>
+        <%= image_submit_tag("logo/color.png", class: "search-button")%>
+      </div>
+    <% end %>
     <h4 class="mt-5 mb-3">Unassigned Gifts</h4>
     <%# Cards %>
     <div class="d-flex flex-wrap card-deck">
