@@ -1,5 +1,6 @@
 require 'open-uri'
 require 'nokogiri'
+require 'json'
 
 class GiftsController < ApplicationController
   before_action :set_gift, only: [:show, :edit, :update, :destroy]
@@ -32,6 +33,9 @@ class GiftsController < ApplicationController
   def index
     if params[:query].present?
       @gifts = Gift.search_by_product_name(params[:query]).where(user: current_user)
+    # call etsy api passing params:query as argument to get list of URLs
+    # scrape nokogiri with each URL to get the images
+    # store array of hashes with each product img url and title
     else
       @gifts = Gift.where(user: current_user)
     end
@@ -63,6 +67,23 @@ class GiftsController < ApplicationController
     @info << title
     @info << img.value
     @info << price
+  end
+
+  def etsy_api_call(keyword)
+
+  end
+
+  def etsy_search_info(keyword)
+    url = etsy_api_call(keyword)
+    html_file = URI.open(url).read
+    html_doc = Nokogiri::HTML(html_file)
+    search_data = []
+    title = html_doc.search('title').first.text
+    img = html_doc.search('img').first.attribute('src')
+    price = html_doc.css('div[data-buy-box-region="price"] p').text.scan(/\W\d+\W\d\d/)[0]
+    @search_info << title
+    @search_info << img.value
+    @search_info << price
   end
 
 end

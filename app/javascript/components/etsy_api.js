@@ -1,13 +1,15 @@
 
 // image api things that don't work yet:
 // const setImage = (data) => {
+//   console.log('setting images')
 //   console.log(data.results[0].url_fullxfull);
 // };
 
 // const getImage = (result) => {
+//   console.log('getting images')
 //   fetch(`https://openapi.etsy.com/v2/listings/${result.listing_id}/images?api_key=${apiKey}`)
 //   .then(response => response.json())
-//   .then(data => setImage(data));
+//   .then(data => console.log(data.results[0].url_fullxfull));
 // };
 
 const insertGifts = (data, list) => {
@@ -21,7 +23,7 @@ const insertGifts = (data, list) => {
       <p class="pl-2">£${result.price}</p>
       </div>
       </div>`;
-      list.insertAdjacentHTML('afterbegin', gift);
+      list.insertAdjacentHTML('beforeend', gift);
     }
     catch(err) {
     }
