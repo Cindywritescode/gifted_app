@@ -1,4 +1,8 @@
+ <h1>Assign Gift</h1>
+
+<%#= @gift_idea.gift %>
+
 <%= simple_form_for([ @gift, @gift_idea ]) do |f| %>
-  <%= f.association :friend %>
-  <%= f.submit "Submit Gift Idea", class: "btn btn-primary" %>
+  <%= f.association :friend , label: "select a friend from the list" %>
+  <%= f.submit "Submit Gift Idea", class: "btn btn-primary px-4", :style => "border-radius: 25px" %>
 <% end %>
