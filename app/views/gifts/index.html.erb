@@ -79,7 +79,13 @@
       <hr>
         <h4 class="my-3 text-center">More ideas from Etsy</h4>
           <div class="etsy_holder d-flex flex-wrap px-1 m-2 justify-content-around"></div>
+            <% @api_search_results.each do |result| %>
+                <div class="card">
 
-
-</div>
- <div data-etsy-api-key="<%= ENV['ETSY_API'] %>"> </div>
+                <div class="card-body p-0">
+                  <h5 class="card-title"><%= result[:title] %></h5>
+                  <p class="card-text"><%= result[:price] %></p>
+                </div>
+              </div>
+            <% end %>
+          </div>
