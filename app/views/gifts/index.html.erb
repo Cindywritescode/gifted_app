@@ -1,4 +1,30 @@
-<div class="container px-1 m-autoo">
+<div class="container p-1 m-auto">
+  <% if @gifts.count == 0 && params[:query].present? %>
+    <h1>All Gifts</h1>
+    <%= form_tag gifts_path, method: :get do %>
+    <%= text_field_tag :query,
+      params[:query],
+      class: "form-control",
+      placeholder: "Search for a gift"
+    %>
+    <%= submit_tag "Find a gift", class: "btn btn-gifted" %>
+    <% end %>
+    <p><%= "You have not saved any #{params[:query]} gifts yet. Why not take a look at these 👇" %></p>
+      <hr>
+      <h4 class="my-3 text-center">More ideas from Etsy</h4>
+      <div class="card-grid">
+      <% @api_search_results.each do |result| %>
+          <div class="card m-1 ">
+          <%= image_tag result[:img], height: 180, crop: :cover %>
+          <div class="card-body p-0">
+            <h5 class="card-title"><%= result[:title] %></h5>
+            <p class="card-text"><%= result[:price] %></p>
+            <%= link_to "Add this gift +", new_gift_path(:gift_idea => result[:url]) %>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  <% else %>
 
   <h1>All Gifts</h1>
 
@@ -78,11 +104,20 @@
             </div>
           </div>
         <% end %>
-      <% end %>
-
-        <h3 class="text-center">More ideas from Etsy</h3>
-          <div class="etsy_holder d-flex flex-wrap px-1 m-2 justify-content-around"></div>
-  </div>
-
-</div>
- <div data-etsy-api-key="<%= ENV['ETSY_API'] %>"> </div>
+      </div>
+      <hr>
+        <h4 class="my-3 text-center">More ideas from Etsy</h4>
+          <div class="card-grid">
+            <% @api_search_results.each do |result| %>
+                <div class="card m-1 ">
+                <%= image_tag result[:img], height: 180, crop: :cover %>
+                <div class="card-body p-0">
+                  <h5 class="card-title"><%= result[:title] %></h5>
+                  <p class="card-text"><%= result[:price] %></p>
+                  <%= link_to "Add this gift +", new_gift_path(:gift_idea => result[:url]) %>
+                </div>
+              </div>
+              <% end %>
+            <% end %>
+            </div>
+      ##<% end %>
