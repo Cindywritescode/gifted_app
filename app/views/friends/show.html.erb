@@ -64,24 +64,29 @@
           <!-- Back Card -->
           <div class="card flip-card-back flip-out hidden">
             <div class="flip-card-back-image p-2">
-              <% page = MetaInspector.new(idea.gift.gift_url, :connection_timeout => 1, :read_timeout => 1, :retries => 0, :allow_redirections => false, :encoding => 'UTF-8') %>
-              <% if page.images.favicon.nil? %>
+              <% if gift.meta_url.nil? %>
                 <%= image_tag "logo/grayscale.png", height: 32, width: 32 %>
               <% else %>
-                <% source = page.images.favicon %>
-                <%= image_tag source, height: 32, width: 32, alt: "Present Logo" %>
+                <%= image_tag gift.meta_url, height: 32, width: 32, alt: "Present Logo" %>
               <% end %>
             </div>
             <div class="flip-card-back-details">
               <p class="mb-0"><%= truncate(idea.gift.product_name, length: 18) %>
-                from <%= page.host  %> </p>
+                from <%= gift.meta_host  %> </p>
               <p> Added: <%= idea.gift.created_at.strftime("#{idea.gift.created_at.day.ordinalize} %B") %> </p>
-              <p> <%= page.title  %> </p>
-              <p> <%= page.description  %> </p>
+              <% if gift.meta_title.nil? %>
+                <p>No Title Information :(</p>
+              <% else %>
+                <p> <%= gift.meta_title  %> </p>
+              <% end %>
+              <% if gift.meta_desciption.nil? %>
+                <p>No Information :(</p>
+              <% else %>
+                <p> <%= gift.meta_desciption  %> </p>
+              <% end %>
             </div>
             <a href="" class="back-btn"><i class="fas fa-window-close"></i></a>
           </div>
-
         </div>
       <% end %>
     </div>

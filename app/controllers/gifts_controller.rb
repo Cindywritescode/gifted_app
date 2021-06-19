@@ -11,6 +11,11 @@ class GiftsController < ApplicationController
   def create
     @gift = Gift.new(gift_params)
     @gift.user = current_user
+    @meta = MetaInspector.new(@gift.gift_url, :connection_timeout => 1, :read_timeout => 1, :retries => 0, :allow_redirections => false, :encoding => 'UTF-8')
+    @gift.meta_url = @meta.images.favicon
+    @gift.meta_host = @meta.host
+    @gift.meta_title = @meta.title
+    @gift.meta_desciption = @meta.description
     if @gift.gift_url.include? 'etsy'
       etsy_info(@gift.gift_url)
       @gift.product_name = @info[0]
@@ -64,5 +69,4 @@ class GiftsController < ApplicationController
     @info << img.value
     @info << price
   end
-
 end
