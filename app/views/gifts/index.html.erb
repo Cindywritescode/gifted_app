@@ -1,4 +1,4 @@
-<div class="container p-1 m-auto">
+<div class="container px-1 m-autoo">
 
   <h1>All Gifts</h1>
 
@@ -12,7 +12,7 @@
         <%= image_submit_tag("logo/color.png", class: "search-button")%>
       </div>
     <% end %>
-    <h4 class="mt-5 mb-3">Unassigned Gifts</h4>
+    <h4 class="mt-4 mb-3 text-primary">Unassigned Gifts</h4>
     <%# Cards %>
     <div class="d-flex flex-wrap card-deck">
 
@@ -35,7 +35,7 @@
 
 
   <hr>
-  <h4 class="my-3 text-center" >Gift Ideas</h4>
+  <h3 class="mt-4 mb-3 text-center text-primary" >Gift Ideas</h3>
 
   <div class="cards d-flex flex-wrap card-deck">
 
@@ -53,9 +53,10 @@
               <%# Card-body %>
               <div class="card-body p-0">
                 <h6 class="card-title text-truncate text-primary p-2 mb-0"><%= gift.product_name.nil? ? gift.gift_url : gift.product_name %></h6>
+                <!-- Friend icons -->
                 <div class="d-flex px-2">
                   <% gift.gift_ideas.each do |idea| %>
-                    <div>
+                    <div class="pr-1">  
                       <%= link_to friend_path(idea.friend) do %>
                         <% if idea.friend.photo.attached? %>
                           <div>
@@ -63,7 +64,7 @@
                           </div>
                         <% else %>
                           <div class="avatar-initials">
-                            <small ><%= idea.friend.name.first %><%= idea.friend.name.split(' ')[1].first %></small>
+                            <small><strong><%= idea.friend.name.first %><%= idea.friend.name.split(' ')[1].first %></strong></small>
                           </div>
                         <% end %>
                       <% end %>
