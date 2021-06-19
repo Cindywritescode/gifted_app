@@ -35,15 +35,17 @@
 <%= link_to 'Add a gift', new_gift_path, class: "btn btn-gifted"%>
 <br>
 <h2>Upcoming events</h2>
-  <% @events.each do | event | %>
+  <% events = @events.sort_by { |event| [event.date] }.take(5) %>
+  <% events.each do | event | %>
   <%= link_to friend_path(event.friend_id) do %>
   <div class="event-card" data-aos="flip-right" data-aos-duration="1000" >
     <div class="circle">
       <% if event.friend.photo.attached? %>
         <%=  cl_image_tag event.friend.photo.key, height: 60, width: 60, gravity: :face, radius: :max, crop: :fill %>
       <% else %>
-        <%= image_tag "avatar/circle-512.png", height: 60, width: 60, gravity: :face, radius: :max, crop: :fill %>
-        <h3><%= event.friend.name.first %><%= event.friend.name.split(' ')[1].first %></h3>
+        <div class="avatar-initials">
+          <small ><%= idea.friend.name.first %><%= idea.friend.name.split(' ')[1].first %></small>
+        </div>
       <% end %>
     </div>
     <div class="event-info">
@@ -78,6 +80,7 @@
 <%= link_to 'All my friends', friends_path %>
 <br>
 <%= link_to 'All gifts', gifts_path %>
-
+<br>
+<br>
 <% end %>
 </div>

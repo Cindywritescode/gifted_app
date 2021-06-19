@@ -3,15 +3,17 @@
     <p>No Events Yet!</p>
   <% else %>
 <h2>All events</h2>
-  <% @events.each do | event | %>
+  <% events = @events.sort_by { |event| [event.date] } %>
+  <% events.each do | event | %>
   <%= link_to friend_path(event.friend_id) do %>
   <div class="event-card">
     <div class="circle">
       <% if event.friend.photo.attached? %>
         <%=  cl_image_tag event.friend.photo.key, height: 60, width: 60, gravity: :face, radius: :max, crop: :fill %>
       <% else %>
-        <%= image_tag "avatar/circle-512.png", height: 60, width: 60, gravity: :face, radius: :max, crop: :fill %>
-        <h3><%= event.friend.name.first %><%= event.friend.name.split(' ')[1].first %></h3>
+        <div class="avatar-initials">
+          <small ><%= idea.friend.name.first %><%= idea.friend.name.split(' ')[1].first %></small>
+        </div>
       <% end %>
     </div>
     <div class="event-info">
