@@ -168,6 +168,12 @@ gift1 = Gift.new(
   user_id: emily.id
   )
 
+  meta = MetaInspector.new(gift1.gift_url, :connection_timeout => 5, :read_timeout => 5, :retries => 1, :allow_redirections => false, :encoding => 'UTF-8')
+  gift1.meta_url = meta.images.favicon
+  gift1.meta_host = meta.host
+  gift1.meta_title = meta.title
+  gift1.meta_desciption = meta.description
+
 gift1.save!
 puts "Gift created: #{gift1.product_name}"
 
@@ -179,6 +185,12 @@ gift2 = Gift.new(
   photo: "/sculpd.jpg",
   user_id: emily.id
   )
+  
+  meta = MetaInspector.new(gift2.gift_url, :connection_timeout => 5, :read_timeout => 5, :retries => 1, :allow_redirections => false, :encoding => 'UTF-8')
+  gift2.meta_url = meta.images.favicon
+  gift2.meta_host = meta.host
+  gift2.meta_title = meta.title
+  gift2.meta_desciption = meta.description
 
 gift2.save!
 puts "Gift created: #{gift2.product_name}"
@@ -191,6 +203,12 @@ gift3 = Gift.new(
   user_id: emily.id
   )
 
+  meta = MetaInspector.new(gift3.gift_url, :connection_timeout => 5, :read_timeout => 5, :retries => 1, :allow_redirections => false, :encoding => 'UTF-8')
+  gift3.meta_url = meta.images.favicon
+  gift3.meta_host = meta.host
+  gift3.meta_title = meta.title
+  gift3.meta_desciption = meta.description
+    
 gift3.save!
 puts "Gift created: #{gift3.product_name}"
 
@@ -201,6 +219,12 @@ gift4 = Gift.new(
   photo: "/poodrops.jpg",
   user_id: emily.id
   )
+  
+  meta = MetaInspector.new(gift4.gift_url, :connection_timeout => 5, :read_timeout => 5, :retries => 1, :allow_redirections => false, :encoding => 'UTF-8')
+  gift4.meta_url = meta.images.favicon
+  gift4.meta_host = meta.host
+  gift4.meta_title = meta.title
+  gift4.meta_desciption = meta.description
 
 gift4.save!
 puts "Gift created: #{gift4.product_name}"
@@ -209,20 +233,32 @@ gift5 = Gift.new(
   gift_url: "https://www.buyagift.co.uk/flying-experiences/sunrise-hot-air-balloon-ride",
   product_name: "Hot Air Balloon Ride",
   price: "£#{(35..70).to_a.sample}",
-  photo: "/hotairballoon.jpg.jpg",
+  photo: "/hotairballoon.jpg",
   user_id: emily.id
   )
+
+  meta = MetaInspector.new(gift5.gift_url, :connection_timeout => 5, :read_timeout => 5, :retries => 1, :allow_redirections => false, :encoding => 'UTF-8')
+  gift5.meta_url = meta.images.favicon
+  gift5.meta_host = meta.host
+  gift5.meta_title = meta.title
+  gift5.meta_desciption = meta.description
 
 gift5.save!
 puts "Gift created: #{gift5.product_name}"
 
 gift6 = Gift.new(
-  gift_url: "https://www.amazon.co.uk/Untitled-Animal-Unisex-Casual-Novelty/dp/B082FBWT8Y/",
+  gift_url: "https://www.etsy.com/uk/listing/892623511/goose-game-socks-duck-head-funny-unisex?ga_order=most_relevant&ga_search_type=all&ga_view_type=gallery&ga_search_query=goose+socks&ref=sr_gallery-1-11&organic_search_click=1&frs=1",
   product_name: "Goose Socks",
   price: "£#{(35..70).to_a.sample}",
   photo: "/socks.jpg",
   user_id: emily.id
   )
+
+  meta = MetaInspector.new(gift6.gift_url, :connection_timeout => 5, :read_timeout => 5, :retries => 1, :allow_redirections => false, :encoding => 'UTF-8')
+  gift6.meta_url = meta.images.favicon
+  gift6.meta_host = meta.host
+  gift6.meta_title = meta.title
+  gift6.meta_desciption = meta.description
 
 gift6.save!
 puts "Gift created: #{gift6.product_name}"
@@ -235,6 +271,12 @@ gift7 = Gift.new(
   user_id: emily.id
   )
 
+  meta = MetaInspector.new(gift7.gift_url, :connection_timeout => 5, :read_timeout => 5, :retries => 1, :allow_redirections => false, :encoding => 'UTF-8')
+  gift7.meta_url = meta.images.favicon
+  gift7.meta_host = meta.host
+  gift7.meta_title = meta.title
+  gift7.meta_desciption = meta.description
+
 gift7.save!
 puts "Gift created: #{gift7.product_name}"
 
@@ -246,16 +288,28 @@ gift8 = Gift.new(
   user_id: emily.id
   )
 
+  meta = MetaInspector.new(gift8.gift_url, :connection_timeout => 5, :read_timeout => 5, :retries => 1, :allow_redirections => false, :encoding => 'UTF-8')
+  gift8.meta_url = meta.images.favicon
+  gift8.meta_host = meta.host
+  gift8.meta_title = meta.title
+  gift8.meta_desciption = meta.description
+
 gift8.save!
 puts "Gift created: #{gift8.product_name}"
 
 gift9 = Gift.new(
-  gift_url: "https://www.amazon.co.uk/Untitled-Animal-Unisex-Casual-Novelty/dp/B082FBWT8Y/",
+  gift_url: "https://www.etsy.com/uk/listing/892623511/goose-game-socks-duck-head-funny-unisex?ga_order=most_relevant&ga_search_type=all&ga_view_type=gallery&ga_search_query=goose+socks&ref=sr_gallery-1-11&organic_search_click=1&frs=1",
   product_name: "Goose Socks",
   price: "£#{(35..70).to_a.sample}",
   photo: "/socks.jpg",
   user_id: emily.id
   )
+
+  meta = MetaInspector.new(gift9.gift_url, :connection_timeout => 5, :read_timeout => 5, :retries => 1, :allow_redirections => false, :encoding => 'UTF-8')
+  gift9.meta_url = meta.images.favicon
+  gift9.meta_host = meta.host
+  gift9.meta_title = meta.title
+  gift9.meta_desciption = meta.description
 
 gift9.save!
 puts "Gift created: #{gift9.product_name}"
@@ -268,6 +322,12 @@ gift10 = Gift.new(
   user_id: emily.id
   )
 
+  meta = MetaInspector.new(gift10.gift_url, :connection_timeout => 5, :read_timeout => 5, :retries => 1, :allow_redirections => false, :encoding => 'UTF-8')
+  gift10.meta_url = meta.images.favicon
+  gift10.meta_host = meta.host
+  gift10.meta_title = meta.title
+  gift10.meta_desciption = meta.description
+
 gift10.save!
 puts "Gift created: #{gift10.product_name}"
 
@@ -279,16 +339,28 @@ gift11 = Gift.new(
   user_id: emily.id
   )
 
+  meta = MetaInspector.new(gift11.gift_url, :connection_timeout => 5, :read_timeout => 5, :retries => 1, :allow_redirections => false, :encoding => 'UTF-8')
+  gift11.meta_url = meta.images.favicon
+  gift11.meta_host = meta.host
+  gift11.meta_title = meta.title
+  gift11.meta_desciption = meta.description
+
 gift11.save!
 puts "Gift created: #{gift11.product_name}"
 
 gift12 = Gift.new(
-  gift_url: "https://www.amazon.co.uk/Untitled-Animal-Unisex-Casual-Novelty/dp/B082FBWT8Y/",
+  gift_url: "https://www.etsy.com/uk/listing/892623511/goose-game-socks-duck-head-funny-unisex?ga_order=most_relevant&ga_search_type=all&ga_view_type=gallery&ga_search_query=goose+socks&ref=sr_gallery-1-11&organic_search_click=1&frs=1",
   product_name: "Goose Socks",
   price: "£#{(35..70).to_a.sample}",
   photo: "/socks.jpg",
   user_id: emily.id
   )
+
+  meta = MetaInspector.new(gift12.gift_url, :connection_timeout => 5, :read_timeout => 5, :retries => 1, :allow_redirections => false, :encoding => 'UTF-8')
+  gift12.meta_url = meta.images.favicon
+  gift12.meta_host = meta.host
+  gift12.meta_title = meta.title
+  gift12.meta_desciption = meta.description
 
 gift12.save!
 puts "Gift created: #{gift12.product_name}"
@@ -507,6 +579,12 @@ gift4 = Gift.new(
   user_id: cindy.id
   )
 
+  meta = MetaInspector.new(gift4.gift_url, :connection_timeout => 5, :read_timeout => 5, :retries => 1, :allow_redirections => false, :encoding => 'UTF-8')
+  gift4.meta_url = meta.images.favicon
+  gift4.meta_host = meta.host
+  gift4.meta_title = meta.title
+  gift4.meta_desciption = meta.description
+
 gift4.save!
 puts "Gift created: #{gift3.product_name}"
 
@@ -518,16 +596,28 @@ gift5 = Gift.new(
   user_id: cindy.id
   )
 
+  meta = MetaInspector.new(gift5.gift_url, :connection_timeout => 5, :read_timeout => 5, :retries => 1, :allow_redirections => false, :encoding => 'UTF-8')
+  gift5.meta_url = meta.images.favicon
+  gift5.meta_host = meta.host
+  gift5.meta_title = meta.title
+  gift5.meta_desciption = meta.description
+
 gift5.save!
 puts "Gift created: #{gift4.product_name}"
 
 gift6 = Gift.new(
-  gift_url: "https://www.amazon.co.uk/Untitled-Animal-Unisex-Casual-Novelty/dp/B082FBWT8Y/",
+  gift_url: "https://www.etsy.com/uk/listing/892623511/goose-game-socks-duck-head-funny-unisex?ga_order=most_relevant&ga_search_type=all&ga_view_type=gallery&ga_search_query=goose+socks&ref=sr_gallery-1-11&organic_search_click=1&frs=1",
   product_name: "Goose Socks",
   price: "£#{(35..70).to_a.sample}",
   photo: "/socks.jpg",
   user_id: cindy.id
   )
+
+  meta = MetaInspector.new(gift6.gift_url, :connection_timeout => 5, :read_timeout => 5, :retries => 1, :allow_redirections => false, :encoding => 'UTF-8')
+  gift6.meta_url = meta.images.favicon
+  gift6.meta_host = meta.host
+  gift6.meta_title = meta.title
+  gift6.meta_desciption = meta.description
 
 gift6.save!
 puts "Gift created: #{gift5.product_name}"
@@ -629,6 +719,12 @@ gift7 = Gift.new(
   photo: "/nickcagespoon.jpg",
   user_id: dani.id
   )
+  
+  meta = MetaInspector.new(gift7.gift_url, :connection_timeout => 5, :read_timeout => 5, :retries => 1, :allow_redirections => false, :encoding => 'UTF-8')
+  gift7.meta_url = meta.images.favicon
+  gift7.meta_host = meta.host
+  gift7.meta_title = meta.title
+  gift7.meta_desciption = meta.description
 
 gift7.save!
 puts "Gift created: #{gift7.product_name}"
@@ -641,16 +737,28 @@ gift8 = Gift.new(
   user_id: dani.id
   )
 
+  meta = MetaInspector.new(gift8.gift_url, :connection_timeout => 5, :read_timeout => 5, :retries => 1, :allow_redirections => false, :encoding => 'UTF-8')
+  gift8.meta_url = meta.images.favicon
+  gift8.meta_host = meta.host
+  gift8.meta_title = meta.title
+  gift8.meta_desciption = meta.description
+
 gift8.save!
 puts "Gift created: #{gift8.product_name}"
 
 gift9 = Gift.new(
-  gift_url: "https://www.amazon.co.uk/Untitled-Animal-Unisex-Casual-Novelty/dp/B082FBWT8Y/",
+  gift_url: "https://www.etsy.com/uk/listing/892623511/goose-game-socks-duck-head-funny-unisex?ga_order=most_relevant&ga_search_type=all&ga_view_type=gallery&ga_search_query=goose+socks&ref=sr_gallery-1-11&organic_search_click=1&frs=1",
   product_name: "Goose Socks",
   price: "£#{(35..70).to_a.sample}",
   photo: "/socks.jpg",
   user_id: dani.id
   )
+  
+  meta = MetaInspector.new(gift9.gift_url, :connection_timeout => 5, :read_timeout => 5, :retries => 1, :allow_redirections => false, :encoding => 'UTF-8')
+  gift9.meta_url = meta.images.favicon
+  gift9.meta_host = meta.host
+  gift9.meta_title = meta.title
+  gift9.meta_desciption = meta.description
 
 gift9.save!
 puts "Gift created: #{gift9.product_name}"
@@ -748,6 +856,12 @@ gift10 = Gift.new(
   photo: "/beaver.jpg",
   user_id: thomas.id
   )
+  
+  meta = MetaInspector.new(gift10.gift_url, :connection_timeout => 5, :read_timeout => 5, :retries => 1, :allow_redirections => false, :encoding => 'UTF-8')
+  gift10.meta_url = meta.images.favicon
+  gift10.meta_host = meta.host
+  gift10.meta_title = meta.title
+  gift10.meta_desciption = meta.description
 
 gift10.save!
 puts "Gift created: #{gift10.product_name}"
@@ -759,17 +873,29 @@ gift11 = Gift.new(
   photo: "/lemon.jpg",
   user_id: thomas.id
   )
+  
+  meta = MetaInspector.new(gift11.gift_url, :connection_timeout => 5, :read_timeout => 5, :retries => 1, :allow_redirections => false, :encoding => 'UTF-8')
+  gift11.meta_url = meta.images.favicon
+  gift11.meta_host = meta.host
+  gift11.meta_title = meta.title
+  gift11.meta_desciption = meta.description
 
 gift11.save!
 puts "Gift created: #{gift11.product_name}"
 
 gift12 = Gift.new(
-  gift_url: "https://www.amazon.co.uk/Untitled-Animal-Unisex-Casual-Novelty/dp/B082FBWT8Y/",
+  gift_url: "https://www.etsy.com/uk/listing/892623511/goose-game-socks-duck-head-funny-unisex?ga_order=most_relevant&ga_search_type=all&ga_view_type=gallery&ga_search_query=goose+socks&ref=sr_gallery-1-11&organic_search_click=1&frs=1",
   product_name: "Goose Socks",
   price: "£#{(35..70).to_a.sample}",
   photo: "/socks.jpg",
   user_id: thomas.id
   )
+  
+  meta = MetaInspector.new(gift12.gift_url, :connection_timeout => 5, :read_timeout => 5, :retries => 1, :allow_redirections => false, :encoding => 'UTF-8')
+  gift12.meta_url = meta.images.favicon
+  gift12.meta_host = meta.host
+  gift12.meta_title = meta.title
+  gift12.meta_desciption = meta.description
 
 gift12.save!
 puts "Gift created: #{gift12.product_name}"

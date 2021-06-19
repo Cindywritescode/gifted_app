@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_08_193815) do
+ActiveRecord::Schema.define(version: 2021_06_19_111348) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -72,6 +72,10 @@ ActiveRecord::Schema.define(version: 2021_06_08_193815) do
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.text "meta_url"
+    t.string "meta_host"
+    t.string "meta_title"
+    t.string "meta_desciption"
     t.index ["user_id"], name: "index_gifts_on_user_id"
   end
 

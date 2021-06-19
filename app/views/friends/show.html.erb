@@ -37,17 +37,19 @@
     <div class="row">
       <% @gift_ideas.each do |idea| %>
         <% gift = Gift.find(idea.gift_id) %>
-        <div class="p-2 w-50">
-          <div class="card">
+        <div class="p-2 w-50 flip-card">
+
+          <!-- Front Card -->
+          <div class="card flip-card-front">
             <% if gift.photo.nil? %>
               <%= image_tag "logo/grayscale.png", height: 120, :style => "object-fit: cover", class: "card-img-top" %>
             <% else %>
               <%= image_tag gift.photo, height: 120, :style => "object-fit: cover", class: "card-img-top" %>
             <% end %>
             <div class="card-body p-2">
-              <h6 class="card-title">
-                <%= link_to truncate(idea.gift.product_name, length: 18), idea.gift.gift_url %>
-              </h6>
+              <p class="card-title mb-1">
+                <%= link_to truncate(idea.gift.product_name, length: 18), idea.gift.gift_url, class: "d-flex" %>
+              </p>
               <div class="p-0 d-flex">
                 <p class="m-0"><%= idea.gift.price %></p>
                 <div class="ml-auto">
@@ -55,8 +57,36 @@
                     method: :delete,
                     data: { confirm: "are you sure?" } %>
                 </div>
+                <a href="" class="arrow-btn"><i class="fas fa-info"></i></a>
               </div>
             </div>
+          </div>
+          
+          <!-- Back Card -->
+          <div class="card flip-card-back flip-out hidden">
+            <div class="flip-card-back-image p-2">
+              <% if gift.meta_url.nil? %>
+                <%= image_tag "logo/grayscale.png", height: 32, width: 32 %>
+              <% else %>
+                <%= image_tag gift.meta_url, height: 32, width: 32, alt: "Present Logo" %>
+              <% end %>
+            </div>
+            <div class="flip-card-back-details">
+              <p class="mb-0"><%= truncate(idea.gift.product_name, length: 18) %>
+                from <%= gift.meta_host  %> </p>
+              <p> Added: <%= idea.gift.created_at.strftime("#{idea.gift.created_at.day.ordinalize} %B") %> </p>
+              <% if gift.meta_title.nil? %>
+                <p> <%= truncate(idea.gift.product_name, length: 18) %> </p>
+              <% else %>
+                <p> <%= gift.meta_title  %> </p>
+              <% end %>
+              <% if gift.meta_desciption.nil? %>
+                <p>No further information :(</p>
+              <% else %>
+                <p> <%= gift.meta_desciption  %> </p>
+              <% end %>
+            </div>
+            <a href="" class="back-btn"><i class="fas fa-window-close"></i></a>
           </div>
         </div>
       <% end %>
@@ -164,7 +194,8 @@
     <span class="carousel-control-next-icon" aria-hidden="true" style="background-color: rgb(35,62,130);"></span>
     <span class="sr-only">Next</span>
   </a>
-</div>
+
   <p><%= link_to 'Add a new gift', new_gift_path %></p>
   <p><%= link_to 'See more gifts', gifts_path %></p>
+
 </div>
