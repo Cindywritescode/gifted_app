@@ -69,7 +69,7 @@ class GiftsController < ApplicationController
   end
 
   def etsy_api_call(keyword)
-    url = 'https://openapi.etsy.com/v2/listings/active?api_key=joxo65hgy17pmzfxhe2adsp0&limit=8&keywords=${keyword}'
+    url = "https://openapi.etsy.com/v2/listings/active?api_key=#{ENV["ETSY_API"]}&limit=8&keywords=#{keyword}"
     gifts = URI.open(url).read
     gift_lists = JSON.parse(gifts)
     gifts = []
