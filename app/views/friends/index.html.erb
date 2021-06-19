@@ -8,8 +8,8 @@
           <% if friend.photo.attached? %>
             <%=  cl_image_tag friend.photo.key, height: 80, width: 80, gravity: :face, radius: :max, crop: :fill %>
           <% else %>
-             <div class="avatar-initials">
-                <small ><%= idea.friend.name.first %><%= idea.friend.name.split(' ')[1].first %></small>
+             <div class="avatar-initials-large">
+                <%= friend.name.first %><%= friend.name.split(' ')[1].first %>
               </div>
           <% end %>
           <div class= "delete">

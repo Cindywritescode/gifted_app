@@ -6,9 +6,9 @@
       <% if @friend.photo.attached? %>
       <%= cl_image_tag @friend.photo.key, class: "avatar-xl", height: 80, width: 80, gravity: :face, radius: :max, crop: :fill %>
       <% else %>
-      <div class="circle">
-        <div class="avatar-initials avatar-xl">
-         <p id="circle-letters"><%= @friend.name.first %><%= @friend.name.split(' ')[1].first %></p>
+      <div>
+        <div class="avatar-initials-large">
+         <h2 class="mb-0"><%= @friend.name.first %><%= @friend.name.split(' ')[1].first %><h2>
         </div>
       </div>
       <% end %>
