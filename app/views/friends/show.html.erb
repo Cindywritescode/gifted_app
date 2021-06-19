@@ -1,5 +1,10 @@
 <div class="container p-3 m-auto">
-
+  <% @friend.events.each do |event| %>
+  <% if event.date <= Date.today + 2.weeks %>
+  <h4 class="reminder"> <div class="bell">🔔</div>2 weeks to go<div class="bell">🔔</div></h4>
+  <h5>until <%= @friend.name %>'s <%= event.event_type %></h5>
+  <% end %>
+  <% end %>
   <!-- Friend Name and upcoming dates -->
   <div class="d-flex friend-title">
     <div class="align-self-center p-2">
