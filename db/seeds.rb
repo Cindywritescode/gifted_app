@@ -106,7 +106,7 @@ puts "Event created: #{friend2.name}'s #{event2.event_type}"
 
 event3 = Event.new(
   event_type: "Baby Shower",
-  date: Date.parse('2021-07-15'),
+  date: Date.parse('2021-09-11'),
   friend_id: friend3.id,
   user_id: emily.id
   )
@@ -115,7 +115,7 @@ puts "Event created: #{friend3.name}'s #{event3.event_type}"
 
 event4 = Event.new(
   event_type: "Graduation",
-  date: Date.parse('2021-08-27'),
+  date: Date.parse('2021-06-30'),
   friend_id: friend4.id,
   user_id: emily.id
   )
@@ -124,7 +124,7 @@ puts "Event created: #{friend4.name}'s #{event4.event_type}"
 
 event5 = Event.new(
   event_type: "Baby Shower",
-  date: Date.parse('2021-07-15'),
+  date: Date.parse('2021-07-20'),
   friend_id: friend5.id,
   user_id: emily.id
   )
@@ -133,7 +133,7 @@ puts "Event created: #{friend5.name}'s #{event5.event_type}"
 
 event6 = Event.new(
   event_type: "Graduation",
-  date: Date.parse('2021-08-27'),
+  date: Date.parse('2021-08-01'),
   friend_id: friend6.id,
   user_id: emily.id
   )
@@ -142,7 +142,7 @@ puts "Event created: #{friend6.name}'s #{event6.event_type}"
 
 event7 = Event.new(
   event_type: "Divorce Party",
-  date: Date.parse('2021-07-15'),
+  date: Date.parse('2021-08-08'),
   friend_id: friend7.id,
   user_id: emily.id
   )
@@ -151,7 +151,7 @@ puts "Event created: #{friend7.name}'s #{event7.event_type}"
 
 event8 = Event.new(
   event_type: "Graduation",
-  date: Date.parse('2021-08-27'),
+  date: Date.parse('2021-10-29'),
   friend_id: friend8.id,
   user_id: emily.id
   )
@@ -514,7 +514,7 @@ gift5 = Gift.new(
   gift_url: "https://www.buyagift.co.uk/flying-experiences/sunrise-hot-air-balloon-ride",
   product_name: "Hot Air Balloon Ride",
   price: "£#{(35..70).to_a.sample}",
-  photo: "/hotairballoon.jpg.jpg",
+  photo: "/hotairballoon.jpg",
   user_id: cindy.id
   )
 
