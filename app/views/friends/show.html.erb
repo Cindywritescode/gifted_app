@@ -7,8 +7,9 @@
       <%= cl_image_tag @friend.photo.key, class: "avatar-xl", height: 80, width: 80, gravity: :face, radius: :max, crop: :fill %>
       <% else %>
       <div class="circle">
-        <%= image_tag "avatar/circle-512.png", class: "avatar-xl", height: 80, width: 80, gravity: :face, radius: :max, crop: :fill %>
-        <p id="circle-letters"><%= @friend.name.first %><%= @friend.name.split(' ')[1].first %></p>
+        <div class="avatar-initials avatar-xl">
+         <p id="circle-letters"><%= @friend.name.first %><%= @friend.name.split(' ')[1].first %></p>
+        </div>
       </div>
       <% end %>
     </div>
@@ -75,7 +76,7 @@
           <a href="">
             <div data-aos="flip-<%= ["left", "right", "up", "down"].sample %>" data-aos-duration="5000">
               <% color = ["rgba(228,138,168,0.7)", "rgba(236,92,42,0.7)", "rgba(253,244,215,0.7)", "rgba(228,138,168,0.5)", "rgba(236,92,42,0.5)", "rgba(253,244,215,0.5)", "rgba(228,138,168,0.2)", "rgba(236,92,42,0.2)", "rgba(253,244,215,0.2)"].sample %>
-              <div class="card card-note" style="background-color:<%= color %>; transform: rotate(<%= [-2, 2, -4, 4].sample %>deg);"> 
+              <div class="card card-note" style="background-color:<%= color %>; transform: rotate(<%= [-2, 2, -4, 4].sample %>deg);">
                 <div class="card-body p-2">
                   <p class="card-text" id="note-<%= note.id %>"><%= note.content %></p>
                   <div class="d-flex">
