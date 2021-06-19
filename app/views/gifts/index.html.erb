@@ -1,4 +1,4 @@
-<div class="container p-1 m-auto">
+<div class="container px-1 m-auto">
   <% if @gifts.count == 0 && params[:query].present? %>
     <h1>All Gifts</h1>
     <%= form_tag gifts_path, method: :get do %>
