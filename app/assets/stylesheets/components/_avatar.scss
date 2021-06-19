@@ -30,4 +30,37 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  letter-spacing: 1px;
+}
+
+.avatar-initials-large {
+  background-color: grey;
+  padding: 10px;
+  border-radius: 50%;
+  color: white;
+  width: 80px;
+  height: 80px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  letter-spacing: 0.5px;
+  font-size: 30px;
+  font-weight: bold;
+}
+
+.avatar-initials-m {
+  background-color: grey;
+  padding: 10px;
+  border-radius: 50%;
+  color: white;
+  width: 60px;
+  height: 60px;
+  font-size: 25px;
+  font-weight: bold;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  letter-spacing: 0.5px;
 }

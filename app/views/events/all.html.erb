@@ -11,8 +11,8 @@
       <% if event.friend.photo.attached? %>
         <%=  cl_image_tag event.friend.photo.key, height: 60, width: 60, gravity: :face, radius: :max, crop: :fill %>
       <% else %>
-        <div class="avatar-initials">
-          <small ><%= event.friend.name.first %><%= event.friend.name.split(' ')[1].first %></small>
+        <div class="avatar-initials-m">
+          <%= event.friend.name.first %><%= event.friend.name.split(' ')[1].first %>
         </div>
       <% end %>
     </div>
