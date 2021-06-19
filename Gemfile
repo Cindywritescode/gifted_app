@@ -35,6 +35,9 @@ gem "animate-rails"
 
 gem 'pg_search', '~> 2.3.0'
 
+# For Emailing
+gem 'postmark-rails'
+
 # Added for background jobs
 # gem 'sidekiq'
 # gem 'sidekiq-failures', '~> 1.0'

@@ -38,16 +38,15 @@ Rails.application.configure do
   config.action_mailer.perform_caching = false
   
   # # Add this line next to existing config.action_mailer settings
-  # config.action_mailer.delivery_method = :letter_opener
   config.action_mailer.perform_deliveries = true
 
   # Add this line next to existing config.action_mailer settings
-  # config.action_mailer.delivery_method = :smtp
-  config.action_mailer.delivery_method = :test 
+  config.action_mailer.delivery_method = :postmark
+  config.action_mailer.postmark_settings   = { api_token: ENV['POSTMARK_API_TOKEN'] }
+ 
   config.action_mailer.default_url_options = { host: 'localhost:3000' }
 
-  # config.action_mailer.default_url_options = { host: "www.gifted-club.xyz" }
-  config.action_mailer.default_options = { from: "contact@gifted-club.com" }
+  config.action_mailer.default_options = { from: "gifts@gifted-club.xyz" }
   
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log
