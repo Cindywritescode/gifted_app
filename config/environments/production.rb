@@ -1,5 +1,5 @@
 Rails.application.configure do
-  config.action_mailer.default_url_options = { host: "http://TODO_PUT_YOUR_DOMAIN_HERE" }
+  config.action_mailer.default_url_options = { host: "http://www.gifted-club.xyz/" }
   # Settings specified here will take precedence over those in config/application.rb.
 
   # Code is not reloaded between requests.
@@ -63,7 +63,7 @@ Rails.application.configure do
 
   config.action_mailer.perform_caching = false
 
-  
+
   # Add this line next to existing config.action_mailer settings
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.default_url_options = { host: "www.gifted-club.xyz" }
