@@ -42,6 +42,9 @@ gem 'pg_search', '~> 2.3.0'
 # Admin
 gem 'rails_admin', '~> 2.0'
 
+# Meta
+gem 'metainspector'
+
 # Email testing in Development
 gem 'letter_opener', group: :development
 gem 'cloudinary', '~> 1.16.0'
