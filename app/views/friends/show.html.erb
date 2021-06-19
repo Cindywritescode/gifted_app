@@ -76,12 +76,12 @@
                 from <%= gift.meta_host  %> </p>
               <p> Added: <%= idea.gift.created_at.strftime("#{idea.gift.created_at.day.ordinalize} %B") %> </p>
               <% if gift.meta_title.nil? %>
-                <p>No Title Information :(</p>
+                <p> <%= truncate(idea.gift.product_name, length: 18) %> </p>
               <% else %>
                 <p> <%= gift.meta_title  %> </p>
               <% end %>
               <% if gift.meta_desciption.nil? %>
-                <p>No Information :(</p>
+                <p>No further information :(</p>
               <% else %>
                 <p> <%= gift.meta_desciption  %> </p>
               <% end %>
