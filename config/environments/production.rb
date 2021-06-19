@@ -65,7 +65,8 @@ Rails.application.configure do
 
 
   # Add this line next to existing config.action_mailer settings
-  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.delivery_method = :postmark
+  config.action_mailer.postmark_settings   = { api_token: ENV['POSTMARK_API_TOKEN'] }
   config.action_mailer.default_url_options = { host: "www.gifted-club.xyz" }
 
   # Ignore bad email addresses and do not raise email delivery errors.

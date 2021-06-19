@@ -1,3 +1,13 @@
-Event#notify14
+Hi <%= @event.friend.user.name.capitalize %>:)
 
-<%= @greeting %>, find me in app/views/event_mailer/notify14.text.erb
+Don't forget! It's <%= @event.friend.name %>'s <%= @event.event_type %> on the <%= @event.date %>.
+
+
+14 days to go!
+
+<%= link_to "Check out your Gifted Ideas", friend_url(@event.friend_id) %>
+
+
+Thoughtful Gifts are the best Gifts,
+
+Team Gifted - Em, Dani, Cindy & Thomas
