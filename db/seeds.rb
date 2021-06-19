@@ -217,7 +217,7 @@ gift5.save!
 puts "Gift created: #{gift5.product_name}"
 
 gift6 = Gift.new(
-  gift_url: "https://www.amazon.co.uk/Untitled-Animal-Unisex-Casual-Novelty/dp/B082FBWT8Y/",
+  gift_url: "https://www.etsy.com/uk/listing/892623511/goose-game-socks-duck-head-funny-unisex?ga_order=most_relevant&ga_search_type=all&ga_view_type=gallery&ga_search_query=goose+socks&ref=sr_gallery-1-11&organic_search_click=1&frs=1",
   product_name: "Goose Socks",
   price: "£#{(35..70).to_a.sample}",
   photo: "/socks.jpg",
@@ -250,7 +250,7 @@ gift8.save!
 puts "Gift created: #{gift8.product_name}"
 
 gift9 = Gift.new(
-  gift_url: "https://www.amazon.co.uk/Untitled-Animal-Unisex-Casual-Novelty/dp/B082FBWT8Y/",
+  gift_url: "https://www.etsy.com/uk/listing/892623511/goose-game-socks-duck-head-funny-unisex?ga_order=most_relevant&ga_search_type=all&ga_view_type=gallery&ga_search_query=goose+socks&ref=sr_gallery-1-11&organic_search_click=1&frs=1",
   product_name: "Goose Socks",
   price: "£#{(35..70).to_a.sample}",
   photo: "/socks.jpg",
@@ -283,7 +283,7 @@ gift11.save!
 puts "Gift created: #{gift11.product_name}"
 
 gift12 = Gift.new(
-  gift_url: "https://www.amazon.co.uk/Untitled-Animal-Unisex-Casual-Novelty/dp/B082FBWT8Y/",
+  gift_url: "https://www.etsy.com/uk/listing/892623511/goose-game-socks-duck-head-funny-unisex?ga_order=most_relevant&ga_search_type=all&ga_view_type=gallery&ga_search_query=goose+socks&ref=sr_gallery-1-11&organic_search_click=1&frs=1",
   product_name: "Goose Socks",
   price: "£#{(35..70).to_a.sample}",
   photo: "/socks.jpg",
@@ -522,7 +522,7 @@ gift5.save!
 puts "Gift created: #{gift4.product_name}"
 
 gift6 = Gift.new(
-  gift_url: "https://www.amazon.co.uk/Untitled-Animal-Unisex-Casual-Novelty/dp/B082FBWT8Y/",
+  gift_url: "https://www.etsy.com/uk/listing/892623511/goose-game-socks-duck-head-funny-unisex?ga_order=most_relevant&ga_search_type=all&ga_view_type=gallery&ga_search_query=goose+socks&ref=sr_gallery-1-11&organic_search_click=1&frs=1",
   product_name: "Goose Socks",
   price: "£#{(35..70).to_a.sample}",
   photo: "/socks.jpg",
@@ -645,7 +645,7 @@ gift8.save!
 puts "Gift created: #{gift8.product_name}"
 
 gift9 = Gift.new(
-  gift_url: "https://www.amazon.co.uk/Untitled-Animal-Unisex-Casual-Novelty/dp/B082FBWT8Y/",
+  gift_url: "https://www.etsy.com/uk/listing/892623511/goose-game-socks-duck-head-funny-unisex?ga_order=most_relevant&ga_search_type=all&ga_view_type=gallery&ga_search_query=goose+socks&ref=sr_gallery-1-11&organic_search_click=1&frs=1",
   product_name: "Goose Socks",
   price: "£#{(35..70).to_a.sample}",
   photo: "/socks.jpg",
@@ -764,7 +764,7 @@ gift11.save!
 puts "Gift created: #{gift11.product_name}"
 
 gift12 = Gift.new(
-  gift_url: "https://www.amazon.co.uk/Untitled-Animal-Unisex-Casual-Novelty/dp/B082FBWT8Y/",
+  gift_url: "https://www.etsy.com/uk/listing/892623511/goose-game-socks-duck-head-funny-unisex?ga_order=most_relevant&ga_search_type=all&ga_view_type=gallery&ga_search_query=goose+socks&ref=sr_gallery-1-11&organic_search_click=1&frs=1",
   product_name: "Goose Socks",
   price: "£#{(35..70).to_a.sample}",
   photo: "/socks.jpg",

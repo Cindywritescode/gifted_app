@@ -64,7 +64,7 @@
           <!-- Back Card -->
           <div class="card flip-card-back flip-out hidden">
             <div class="flip-card-back-image p-2">
-              <% page = MetaInspector.new(idea.gift.gift_url) %>
+              <% page = MetaInspector.new(idea.gift.gift_url, :connection_timeout => 1, :read_timeout => 1, :retries => 0, :allow_redirections => false, :encoding => 'UTF-8') %>
               <% if page.images.favicon.nil? %>
                 <%= image_tag "logo/grayscale.png", height: 32, width: 32 %>
               <% else %>
