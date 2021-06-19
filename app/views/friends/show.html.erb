@@ -1,9 +1,17 @@
 <div class="container p-3 m-auto">
-  <% @friend.events.each do |event| %>
-  <% if event.date <= Date.today + 2.weeks %>
-  <h4 class="reminder"> <div class="bell">🔔</div>2 weeks to go<div class="bell">🔔</div></h4>
-  <h5>until <%= @friend.name %>'s <%= event.event_type %></h5>
-  <% end %>
+
+   <% if @friend.events.one? { |event| event.date <= Date.today + 2.weeks } %>
+    <h4 class="reminder"> <div class="bell">🔔</div>2 weeks to go<div class="bell">🔔</div></h4>
+    <h5>until <%= @friend.name %>'s
+    <% @friend.events.each do |event| %>
+      <% if event.date <= Date.today + 2.weeks  %>
+      <%= event.event_type %>
+      <% end %>
+    <% end %>
+    </h5>
+  <% elsif @friend.events.any? { |event| event.date <= Date.today + 2.weeks } %>
+    <h4 class="reminder"> <div class="bell">🔔</div>2 weeks to go<div class="bell">🔔</div></h4>
+    <h5>until <%= @friend.name %>'s events</h5>
   <% end %>
   <!-- Friend Name and upcoming dates -->
   <div class="d-flex friend-title">
@@ -62,11 +70,11 @@
                     method: :delete,
                     data: { confirm: "are you sure?" } %>
                 </div>
-                <a href="" class="arrow-btn"><i class="fas fa-info"></i></a>
+                <a href="" class="arrow-btn"><i class="fas fa-info-circle"></i></a>
               </div>
             </div>
           </div>
-          
+
           <!-- Back Card -->
           <div class="card flip-card-back flip-out hidden">
             <div class="flip-card-back-image p-2">
