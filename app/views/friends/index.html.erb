@@ -8,8 +8,9 @@
           <% if friend.photo.attached? %>
             <%=  cl_image_tag friend.photo.key, height: 80, width: 80, gravity: :face, radius: :max, crop: :fill %>
           <% else %>
-            <%= image_tag "avatar/circle-512.png", height: 80, width: 80, gravity: :face, radius: :max, crop: :fill %>
-            <h1><%= friend.name.first %><%= friend.name.split(' ')[1].first %></h1>
+             <div class="avatar-initials">
+                <small ><%= idea.friend.name.first %><%= idea.friend.name.split(' ')[1].first %></small>
+              </div>
           <% end %>
           <div class= "delete">
             <%= link_to friend_path(friend),
@@ -18,13 +19,13 @@
               <% end %>
           </div>
         </div>
-
-        <div class="friend-event-info">
+        <div class="friend-event">
           <% if friend.events.count == 0 %>
             <p>No Events Yet!</p>
             <p><%= link_to '+Create a new event', new_friend_event_path(friend) %></p>
           <% else %>
             <% friend.events.each do |event| %>
+            <div class="friend-event-info">
               <h6><%= event.date.strftime("%d/%m") %></h6> <p><%= "#{event.event_type}" %></p>
               <div class="friend-event-emoji">
                 <% if  event.event_type == 'Birthday'%>
@@ -45,6 +46,7 @@
                   <%= "🥳" %>
                 <% end %>
               </div>
+            </div>
             <% end %>
           <% end %>
         </div>

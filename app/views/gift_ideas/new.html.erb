@@ -1,4 +1,33 @@
-<%= simple_form_for([ @gift, @gift_idea ]) do |f| %>
-  <%= f.association :friend %>
-  <%= f.submit "Submit Gift Idea", class: "btn btn-primary" %>
-<% end %>
+<div class="container mx-auto">
+  <div class="row justify-content-center">
+    <div class="col-m-8">
+      <div class="mb-4">
+        <h2 class="mb-4 text-primary">Assign Gift</h2>
+
+          <div class="card" style="width: 18rem;">
+            
+            <%# GiftIdea Image %>
+            <% if @gift.photo.nil? %>
+              <%= image_tag "logo/grayscale.png", style: 'height:190px ;width:auto; object-fit: cover' %>
+            <% else %>
+            <%= image_tag @gift.photo, style: 'height:190px ;width:auto; object-fit: cover' %>
+            <% end %>
+
+            <div class="card-body">
+              <%# GiftIdea Name %>
+              <h6 class="card-title text-truncate text-primary pb-2"><%= @gift.product_name %></h6>
+
+              <%# form %>
+              <%= simple_form_for([ @gift, @gift_idea ]) do |f| %>
+              <%= f.association :friend , 
+                label: false,
+                :prompt => "Select a friend" %>
+              <%= f.submit "Submit Gift Idea", class: "btn btn-primary px-4", :style => "border-radius: 25px" %>
+              <% end %>
+            </div>
+          </div>
+
+      </div>
+    </div>
+  </div>
+</div>

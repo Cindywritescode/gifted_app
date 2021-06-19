@@ -2,17 +2,18 @@
 
   <!-- Friend Name and upcoming dates -->
   <div class="d-flex friend-title">
-    <div class="align-self-center pl-2">
+    <div class="align-self-center p-2">
       <% if @friend.photo.attached? %>
       <%= cl_image_tag @friend.photo.key, class: "avatar-xl", height: 80, width: 80, gravity: :face, radius: :max, crop: :fill %>
       <% else %>
       <div class="circle">
-        <%= image_tag "avatar/circle-512.png", class: "avatar-xl", height: 80, width: 80, gravity: :face, radius: :max, crop: :fill %>
-        <p id="circle-letters"><%= @friend.name.first %><%= @friend.name.split(' ')[1].first %></p>
+        <div class="avatar-initials avatar-xl">
+         <p id="circle-letters"><%= @friend.name.first %><%= @friend.name.split(' ')[1].first %></p>
+        </div>
       </div>
       <% end %>
     </div>
-    <div class="mt-1 pl-3">
+    <div class="p-2">
       <h4 class="d-flex m-0"><%= @friend.name %></h4>
       <% if @friend.events.count == 0 %>
         <p class="d-flex m-0">No Events Yet!</p>
@@ -21,11 +22,11 @@
         <ul class="p-1 m-0">
           <% @friend.events.each do |event| %>
             <li style="list-style-type: none;">
-              <small class="d-flex text-muted m-0"><%= event.event_type %>: <%= event.date.strftime("#{event.date.day.ordinalize} %B") %></small>
+              <p class="d-flex text-muted m-0"><%= event.event_type %>: <%= event.date.strftime("#{event.date.day.ordinalize} %B") %></p>
             </li>
           <% end %>
         </ul>
-        <small class="d-flex text-muted mb-1"><%= link_to '+Create a new event', new_friend_event_path(@friend) %></small>
+        <p class="d-flex text-muted mb-1"><%= link_to '<i class="fas fa-plus"></i> Create New Event'.html_safe, new_friend_event_path(@friend) %></p>
       <% end %>
     </div>
   </div>
@@ -39,9 +40,9 @@
         <div class="p-2 w-50">
           <div class="card">
             <% if gift.photo.nil? %>
-              <%= image_tag "logo/grayscale.png", height: 180, crop: :cover, class: "card-img-top" %>
+              <%= image_tag "logo/grayscale.png", height: 120, :style => "object-fit: cover", class: "card-img-top" %>
             <% else %>
-              <%= image_tag gift.photo, height: 180, crop: :cover, class: "card-img-top" %>
+              <%= image_tag gift.photo, height: 120, :style => "object-fit: cover", class: "card-img-top" %>
             <% end %>
             <div class="card-body p-2">
               <h6 class="card-title">
@@ -72,19 +73,24 @@
     <div class="mt-2 row">
       <% @friend.notes.each do |note| %>
         <div class="p-2 w-50">
-          <div class="card card-note">
-            <div class="card-body p-2">
-              <p class="card-text" id="note-<%= note.id %>"><%= note.content %></p>
-              <div class="d-flex">
-                <p class="m-0 ml-auto" id="delete_note-<%= note.id %>">
-                  <%= link_to '<i class="far fa-trash-alt"></i>'.html_safe, note_path(note),
-                      method: :delete,
-                      remote: true,
-                      data: { confirm: "are you sure?" } %>
-                </p>
-                <p class="m-0 ml-1"><%= link_to '<i class="far fa-edit"></i>'.html_safe, edit_friend_note_path(@friend, note) %></p>
-              </div>
+          <a href="">
+            <div data-aos="flip-<%= ["left", "right", "up", "down"].sample %>" data-aos-duration="5000">
+              <% color = ["rgba(228,138,168,0.7)", "rgba(236,92,42,0.7)", "rgba(253,244,215,0.7)", "rgba(228,138,168,0.5)", "rgba(236,92,42,0.5)", "rgba(253,244,215,0.5)", "rgba(228,138,168,0.2)", "rgba(236,92,42,0.2)", "rgba(253,244,215,0.2)"].sample %>
+              <div class="card card-note" style="background-color:<%= color %>; transform: rotate(<%= [-2, 2, -4, 4].sample %>deg);">
+                <div class="card-body p-2">
+                  <p class="card-text" id="note-<%= note.id %>"><%= note.content %></p>
+                  <div class="d-flex">
+                    <p class="m-0 ml-auto" id="delete_note-<%= note.id %>">
+                      <%= link_to '<i class="far fa-trash-alt"></i>'.html_safe, note_path(note),
+                          method: :delete,
+                          remote: true,
+                          data: { confirm: "are you sure?" } %>
+                    </p>
+                    <p class="m-0 ml-1"><%= link_to '<i class="far fa-edit"></i>'.html_safe, edit_friend_note_path(@friend, note) %></p>
+                  </div>
+                </div>
             </div>
+          </a>
           </div>
         </div>
       <% end %>
@@ -98,9 +104,9 @@
     <div class="carousel-item active">
     <% gift = @gifts.sample %>
       <% if gift.photo.nil? %>
-        <%= image_tag "logo/grayscale.png", width: 280, crop: :fill %>
+        <%= image_tag "logo/grayscale.png", height: 180, :style => "object-fit: cover" %>
       <% else %>
-        <%= image_tag gift.photo, width: 280, crop: :fill %>
+        <%= image_tag gift.photo, height: 180, :style => "object-fit: cover" %>
       <% end %>
       <p class="m-0 d-flex flex-column">
         <%= gift.product_name %>, <%= gift.price %>
@@ -116,9 +122,9 @@
     <div class="carousel-item">
     <% gift = @gifts.sample %>
       <% if gift.photo.nil? %>
-        <%= image_tag "logo/grayscale.png", width: 280, crop: :fill %>
+        <%= image_tag "logo/grayscale.png", height: 180, :style => "object-fit: cover" %>
       <% else %>
-        <%= image_tag gift.photo, width: 280, crop: :fill %>
+        <%= image_tag gift.photo, height: 180, :style => "object-fit: cover" %>
       <% end %>
       <p class="m-0 d-flex flex-column">
         <%= gift.product_name %>, <%= gift.price %>
@@ -134,9 +140,9 @@
     <div class="carousel-item">
     <% gift = @gifts.sample %>
       <% if gift.photo.nil? %>
-        <%= image_tag "logo/grayscale.png", width: 280, crop: :fill %>
+        <%= image_tag "logo/grayscale.png", height: 180, :style => "object-fit: cover" %>
       <% else %>
-        <%= image_tag gift.photo, width: 280, crop: :fill %>
+        <%= image_tag gift.photo, height: 180, :style => "object-fit: cover" %>
       <% end %>
       <p class="m-0 d-flex flex-column">
         <%= gift.product_name %>, <%= gift.price %>
@@ -151,11 +157,11 @@
     </div>
   </div>
   <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="carousel-control-prev-icon" aria-hidden="true" style="background-color: rgb(35,62,130);"></span>
     <span class="sr-only">Previous</span>
   </a>
   <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="carousel-control-next-icon" aria-hidden="true" style="background-color: rgb(35,62,130);"></span>
     <span class="sr-only">Next</span>
   </a>
 </div>

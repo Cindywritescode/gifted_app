@@ -27,30 +27,32 @@
   <% else %>
 
   <h1>All Gifts</h1>
-  <%= form_tag gifts_path, method: :get do %>
-  <%= text_field_tag :query,
-    params[:query],
-    class: "form-control",
-    placeholder: "Search for a gift"
-  %>
-  <%= submit_tag "Find a gift", class: "btn btn-gifted" %>
-  <% end %>
 
-    <h4 class="mt-5 mb-3">Unassigned Gifts</h4>
+    <%= form_tag gifts_path, method: :get do %>
+      <div class="d-flex p-3">
+        <%= text_field_tag :query,
+          params[:query],
+          class: "form-control",
+          placeholder: "Search for a gift"
+        %>
+        <%= image_submit_tag("logo/color.png", class: "search-button")%>
+      </div>
+    <% end %>
+    <h4 class="mt-4 mb-3 text-primary">Unassigned Gifts</h4>
     <%# Cards %>
     <div class="d-flex flex-wrap card-deck">
 
       <% @gifts.each do |gift| %>
         <% if gift.gift_ideas == [] %>
-            <div class="col-6 px-2 py-1 mb-2">
+          <div class="col-6 px-2 py-1 mb-2">
 
-              <%= render 'card_gift', gift_info: gift %>
-              <%#= render partial 'card_gift', locals: {gift_info: gift} %>
+            <%= render 'card_gift', gift_info: gift %>
+            <%#= render partial 'card_gift', locals: {gift_info: gift} %>
 
-        </div>
+          </div>
+        <% end %>
       <% end %>
-    <% end %>
-  </div>
+    </div>
 
  <% if !params[:query].present? %>
       <%= link_to 'Add more gifts', new_gift_path, class: 'btn btn-gifted' %>
@@ -59,47 +61,48 @@
 
 
   <hr>
-  <h4 class="my-3 text-center" >Gift Ideas</h4>
+  <h3 class="mt-4 mb-3 text-center text-primary" >Gift Ideas</h3>
 
   <div class="cards d-flex flex-wrap card-deck">
 
       <% @gifts.each do |gift| %>
         <% if gift.gift_ideas != [] %>
-        <div class="col-6 px-1 mb-2">
-          <div class="card h-100">
-            <%# Card-img %>
-            <% if gift.photo.nil? %>
-              <%= image_tag "logo/grayscale.png", height: 180, crop: :cover %>
-            <% else %>
-              <%= image_tag gift.photo, height: 120, :style => "object-fit: cover" %>
-
-            <% end %>
-            <%# Card-body %>
-            <div class="card-body p-0">
-              <h6 class="card-title text-truncate text-primary p-2 mb-0"><%= gift.product_name.nil? ? gift.gift_url : gift.product_name %></h6>
-              <div class="d-flex px-2">
-              <% gift.gift_ideas.each do |idea| %>
-                <div >
-                  <%= link_to friend_path(idea.friend) do %>
-                    <% if idea.friend.photo.attached? %>
-                      <div>
-                      <%= cl_image_tag idea.friend.photo.key, height: 40, width: 40, gravity: :face, radius: :max, crop: :fill %>
-                      </div>
-                    <% else %>
-                      <div class="avatar-initials">
-                        <small ><%= idea.friend.name.first %><%= idea.friend.name.split(' ')[1].first %></small>
-                      </div>
-                    <% end %>
-                  <% end %>
-                    <%#= link_to Friend.find(idea.friend_id).name, friend_path(idea.friend_id) %>
-                    <%#=link_to '<i class="far fa-trash-alt"></i>'.html_safe, gift_gift_idea_path(id: idea.id, gift_id: gift.id), method: :delete, data: { confirm: "Are you sure?" } %>
-                </div>
+          <div class="col-6 px-1 mb-2">
+            <div class="card h-100">
+              <%# Card-img %>
+              <% if gift.photo.nil? %>
+                <%= image_tag "logo/grayscale.png", height: 120, crop: :cover %>
+              <% else %>
+                <%= image_tag gift.photo, height: 120, :style => "object-fit: cover" %>
               <% end %>
+
+              <%# Card-body %>
+              <div class="card-body p-0">
+                <h6 class="card-title text-truncate text-primary p-2 mb-0"><%= gift.product_name.nil? ? gift.gift_url : gift.product_name %></h6>
+                <!-- Friend icons -->
+                <div class="d-flex px-2">
+                  <% gift.gift_ideas.each do |idea| %>
+                    <div class="pr-1">  
+                      <%= link_to friend_path(idea.friend) do %>
+                        <% if idea.friend.photo.attached? %>
+                          <div>
+                            <%= cl_image_tag idea.friend.photo.key, height: 40, width: 40, gravity: :face, radius: :max, crop: :fill %>
+                          </div>
+                        <% else %>
+                          <div class="avatar-initials">
+                            <small><strong><%= idea.friend.name.first %><%= idea.friend.name.split(' ')[1].first %></strong></small>
+                          </div>
+                        <% end %>
+                      <% end %>
+                    </div>
+                  <% end %>
+                    <div class="ml-auto pt-1">
+                      <%=link_to '<i class="fas fa-plus"></i>'.html_safe, new_gift_gift_idea_path(gift), method: :get %>
+                    </div>
+                </div>
               </div>
             </div>
           </div>
-          </div>
-        <% end %>
         <% end %>
       </div>
       <hr>
@@ -117,3 +120,4 @@
               <% end %>
             <% end %>
             </div>
+      ##<% end %>
