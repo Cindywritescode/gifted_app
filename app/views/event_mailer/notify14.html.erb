@@ -1,15 +1,26 @@
-<h3>Hi <%= @event.friend.user.name.capitalize %> 👋</h3>
+<p>Hey <%= @event.friend.user.name.capitalize %> 👋</p>
+
+<section style="text-align: center;">
+<h4 style="color: rgb(35,62,130)">14 days to go!</h4> 
 <p>
-  Don't forget! It's <%= @event.friend.name %>'s <%= @event.event_type %> on the <%= @event.date %>.
+  Until <%= @event.friend.name %>'s <%= @event.event_type %> on the <%= @event.date.strftime("#{@event.date.day.ordinalize} %B") %>.
 </p>
 
-<h3>
-  14 days to go!
-</h3>
 
 <p>
-  <%= link_to "Check out your Gifted Ideas", friend_url(@event.friend_id) %> 🎁
+ <%= link_to "Check out your Gifted Ideas", friend_url(@event.friend_id), style: style="
+                                                                                            background-color: rgb(35,62,130);
+                                                                                            color: white !important;
+                                                                                            padding: 8px 16px;
+                                                                                            text-align: center;
+                                                                                            text-decoration: none;
+                                                                                            display: inline-block;
+                                                                                            font-size: 16px;
+                                                                                            margin: 4px 2px;
+                                                                                            border-radius: 32px;
+                                                                                          ", target: "_blank" %>
 </p>
+</section>
 
 <p>
 Thoughtful Gifts are the best Gifts,
