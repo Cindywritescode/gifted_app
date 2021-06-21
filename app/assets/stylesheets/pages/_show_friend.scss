@@ -67,3 +67,21 @@ a {
   justify-content: center;
 }
 
+.carousel-item {
+  position: relative;
+}
+
+.carousel-item-body {
+  position: absolute;
+  bottom: 3%;
+  background-color: $gifted-blue;
+  color: white;
+  border-radius: 16px;
+}
+
+.carousel-item-icon {
+  position: absolute;
+  top: 3%;
+  right: 18%;
+  font-size: xx-large;
+}
