@@ -82,9 +82,10 @@ a {
 .carousel-item-icon {
   position: absolute;
   top: 3%;
-  right: 18%;
+  right: 3%;
   font-size: xx-large;
   color: $gifted-blue;
+  z-index: 9999;
   i {
     background-color: white;
     border-radius: 50%;
