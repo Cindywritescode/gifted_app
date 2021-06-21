@@ -1,28 +1,44 @@
 <div class="friend-container">
   <h1>Your Friends</h1>
 
+  <%# Friend's image %>
   <% @friends.each do |friend| %>
     <%= link_to friend_path(friend) do %>
-      <div class="friend-card">
+      <div>
         <div class="friend-circle">
           <% if friend.photo.attached? %>
-            <%=  cl_image_tag friend.photo.key, height: 80, width: 80, gravity: :face, radius: :max, crop: :fill %>
+            <div>
+            <%=  cl_image_tag friend.photo.key, height: 80, width: 80, gravity: :face, radius: :max, crop: :fill, style: "border-radius: 50%"  %>
+            </div>
           <% else %>
-             <div class="avatar-initials-large">
-                <%= friend.name.first %><%= friend.name.split(' ')[1].first %>
-              </div>
+            <div class="avatar-initials-large">
+              <%= friend.name.first %><%= friend.name.split(' ')[1].first %>
+            </div>
           <% end %>
-          <div class= "delete">
+          <%= friend.name %>
+          <%# Delete friend %>
+          <div class= "delete text-center">
             <%= link_to friend_path(friend),
               method: :delete, data: { confirm: "Are you sure you want to delete #{friend.name} from your friend list?" } do %>
               <i class="fas fa-trash-alt"></i>
               <% end %>
           </div>
         </div>
+
+
+
+        <br><br>
+        
+        <%# Friend's events %>
         <div class="friend-event">
           <% if friend.events.count == 0 %>
-            <p>No Events Yet!</p>
-            <p><%= link_to '+Create a new event', new_friend_event_path(friend) %></p>
+            <div class="pl-2">
+              <p>No Events Yet!</p>
+              <p><%= link_to 'Create a new event', 
+                  new_friend_event_path(friend), 
+                  class: "btn btn-outline-primary",
+                  style: "border-radius: 25px" %></p>
+            </div>
           <% else %>
             <% friend.events.each do |event| %>
             <div class="friend-event-info">
@@ -52,7 +68,39 @@
         </div>
       </div>
     <% end %>
+
+        <!-- Button trigger modal -->
+        <button type="button" class="btn btn-outline-primary" style="border-radius: 25px" data-bs-toggle="modal" data-bs-target="#exampleModal">
+          Events
+        </button>
+
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel"><%= friend.name %>'s events</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                ...
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Modal END-->
+
+
   <% end %>
+
+
+
+
+
   <br>
   <%= link_to 'Add a new friend', new_friend_path, class: "btn btn-gifted"  %>
 </div>
