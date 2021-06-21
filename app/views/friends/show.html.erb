@@ -159,7 +159,7 @@
       <div class="p-0 d-flex carousel-item-icon">
           <div class="ml-auto">
             <% if GiftIdea.where(friend_id: @friend.id, gift_id: gift.id).present? %>
-              <i class="fas fa-plus-circle"></i>
+              <i class="fas fa-check-circle"></i>
             <% else %>
               <%= link_to '<i class="fas fa-plus-circle"></i>'.html_safe, new_gift_gift_idea_path(gift) %>
             <% end %>
