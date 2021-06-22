@@ -68,7 +68,7 @@
                     method: :delete,
                     data: { confirm: "are you sure?" } %>
                 </div>
-                <a href="" class="arrow-btn"><i class="fas fa-info-circle"></i></a>
+                <a href="" class="arrow-btn"><i class="fas fa-info-circle icon-background"></i></a>
               </div>
             </div>
           </div>
@@ -97,7 +97,7 @@
                 <p> <%= gift.meta_desciption  %> </p>
               <% end %>
             </div>
-            <a href="" class="back-btn"><i class="fas fa-window-close"></i></a>
+            <a href="" class="back-btn"><i class="fas fa-window-close icon-background"></i></a>
           </div>
         </div>
       <% end %>
@@ -158,7 +158,7 @@
               <% if GiftIdea.where(friend_id: @friend.id, gift_id: gift.id).present? %>
                 <i class="fas fa-check-circle"></i>
               <% else %>
-                <%= link_to '<i class="fas fa-plus-circle"></i>'.html_safe, new_gift_gift_idea_path(gift) %>
+                <%= link_to '<i class="fas fa-plus-circle icon-background"></i>'.html_safe, new_gift_gift_idea_path(gift) %>
               <% end %>
             </div>
         </div>
@@ -181,7 +181,7 @@
                 <% if GiftIdea.where(friend_id: @friend.id, gift_id: gift.id).present? %>
                   <i class="fas fa-check-circle"></i>
                 <% else %>
-                  <%= link_to '<i class="fas fa-plus-circle"></i>'.html_safe, new_gift_gift_idea_path(gift) %>
+                  <%= link_to '<i class="fas fa-plus-circle icon-background"></i>'.html_safe, new_gift_gift_idea_path(gift) %>
                 <% end %>
               </div>
           </div>
