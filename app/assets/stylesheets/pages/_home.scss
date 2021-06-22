@@ -1,7 +1,7 @@
 // Specific CSS for your home-page
 .container {
   padding-top: 32px;
-  text-align: center
+  text-align: center;
 }
 
 h3 {
@@ -14,8 +14,15 @@ h3 {
   color: white;
   padding: 8px 24px;
   width: 80vw;
-  margin: 16px
+  margin: 16px;
+  
+  &:hover {
+    color: $gifted-pink;
+    text-decoration: none;
+    font-weight: bold;
+  }
 }
+
 
 .btn-gifted-secondary {
   border-color: $gifted-blue;
@@ -32,4 +39,9 @@ h3 {
 
 
 
-
+a {
+  &:hover {
+    color: $gifted-pink;
+    text-decoration: none;
+  }
+}

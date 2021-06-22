@@ -39,3 +39,5 @@ document.addEventListener('turbolinks:load', () => {
   AOS.init();
   AOS.refresh();
 });
+
+
