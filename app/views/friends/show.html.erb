@@ -47,21 +47,19 @@
   <!-- Gift Idea Section -->
   <div>
     <h4 class="text-center m-0 mt-3 mb-1">Gift Ideas</h4>
-    <div class="row">
       <% @gift_ideas.each do |idea| %>
         <% gift = Gift.find(idea.gift_id) %>
-        <div class="p-2 w-50 flip-card">
-
+        <div class="p-2 flip-card">
           <!-- Front Card -->
           <div class="card flip-card-front">
             <% if gift.photo.nil? %>
-              <%= image_tag "logo/grayscale.png", height: 120, :style => "object-fit: cover", class: "card-img-top" %>
+              <%= image_tag "logo/grayscale.png", height: 240, :style => "object-fit: cover", class: "card-img-top" %>
             <% else %>
-              <%= image_tag gift.photo, height: 120, :style => "object-fit: cover", class: "card-img-top" %>
+              <%= image_tag gift.photo, height: 240, :style => "object-fit: cover", class: "card-img-top" %>
             <% end %>
             <div class="card-body p-2">
               <p class="card-title mb-1">
-                <%= link_to truncate(idea.gift.product_name, length: 18), idea.gift.gift_url, class: "d-flex" %>
+                <%= link_to truncate(idea.gift.product_name, length: 45), idea.gift.gift_url, class: "d-flex" %>
               </p>
               <div class="p-0 d-flex">
                 <p class="m-0"><%= idea.gift.price %></p>
@@ -70,7 +68,7 @@
                     method: :delete,
                     data: { confirm: "are you sure?" } %>
                 </div>
-                <a href="" class="arrow-btn"><i class="fas fa-info-circle"></i></a>
+                <a href="" class="arrow-btn"><i class="fas fa-info-circle icon-background"></i></a>
               </div>
             </div>
           </div>
@@ -85,11 +83,11 @@
               <% end %>
             </div>
             <div class="flip-card-back-details">
-              <p class="mb-0"><%= truncate(idea.gift.product_name, length: 18) %>
+              <p class="mb-0"><%= truncate(idea.gift.product_name, length: 45) %>
                 from <%= gift.meta_host  %> </p>
               <p> Added: <%= idea.gift.created_at.strftime("#{idea.gift.created_at.day.ordinalize} %B") %> </p>
               <% if gift.meta_title.nil? %>
-                <p> <%= truncate(idea.gift.product_name, length: 18) %> </p>
+                <p> <%= truncate(idea.gift.product_name, length: 45) %> </p>
               <% else %>
                 <p> <%= gift.meta_title  %> </p>
               <% end %>
@@ -99,11 +97,10 @@
                 <p> <%= gift.meta_desciption  %> </p>
               <% end %>
             </div>
-            <a href="" class="back-btn"><i class="fas fa-window-close"></i></a>
+            <a href="" class="back-btn"><i class="fas fa-window-close icon-background"></i></a>
           </div>
         </div>
       <% end %>
-    </div>
   </div>
 
   <!-- Note Section -->
@@ -115,7 +112,7 @@
     <% end %>
     <div class="mt-2 row">
       <% @friend.notes.each do |note| %>
-        <div class="p-2 w-50">
+        <div class="p-2">
           <a href="">
             <div data-aos="flip-<%= ["left", "right", "up", "down"].sample %>" data-aos-duration="5000">
               <% color = ["rgba(228,138,168,0.7)", "rgba(236,92,42,0.7)", "rgba(253,244,215,0.7)", "rgba(228,138,168,0.5)", "rgba(236,92,42,0.5)", "rgba(253,244,215,0.5)", "rgba(228,138,168,0.2)", "rgba(236,92,42,0.2)", "rgba(253,244,215,0.2)"].sample %>
@@ -142,73 +139,67 @@
 
   <!-- Other Gift Idea Section -->
   <h4 class="text-center m-0 mt-3 mb-1">Other Gift Ideas</h4>
-  <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
-  <div class="carousel-inner">
-    <div class="carousel-item active">
-    <% gift = @gifts.sample %>
-      <% if gift.photo.nil? %>
-        <%= image_tag "logo/grayscale.png", height: 180, :style => "object-fit: cover" %>
-      <% else %>
-        <%= image_tag gift.photo, height: 180, :style => "object-fit: cover" %>
-      <% end %>
-      <p class="m-0 d-flex flex-column">
-        <%= gift.product_name %>, <%= gift.price %>
-        <div>
-          <% if GiftIdea.where(friend_id: @friend.id, gift_id: gift.id).present? %>
-            <%= "You've already added this! 🎉" %>
-          <% else %>
-            <%= link_to "+ Add it as a gift idea 🎁", new_gift_gift_idea_path(gift) %>
-          <% end %>
+  <div id="carouselExampleControls" class="carousel slide d-flex justify-content-center" data-ride="carousel">
+    <div class="carousel-inner" id="carousel-inner-gifts">
+      <div class="carousel-item card active">
+        <% gift = @gifts.sample %>
+        <% if gift.photo.nil? %>
+          <%= image_tag "logo/grayscale.png", height: 240, :style => "object-fit: cover", class: "card-img-top" %>
+        <% else %>
+          <%= image_tag gift.photo, height: 240, :style => "object-fit: cover", class: "card-img-top" %>
+        <% end %>
+        <div class="card-body carousel-item-body p-2 d-flex">
+          <p class="card-title mb-1 d-flex">
+            <%= gift.product_name %>, <%= gift.price %>
+          </p>
         </div>
-      </p>
-    </div>
-    <div class="carousel-item">
-    <% gift = @gifts.sample %>
-      <% if gift.photo.nil? %>
-        <%= image_tag "logo/grayscale.png", height: 180, :style => "object-fit: cover" %>
-      <% else %>
-        <%= image_tag gift.photo, height: 180, :style => "object-fit: cover" %>
-      <% end %>
-      <p class="m-0 d-flex flex-column">
-        <%= gift.product_name %>, <%= gift.price %>
-        <div>
-          <% if GiftIdea.where(friend_id: @friend.id, gift_id: gift.id).present? %>
-            <%= "You've already added this! 🎉" %>
-          <% else %>
-            <%= link_to "+ Add it as a gift idea 🎁", new_gift_gift_idea_path(gift) %>
-          <% end %>
+        <div class="p-0 d-flex carousel-item-icon">
+            <div class="ml-auto">
+              <% if GiftIdea.where(friend_id: @friend.id, gift_id: gift.id).present? %>
+                <i class="fas fa-check-circle"></i>
+              <% else %>
+                <%= link_to '<i class="fas fa-plus-circle icon-background"></i>'.html_safe, new_gift_gift_idea_path(gift) %>
+              <% end %>
+            </div>
         </div>
-      </p>
-    </div>
-    <div class="carousel-item">
-    <% gift = @gifts.sample %>
-      <% if gift.photo.nil? %>
-        <%= image_tag "logo/grayscale.png", height: 180, :style => "object-fit: cover" %>
-      <% else %>
-        <%= image_tag gift.photo, height: 180, :style => "object-fit: cover" %>
-      <% end %>
-      <p class="m-0 d-flex flex-column">
-        <%= gift.product_name %>, <%= gift.price %>
-        <div>
-          <% if GiftIdea.where(friend_id: @friend.id, gift_id: gift.id).present? %>
-            <%= "You've already added this! 🎉" %>
+      </div>
+      <% 2.times  do %>
+        <div class="carousel-item card">
+          <% gift = @gifts.sample %>
+          <% if gift.photo.nil? %>
+            <%= image_tag "logo/grayscale.png", height: 240, :style => "object-fit: cover", class: "card-img-top" %>
           <% else %>
-            <%= link_to "+ Add it as a gift idea 🎁", new_gift_gift_idea_path(gift) %>
+            <%= image_tag gift.photo, height: 240, :style => "object-fit: cover", class: "card-img-top" %>
           <% end %>
+          <div class="card-body carousel-item-body p-2 d-flex">
+            <p class="card-title mb-1 d-flex">
+              <%= gift.product_name %>, <%= gift.price %>
+            </p>
+          </div>
+          <div class="p-0 d-flex carousel-item-icon">
+              <div class="ml-auto">
+                <% if GiftIdea.where(friend_id: @friend.id, gift_id: gift.id).present? %>
+                  <i class="fas fa-check-circle"></i>
+                <% else %>
+                  <%= link_to '<i class="fas fa-plus-circle icon-background"></i>'.html_safe, new_gift_gift_idea_path(gift) %>
+                <% end %>
+              </div>
+          </div>
         </div>
-      </p>
+      <% end %>
+      <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev" style="font-size: x-large; color: rgb(228,138,168) !important; opacity: 1;">
+        <i class="fas fa-backward" aria-hidden="true"></i>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next" style="font-size: x-large; color: rgb(228,138,168) !important; opacity: 1;">
+        <i class="fas fa-forward" aria-hidden="true"></i>
+        <span class="sr-only">Next</span>
+      </a>
     </div>
   </div>
-  <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true" style="background-color: rgb(35,62,130);"></span>
-    <span class="sr-only">Previous</span>
-  </a>
-  <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true" style="background-color: rgb(35,62,130);"></span>
-    <span class="sr-only">Next</span>
-  </a>
 
-  <p><%= link_to 'Add a new gift', new_gift_path %></p>
-  <p><%= link_to 'See more gifts', gifts_path %></p>
+  <!-- Other Buttons Section -->
+  <%= link_to 'Add a new gift', new_gift_path, class:'btn btn-gifted' %>
+  <%= link_to 'See more gifts', gifts_path, class:'btn btn-gifted mt-0' %>
 
 </div>

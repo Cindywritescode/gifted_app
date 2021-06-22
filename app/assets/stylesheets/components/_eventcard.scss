@@ -17,14 +17,14 @@
   margin: 16px 0px;
   text-align: left;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  // justify-content: space-between;
 }
 
 .event-emoji {
   font-size: 30px;
-  padding-right: 8px;
+  margin: 10px;
 }
 .event-info {
   margin: 0px 10px;
+  width: 200px;
 }

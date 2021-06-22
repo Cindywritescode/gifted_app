@@ -26,11 +26,22 @@
 .flip-in {
   z-index: 2;
   height: 192px;
-  width: 168px;
 }
 
 .flip-card-back-details {
   color: $gifted-black;
   overflow: scroll;
   font-size: small;
+}
+
+.flip-card-back {
+  border-radius: 4px;
+  height: 320px;
+  padding: 8px 8px 16px;
+}
+
+.flip-card-front {
+  border-radius: 4px;
+  height: 320px;
+  padding: 8px 8px 16px;
 }

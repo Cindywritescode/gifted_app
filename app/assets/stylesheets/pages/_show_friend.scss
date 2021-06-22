@@ -67,3 +67,27 @@ a {
   justify-content: center;
 }
 
+#carousel-inner-gifts {
+  width: 90%
+}
+
+.carousel-item {
+  position: relative;
+}
+
+.carousel-item-body {
+  position: absolute;
+  bottom: 3%;
+  background-color: $gifted-blue;
+  color: white;
+  border-radius: 16px;
+}
+
+.carousel-item-icon {
+  position: absolute;
+  top: 3%;
+  right: 3%;
+  font-size: xx-large;
+  color: $gifted-blue;
+  z-index: 9999;
+}

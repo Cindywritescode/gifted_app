@@ -10,6 +10,6 @@ class EventMailer < ApplicationMailer
     # binding.pry 
 
 
-    mail to: "gifts@gifted-club.xyz", subject: "Gifted Reminder - 14 Days!"
+    mail to: "gifts@gifted-club.xyz", subject: "Gifted Reminder 🚨 14 Days to go 🚨"
   end
 end
