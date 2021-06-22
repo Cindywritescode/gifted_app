@@ -2,7 +2,11 @@ class FriendsController < ApplicationController
   before_action :set_friend, only: [:show, :destroy]
 
   def index
-    @friends = Friend.where(user: current_user)
+    if params[:query].present?
+      @friends = Friend.search_by_friend_name(params[:query])
+    else
+      @friends = Friend.where(user: current_user)
+    end
   end
 
   def new
