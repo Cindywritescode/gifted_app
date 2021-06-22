@@ -148,8 +148,8 @@
         <% else %>
           <%= image_tag gift.photo, height: 240, :style => "object-fit: cover", class: "card-img-top" %>
         <% end %>
-        <div class="card-body carousel-item-body p-2 d-flex">
-          <p class="card-title mb-1 d-flex">
+        <div class="card-body carousel-item-body d-flex mx-2">
+          <p class="card-title m-0 d-flex">
             <%= gift.product_name %>, <%= gift.price %>
           </p>
         </div>
@@ -171,8 +171,8 @@
           <% else %>
             <%= image_tag gift.photo, height: 240, :style => "object-fit: cover", class: "card-img-top" %>
           <% end %>
-          <div class="card-body carousel-item-body p-2 d-flex">
-            <p class="card-title mb-1 d-flex">
+          <div class="card-body carousel-item-body d-flex mx-2">
+            <p class="card-title m-0 d-flex">
               <%= gift.product_name %>, <%= gift.price %>
             </p>
           </div>
