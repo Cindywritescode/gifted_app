@@ -49,3 +49,10 @@
   padding-left: 16px;
   padding-right: 28px;
 }
+
+.friend-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-row-gap: 10px;
+
+}
