@@ -7,4 +7,11 @@ class Friend < ApplicationRecord
   has_one_attached :photo
 
   validates :name, presence: true
+
+  include PgSearch::Model
+  pg_search_scope :search_by_friend_name,
+    against: [ :name ],
+    using: {
+      tsearch: { prefix: true } 
+    }
 end
