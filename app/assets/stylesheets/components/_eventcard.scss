@@ -17,14 +17,23 @@
   margin: 16px 0px;
   text-align: left;
   display: flex;
-  // justify-content: space-between;
 }
 
 .event-emoji {
   font-size: 30px;
-  margin: 10px;
+  margin: 10px 20px 10px 0px;
 }
 .event-info {
   margin: 0px 10px;
   width: 200px;
+}
+
+.edit {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+}
+
+.edit i {
+ color: $gifted-pink;
 }

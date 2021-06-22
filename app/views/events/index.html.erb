@@ -1,20 +1,58 @@
+<div class="container">
 <h1>All Events of <%= @friend.name %></h1>
 
 <% if @events.count == 0 %>
   <p>No Events Yet!</p>
 <% else %>
-  <ol>
-    <% @events.each do |event| %>
-      <li>
-        <p><%= event.event_type %></p>
-        <p><%= event.date %></p>
-        <p><%= link_to "Edit Event", edit_friend_event_path(id: event.id) %></p>
-        <p><%= link_to "Delete Event", friend_event_path(id: event.id),
-              method: :delete,
-              data: { confirm: "are you sure?" } %></p>
-      </li>
-    <% end %>
-  </ol>
+  <% events = @events.sort_by { |event| [event.date] } %>
+  <% events.each do | event | %>
+    <div class="event-card">
+    <div class="circle">
+      <% if event.friend.photo.attached? %>
+        <%=  cl_image_tag event.friend.photo.key, height: 60, width: 60, gravity: :face, radius: :max, crop: :fill %>
+      <% else %>
+        <div class="avatar-initials-m">
+          <%= event.friend.name.first %><%= event.friend.name.split(' ')[1].first %>
+        </div>
+      <% end %>
+    </div>
+    <div class="event-info">
+    <h4><%= event.date.strftime("#{event.date.day.ordinalize} %B") %></h4>
+    <%= "#{event.friend.name}'s #{event.event_type}" %>
+    </div>
+    <div class="event-emoji">
+      <% if  event.event_type == 'Birthday'%>
+        <%= "🎂" %>
+      <% elsif event.event_type == 'Friendaversary'%>
+        <%= "👯‍♀️" %>
+      <% elsif event.event_type == 'Divorce Party' %>
+        <%= "💔" %>
+      <% elsif event.event_type == 'Graduation' %>
+        <%= "🎓" %>
+      <% elsif event.event_type == 'Baby Shower' %>
+        <%= "🐣" %>
+      <% elsif event.event_type == 'Anniversary' %>
+        <%= "💍" %>
+      <% elsif event.event_type == 'Wedding' %>
+        <%= "💒" %>
+      <% else %>
+        <%= "🥳" %>
+      <% end %>
+    </div>
+    <div class="edit">
+      <%= link_to edit_friend_event_path(id: event.id) do %>
+          <i class="fas fa-pencil-alt"></i>
+      <% end %>
+      <%= link_to friend_event_path(id: event.id),
+                method: :delete,
+                data: { confirm: "are you sure?" } do %>
+            <i class="fas fa-trash-alt"></i>
+        <% end %>
+    </div>
+  </div>
+  <% end %>
 <% end %>
-
-<%= link_to "Create New", new_friend_event_path	%>
+<%= link_to "Create New", new_friend_event_path, class: 'btn btn-gifted'%>
+<br>
+<br>
+</div>
