@@ -47,21 +47,19 @@
   <!-- Gift Idea Section -->
   <div>
     <h4 class="text-center m-0 mt-3 mb-1">Gift Ideas</h4>
-    <div class="row">
       <% @gift_ideas.each do |idea| %>
         <% gift = Gift.find(idea.gift_id) %>
-        <div class="p-2 w-50 flip-card">
-
+        <div class="p-2 flip-card">
           <!-- Front Card -->
           <div class="card flip-card-front">
             <% if gift.photo.nil? %>
-              <%= image_tag "logo/grayscale.png", height: 120, :style => "object-fit: cover", class: "card-img-top" %>
+              <%= image_tag "logo/grayscale.png", height: 240, :style => "object-fit: cover", class: "card-img-top" %>
             <% else %>
-              <%= image_tag gift.photo, height: 120, :style => "object-fit: cover", class: "card-img-top" %>
+              <%= image_tag gift.photo, height: 240, :style => "object-fit: cover", class: "card-img-top" %>
             <% end %>
             <div class="card-body p-2">
               <p class="card-title mb-1">
-                <%= link_to truncate(idea.gift.product_name, length: 18), idea.gift.gift_url, class: "d-flex" %>
+                <%= link_to truncate(idea.gift.product_name, length: 45), idea.gift.gift_url, class: "d-flex" %>
               </p>
               <div class="p-0 d-flex">
                 <p class="m-0"><%= idea.gift.price %></p>
@@ -85,11 +83,11 @@
               <% end %>
             </div>
             <div class="flip-card-back-details">
-              <p class="mb-0"><%= truncate(idea.gift.product_name, length: 18) %>
+              <p class="mb-0"><%= truncate(idea.gift.product_name, length: 45) %>
                 from <%= gift.meta_host  %> </p>
               <p> Added: <%= idea.gift.created_at.strftime("#{idea.gift.created_at.day.ordinalize} %B") %> </p>
               <% if gift.meta_title.nil? %>
-                <p> <%= truncate(idea.gift.product_name, length: 18) %> </p>
+                <p> <%= truncate(idea.gift.product_name, length: 45) %> </p>
               <% else %>
                 <p> <%= gift.meta_title  %> </p>
               <% end %>
@@ -103,7 +101,6 @@
           </div>
         </div>
       <% end %>
-    </div>
   </div>
 
   <!-- Note Section -->
@@ -115,7 +112,7 @@
     <% end %>
     <div class="mt-2 row">
       <% @friend.notes.each do |note| %>
-        <div class="p-2 w-50">
+        <div class="p-2">
           <a href="">
             <div data-aos="flip-<%= ["left", "right", "up", "down"].sample %>" data-aos-duration="5000">
               <% color = ["rgba(228,138,168,0.7)", "rgba(236,92,42,0.7)", "rgba(253,244,215,0.7)", "rgba(228,138,168,0.5)", "rgba(236,92,42,0.5)", "rgba(253,244,215,0.5)", "rgba(228,138,168,0.2)", "rgba(236,92,42,0.2)", "rgba(253,244,215,0.2)"].sample %>
