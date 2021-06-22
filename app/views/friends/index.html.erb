@@ -1,5 +1,24 @@
 <div class="friend-container">
   <h1>Your Friends</h1>
+
+  <%# Search Bar %>
+  <%= form_tag friends_path, method: :get do %>
+  <div class="d-flex p-3">
+    <%= text_field_tag :query,
+      params[:query],
+      class: "form-control",
+      placeholder: "Find a friend"
+    %>
+    <%#= submit_tag '<i class="far fa-search"></i>'.html_safe, class: "btn btn-primary" %>
+    <%= button_tag(type: "submit", class: "btn btn-primary") do %>
+    <i class="fas fa-search"></i>
+    <% end %>
+  <% end %>
+  </div>
+  <%# Search Bar END%>
+
+
+
   <%# Friend's image %>
   <div class="friend-grid">
   

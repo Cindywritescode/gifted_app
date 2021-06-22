@@ -3,7 +3,7 @@ class FriendsController < ApplicationController
 
   def index
     if params[:query].present?
-      @friends = Friend.search_by_friend_name(params[:query])
+      @friends = Friend.search_by_friend_name(params[:query]).where(user: current_user)
     else
       @friends = Friend.where(user: current_user)
     end
