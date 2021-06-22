@@ -112,7 +112,7 @@
     <% end %>
     <div class="mt-2 row">
       <% @friend.notes.each do |note| %>
-        <div class="p-2">
+        <div class="p-2 w-50">
           <a href="">
             <div data-aos="flip-<%= ["left", "right", "up", "down"].sample %>" data-aos-duration="5000">
               <% color = ["rgba(228,138,168,0.7)", "rgba(236,92,42,0.7)", "rgba(253,244,215,0.7)", "rgba(228,138,168,0.5)", "rgba(236,92,42,0.5)", "rgba(253,244,215,0.5)", "rgba(228,138,168,0.2)", "rgba(236,92,42,0.2)", "rgba(253,244,215,0.2)"].sample %>
@@ -120,13 +120,13 @@
                 <div class="card-body p-2">
                   <p class="card-text" id="note-<%= note.id %>"><%= note.content %></p>
                   <div class="d-flex">
-                    <p class="m-0 ml-auto" id="delete_note-<%= note.id %>">
+                    <p class="m-0 mr-auto ml-1" id="delete_note-<%= note.id %>">
                       <%= link_to '<i class="far fa-trash-alt"></i>'.html_safe, note_path(note),
                           method: :delete,
                           remote: true,
                           data: { confirm: "are you sure?" } %>
                     </p>
-                    <p class="m-0 ml-1"><%= link_to '<i class="far fa-edit"></i>'.html_safe, edit_friend_note_path(@friend, note) %></p>
+                    <p class="m-0 mr-1"><%= link_to '<i class="far fa-edit"></i>'.html_safe, edit_friend_note_path(@friend, note) %></p>
                   </div>
                 </div>
             </div>
