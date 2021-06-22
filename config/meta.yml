@@ -1,5 +1,5 @@
 meta_product_name: 'Gifted'
 meta_title: 'Gifted - Saving Awesome Gift Ideas So You Can Kick Back and Party'
 meta_description: 'Thoughtful Gifts are the best Gifts'
-meta_image: 'app/assets/images/logo/og_image.png' # should exist in `app/assets/images/`
+meta_image: '/logo/og_image.png' # should exist in `app/assets/images/`
 # twitter_account: "@product_twitter_account"   # required for Twitter Cards
