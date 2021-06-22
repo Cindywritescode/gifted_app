@@ -11,7 +11,13 @@
 
 .delete {
   position: relative;
-  text-align: left;
+  h6 {
+    color: $gifted-orange;
+  }
+}
+
+.friend-event {
+  margin-left: 8px;
 }
 
 .friend-event-info {
@@ -19,9 +25,6 @@
   position: relative;
   text-align: left;
   margin-right: 5px;
-  display: flex;
-  flex-direction: row;
-  padding-left: 5px;
 }
 
 .friend-event-info h6 {
@@ -32,6 +35,16 @@
 .friend-event-emoji {
     font-size: 16px;
     padding-left: 8px;
+}
+
+.event-name {
+  display: flex;
+  flex-direction: row;
+}
+
+.img-delete {
+  display: flex;
+  flex-direction: column;
 }
 
 .friend-circle {
