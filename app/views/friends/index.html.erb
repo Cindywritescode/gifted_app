@@ -20,29 +20,29 @@
   <% @friends.each do |friend| %>
     <%= link_to friend_path(friend) do %>
       <div class="friend-card">
-        <div class="friend-circle">
-          <% if friend.photo.attached? %>
-            <%=  cl_image_tag friend.photo.key, height: 80, width: 80, gravity: :face, radius: :max, crop: :fill %>
-          <% else %>
-             <div class="avatar-initials-large">
-                <%= friend.name.first %><%= friend.name.split(' ')[1].first %>
-              </div>
-          <% end %>
-          <div class= "delete">
-            <%= link_to friend_path(friend),
-              method: :delete, data: { confirm: "Are you sure you want to delete #{friend.name} from your friend list?" } do %>
-              <i class="fas fa-trash-alt"></i>
-              <% end %>
+        <div class="img-delete">
+          <div class="friend-circle">
+            <% if friend.photo.attached? %>
+              <%=  cl_image_tag friend.photo.key, height: 80, width: 80, gravity: :face, radius: :max, crop: :fill %>
+            <% else %>
+               <div class="avatar-initials-large">
+                  <%= friend.name.first %><%= friend.name.split(' ')[1].first %>
+                </div>
+            <% end %>
           </div>
         </div>
         <div class="friend-event">
+          <h3><%= "#{friend.name}" %></h3>
           <% if friend.events.count == 0 %>
+          <p>Upcoming events:</p>
             <p>No Events Yet!</p>
             <p><%= link_to '+Create a new event', new_friend_event_path(friend) %></p>
           <% else %>
+            <p>Upcoming events:</p>
             <% friend.events.each do |event| %>
             <div class="friend-event-info">
-              <h6><%= event.date.strftime("%d/%m") %></h6> <p><%= "#{event.event_type}" %></p>
+              <div class="event-name">
+              <h5><%= "#{event.event_type}" %></h5>
               <div class="friend-event-emoji">
                 <% if  event.event_type == 'Birthday'%>
                   <%= "🎂" %>
@@ -62,9 +62,17 @@
                   <%= "🥳" %>
                 <% end %>
               </div>
+              </div>
+              <p><%= event.date.strftime("#{event.date.day.ordinalize} %B %Y") %></p>
             </div>
             <% end %>
           <% end %>
+        <div class= "delete">
+          <%= link_to friend_path(friend),
+            method: :delete, data: { confirm: "Do you want to delete #{friend.name} from your friend list?" } do %>
+            <h6>We fell out</h6>
+            <% end %>
+        </div>
         </div>
       </div>
     <% end %>
