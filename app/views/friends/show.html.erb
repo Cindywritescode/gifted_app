@@ -13,6 +13,7 @@
     <h4 class="reminder"> <div class="bell">🔔</div>2 weeks to go<div class="bell">🔔</div></h4>
     <h5>until <%= @friend.name %>'s events</h5>
   <% end %>
+
   <!-- Friend Name and upcoming dates -->
   <div class="d-flex friend-title">
     <div class="align-self-center p-2">
@@ -57,9 +58,9 @@
             <% else %>
               <%= image_tag gift.photo, height: 240, :style => "object-fit: cover", class: "card-img-top" %>
             <% end %>
-            <div class="card-body p-2">
+            <div class="card-body px-2 pt-2 pb-0">
               <p class="card-title mb-1">
-                <%= link_to truncate(idea.gift.product_name, length: 45), idea.gift.gift_url, class: "d-flex" %>
+                <%= link_to idea.gift.product_name, idea.gift.gift_url, class: "d-flex" %>
               </p>
               <div class="p-0 d-flex">
                 <p class="m-0"><%= idea.gift.price %></p>
@@ -68,12 +69,49 @@
                     method: :delete,
                     data: { confirm: "are you sure?" } %>
                 </div>
-                <a href="" class="arrow-btn"><i class="fas fa-info-circle icon-background"></i></a>
+                <!-- Button trigger modal -->
+                <a type="button" class="arrow-btn" data-toggle="modal" data-target="#ideaModal<%= idea.id %>">
+                  <i class="fas fa-info-circle icon-background"></i>
+                </a>
               </div>
             </div>
           </div>
 
-          <!-- Back Card -->
+          <!-- Modal -->
+          <div class="modal fade" id="ideaModal<%= idea.id %>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <div class="d-flex align-items-center">
+                    <% if gift.meta_url.nil? %>
+                      <%= image_tag "logo/grayscale.png", height: 32, width: 32 %>
+                    <% else %>
+                      <%= image_tag gift.meta_url, height: 32, width: 32, alt: "Present Logo" %>
+                    <% end %>
+                    <h5 class="modal-title ml-2" id="exampleModalLongTitle"> <%= idea.gift.product_name %> </h5>
+                  </div>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <% if gift.meta_title.nil? %>
+                  <% else %>
+                    <h6> <%= gift.meta_title  %> </h6>
+                  <% end %>
+                  <p class="m-0"> <%= gift.meta_host %> </p>
+                  <p> Added: <%= idea.gift.created_at.strftime("#{idea.gift.created_at.day.ordinalize} %B") %> </p>
+                  <% if gift.meta_desciption.nil? %>
+                    <p>No further information :(</p>
+                  <% else %>
+                    <p> <%= gift.meta_desciption  %> </p>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- To remove: this was the back of the card before the Modal was added
           <div class="card flip-card-back flip-out hidden">
             <div class="flip-card-back-image p-2">
               <% if gift.meta_url.nil? %>
@@ -99,6 +137,8 @@
             </div>
             <a href="" class="back-btn"><i class="fas fa-window-close icon-background"></i></a>
           </div>
+           -->
+
         </div>
       <% end %>
   </div>
