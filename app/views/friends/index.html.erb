@@ -38,7 +38,7 @@
         <% end %>
         
         <div class="d-flex justify-content-center p-2">
-          <div class="pr-1"><%= friend.name %></div>
+          <div class="pr-1 text-primary font-weight-bolder"><%= friend.name %></div>
           <%# Delete friend %>
           <div class= "delete">
             <%= link_to friend_path(friend),
@@ -51,8 +51,8 @@
 
 
         <!-- Button trigger modal -->
-        <button type="button" class="btn btn-outline-primary" style="border-radius: 25px" data-bs-toggle="modal" data-bs-target="#friendModal<%= friend.id %>">
-          Events
+        <button type="button" class="btn btn-outline-primary friend-grid-btn" style="border-radius: 25px" data-bs-toggle="modal" data-bs-target="#friendModal<%= friend.id %>">
+          <strong>Events</strong>
         </button>
 
         <!-- Modal -->
