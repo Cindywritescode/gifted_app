@@ -58,7 +58,7 @@
         <!-- Modal -->
         <div class="modal fade" id="friendModal<%= friend.id %>"  tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
           <div class="modal-dialog modal-dialog-scrollable">
-            <div class="modal-content">
+            <div class="modal-content shadow friend-modal-card">
               <div class="modal-header">
                 <div class="d-flex align-items-center">
                   <div>
@@ -75,7 +75,7 @@
                     <% end %>
                   </div>
 
-                  <h4 class="modal-title pl-4 text-primary" id="exampleModalLabel"><%= friend.name.partition(" ").first %>'s events</h4>
+                  <h4 class="modal-title pl-4 text-primary font-weight-bold" id="exampleModalLabel"><%= friend.name.partition(" ").first %>'s events</h4>
                 </div>
                 
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -94,8 +94,8 @@
                       </div>
                     <% else %>
                       <% friend.events.each do |event| %>
-                      <div class="friend-event-info d-flex m-3 ">
-                          <h6><%= event.date.strftime("%d/%m") %></h6> 
+                      <div class="friend-event-info d-flex m-3 align-items-center">
+                          <h5><%= event.date.strftime("%d/%m") %></h5> 
                           <h5 class="event-info"><%= "#{event.event_type}" %></h5>
                           <div class="friend-event-emoji">
                             <% if  event.event_type == 'Birthday'%>
