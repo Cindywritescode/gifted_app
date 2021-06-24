@@ -60,7 +60,20 @@
           <div class="modal-dialog modal-dialog-scrollable">
             <div class="modal-content">
               <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel"><%= friend.name.partition(" ").first %>'s events</h5>
+                <div>
+                 <%= link_to friend_path(friend), class: "friend-circle" do %>
+                    <% if friend.photo.attached? %>
+                      <div>
+                      <%=  cl_image_tag friend.photo.key, height: 80, width: 80, gravity: :face, radius: :max, crop: :fill, style: "border-radius: 50%"  %>
+                      </div>
+                    <% else %>
+                      <div class="avatar-initials-large">
+                        <%= friend.name.first %><%= friend.name.split(' ')[1].first %>
+                      </div>
+                    <% end %>
+                  <% end %>
+                </div>
+                <h5 class="modal-title ml-2 text-primary" id="exampleModalLabel"><%= friend.name.partition(" ").first %>'s events</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
               </div>
               <div class="modal-body d-flex">
@@ -78,7 +91,8 @@
                     <% else %>
                       <% friend.events.each do |event| %>
                       <div class="friend-event-info d-flex ">
-                        <h6><%= event.date.strftime("%d/%m") %></h6> <p><%= "#{event.event_type}" %></p>
+                        <h6><%= event.date.strftime("%d/%m") %></h6> 
+                        <p class="event-info"><%= "#{event.event_type}" %></p>
                         <div class="friend-event-emoji">
                           <% if  event.event_type == 'Birthday'%>
                             <%= "🎂" %>
