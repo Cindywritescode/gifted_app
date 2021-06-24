@@ -36,7 +36,9 @@ document.addEventListener('turbolinks:load', () => {
   // initSelect2();
   // callEtsyAPI();
   // flipCard();
-  AOS.init();
+  AOS.init({
+    once: true,
+  });
   AOS.refresh();
 });
 
