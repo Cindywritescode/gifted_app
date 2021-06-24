@@ -24,8 +24,8 @@ require("channels")
 
 // External imports
 import "bootstrap";
-// import {callEtsyAPI} from "../components/etsy_api"
-import {flipCard} from "../components/flip_card"
+import {callEtsyAPI} from "../components/etsy_api"
+// import {flipCard} from "../components/flip_card"
 import AOS from 'aos';
 
 // Internal imports, e.g:
@@ -35,7 +35,7 @@ document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
   // initSelect2();
   // callEtsyAPI();
-  flipCard();
+  // flipCard();
   AOS.init({
     once: true,
   });
