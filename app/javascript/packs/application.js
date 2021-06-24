@@ -25,6 +25,7 @@ require("channels")
 // External imports
 import "bootstrap";
 import {callEtsyAPI} from "../components/etsy_api"
+import {notificationCard} from "../components/notification_card"
 // import {flipCard} from "../components/flip_card"
 import AOS from 'aos';
 
@@ -32,7 +33,7 @@ import AOS from 'aos';
 // import { initSelect2 } from '../components/init_select2';
 
 document.addEventListener('turbolinks:load', () => {
-  // Call your functions here, e.g:
+  // Call your functions here, e.g:()
   // initSelect2();
   // callEtsyAPI();
   // flipCard();
@@ -40,6 +41,7 @@ document.addEventListener('turbolinks:load', () => {
     once: true,
   });
   AOS.refresh();
+  notificationCard();
 });
 
 

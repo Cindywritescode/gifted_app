@@ -84,7 +84,7 @@
                 <!-- Friend icons -->
                 <div class="d-flex px-2">
                   <% gift.gift_ideas.each do |idea| %>
-                    <div class="pr-1">  
+                    <div class="pr-1">
                       <%= link_to friend_path(idea.friend) do %>
                         <% if idea.friend.photo.attached? %>
                           <div>
@@ -123,4 +123,5 @@
               <% end %>
             <% end %>
             </div>
+</div>
 
