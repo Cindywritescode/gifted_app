@@ -3,7 +3,7 @@
 
   <%# Search Bar %>
   <%= form_tag friends_path, method: :get do %>
-  <div class="d-flex p-3">
+  <div class="d-flex p-3 mb-4">
     <%= text_field_tag :query,
       params[:query],
       class: "form-control",
@@ -85,8 +85,8 @@
                 <%# Friend's events %>
                   <div class="friend-event">
                     <% if friend.events.count == 0 %>
-                      <div class="pl-2">
-                        <h5>No Events Yet!</h5>
+                      <div>
+                        <h5 class="m-3">No Events Yet!</h5>
                         <p><%= link_to 'Create a new event', 
                             new_friend_event_path(friend), 
                             class: "btn btn-outline-primary",
