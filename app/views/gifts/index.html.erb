@@ -113,7 +113,7 @@
           <div class="card-grid">
             <% @api_search_results.each do |result| %>
                 <div data-aos="fade-up" data-aos-duration="1500"class="card m-1 ">
-                <%= image_tag result[:img], height: 180, crop: :cover %>
+                <%= image_tag result[:img], height: 220, :style => "object-fit: cover" %>
                 <div class="card-body p-0">
                   <h5 class="card-title"><%= result[:title] %></h5>
                   <p class="card-text"><%= result[:price] %></p>
