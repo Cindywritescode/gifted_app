@@ -49,7 +49,7 @@
 <%= link_to 'Add a gift', new_gift_path, class: "btn btn-gifted"%>
 <br>
 <h2 class="click">Upcoming events</h2>
-  <% events = @events.sort_by { |event| [event.date] }.take(5) %>
+  <% events = @events.sort_by { |event| [event.date] }.take(3) %>
   <% events.each do | event | %>
   <%= link_to friend_path(event.friend_id) do %>
   <div class="event-card" data-aos="flip-right" data-aos-duration="1000" >
