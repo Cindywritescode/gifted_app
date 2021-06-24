@@ -1,3 +1,17 @@
+<div class="notification-card">
+  <%= link_to friend_path(165) do %>
+  <div class="gifted-title">
+    <div class="logo-title">
+    <%= image_tag "logo/color.png", height: 25, width:30 %>
+    <p>GIFTED</p>
+    </div>
+    <p>now</p>
+  </div>
+  <p><strong>Two weeks to go until Cindy's birthday!</strong>
+  <br>
+  It's time to order her gift. Check in now to see what you've saved.</p>
+  <% end %>
+</div>
 <div class="container">
 <% if !user_signed_in? %>
 
@@ -34,7 +48,7 @@
 <p>Find something you like?</p>
 <%= link_to 'Add a gift', new_gift_path, class: "btn btn-gifted"%>
 <br>
-<h2>Upcoming events</h2>
+<h2 class="click">Upcoming events</h2>
   <% events = @events.sort_by { |event| [event.date] }.take(5) %>
   <% events.each do | event | %>
   <%= link_to friend_path(event.friend_id) do %>
