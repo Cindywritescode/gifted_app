@@ -51,7 +51,7 @@
 
 
         <!-- Button trigger modal -->
-        <button type="button" class="btn btn-outline-primary friend-grid-btn" style="border-radius: 25px" data-bs-toggle="modal" data-bs-target="#friendModal<%= friend.id %>">
+        <button type="button" class="btn btn-outline-primary friend-grid-btn" style="border-radius: 25px" data-toggle="modal" data-target="#friendModal<%= friend.id %>">
           <strong>Events</strong>
         </button>
 
@@ -74,9 +74,9 @@
                   <% end %>
                 </div>
                 <h5 class="modal-title px-2 text-primary" id="exampleModalLabel"><%= friend.name.partition(" ").first %>'s events</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"></button>
               </div>
-              <div class="modal-body d-flex">
+              <div class="modal-body d-flex justify-content-center">
                 
                 <%# Friend's events %>
                   <div class="friend-event">
@@ -91,27 +91,28 @@
                     <% else %>
                       <% friend.events.each do |event| %>
                       <div class="friend-event-info d-flex mb-2 ">
-                        <h6><%= event.date.strftime("%d/%m") %></h6> 
-                        <p class="event-info"><%= "#{event.event_type}" %></p>
-                        <div class="friend-event-emoji">
-                          <% if  event.event_type == 'Birthday'%>
-                            <%= "🎂" %>
-                          <% elsif event.event_type == 'Friendaversary'%>
-                            <%= "👯‍♀️" %>
-                          <% elsif event.event_type == 'Divorce Party' %>
-                            <%= "💔" %>
-                          <% elsif event.event_type == 'Graduation' %>
-                            <%= "🎓" %>
-                          <% elsif event.event_type == 'Baby Shower' %>
-                            <%= "🐣" %>
-                          <% elsif event.event_type == 'Anniversary' %>
-                            <%= "💍" %>
-                          <% elsif event.event_type == 'Wedding' %>
-                            <%= "💒" %>
-                          <% else %>
-                            <%= "🥳" %>
-                          <% end %>
-                        </div>
+                          <h6><%= event.date.strftime("%d/%m") %></h6> 
+                          <p class="event-info"><%= "#{event.event_type}" %></p>
+                          <div class="friend-event-emoji">
+                            <% if  event.event_type == 'Birthday'%>
+                              <%= "🎂" %>
+                            <% elsif event.event_type == 'Friendaversary'%>
+                              <%= "👯‍♀️" %>
+                            <% elsif event.event_type == 'Divorce Party' %>
+                              <%= "💔" %>
+                            <% elsif event.event_type == 'Graduation' %>
+                              <%= "🎓" %>
+                            <% elsif event.event_type == 'Baby Shower' %>
+                              <%= "🐣" %>
+                            <% elsif event.event_type == 'Anniversary' %>
+                              <%= "💍" %>
+                            <% elsif event.event_type == 'Wedding' %>
+                              <%= "💒" %>
+                            <% else %>
+                              <%= "🥳" %>
+                            <% end %>
+                          </div>
+                          
                       </div>
                       <% end %>
                     <% end %>
@@ -135,7 +136,7 @@
 
               </div>
               <%# <div class="modal-footer"> %>
-                <%# <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <%# <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                 <button type="button" class="btn btn-primary">Save changes</button> %>
               <%# </div> %>
             </div>
