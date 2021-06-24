@@ -73,7 +73,7 @@
                     <% end %>
                   <% end %>
                 </div>
-                <h5 class="modal-title ml-2 text-primary" id="exampleModalLabel"><%= friend.name.partition(" ").first %>'s events</h5>
+                <h5 class="modal-title px-2 text-primary" id="exampleModalLabel"><%= friend.name.partition(" ").first %>'s events</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
               </div>
               <div class="modal-body d-flex">
@@ -90,7 +90,7 @@
                       </div>
                     <% else %>
                       <% friend.events.each do |event| %>
-                      <div class="friend-event-info d-flex ">
+                      <div class="friend-event-info d-flex mb-2 ">
                         <h6><%= event.date.strftime("%d/%m") %></h6> 
                         <p class="event-info"><%= "#{event.event_type}" %></p>
                         <div class="friend-event-emoji">
@@ -119,7 +119,20 @@
                 </div>
                 <%# Friend's events END %>
 
-                <%= link_to 'All event', friend_events_path(friend) , class: "btn btn-outline-primary", style: "border-radius: 25px" %>
+                <%# Event link btn %>
+                <div class="d-flex justify-content-between px-5 mb-4">
+                  <div>
+                    <%= link_to 'All event', friend_events_path(friend) , class: "btn btn-outline-primary", style: "border-radius: 25px" %>
+                  </div>
+                  <div>
+                    <%= link_to 'Add event', 
+                              new_friend_event_path(friend), 
+                              class: "btn btn-primary",
+                              style: "border-radius: 25px" %>
+                  </div>
+                </div>
+                <%# Event link btn END%>
+
               </div>
               <%# <div class="modal-footer"> %>
                 <%# <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
