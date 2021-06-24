@@ -38,7 +38,7 @@
         <% end %>
         
         <div class="d-flex justify-content-center p-2">
-          <div class="pr-1 text-primary font-weight-bolder"><%= friend.name %></div>
+          <div class="pr-1 text-primary font-weight-bolder"><%= friend.name.partition(" ").first %></div>
           <%# Delete friend %>
           <div class= "delete">
             <%= link_to friend_path(friend),
