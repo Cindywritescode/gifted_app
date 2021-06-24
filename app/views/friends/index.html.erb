@@ -36,21 +36,23 @@
             </div>
           <% end %>
         <% end %>
-          
-        <div><%= friend.name %></div>
-        <%# Delete friend %>
-        <div class= "delete text-center">
-          <%= link_to friend_path(friend),
-            method: :delete, data: { confirm: "Are you sure you want to delete #{friend.name} from your friend list?" } do %>
-            <i class="fas fa-trash-alt"></i>
-          <% end %>
+        
+        <div class="d-flex justify-content-center p-2">
+          <div class="pr-1 text-primary font-weight-bolder"><%= friend.name %></div>
+          <%# Delete friend %>
+          <div class= "delete">
+            <%= link_to friend_path(friend),
+              method: :delete, data: { confirm: "Are you sure you want to delete #{friend.name} from your friend list?" } do %>
+              <i class="fas fa-trash-alt"></i>
+            <% end %>
+          </div>
         </div>
 
 
 
         <!-- Button trigger modal -->
-        <button type="button" class="btn btn-outline-primary" style="border-radius: 25px" data-bs-toggle="modal" data-bs-target="#friendModal<%= friend.id %>">
-          Events
+        <button type="button" class="btn btn-outline-primary friend-grid-btn" style="border-radius: 25px" data-bs-toggle="modal" data-bs-target="#friendModal<%= friend.id %>">
+          <strong>Events</strong>
         </button>
 
         <!-- Modal -->
@@ -58,10 +60,23 @@
           <div class="modal-dialog modal-dialog-scrollable">
             <div class="modal-content">
               <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel"><%= friend.name %>'s events</h5>
+                <div>
+                 <%= link_to friend_path(friend), class: "friend-circle" do %>
+                    <% if friend.photo.attached? %>
+                      <div>
+                      <%=  cl_image_tag friend.photo.key, height: 80, width: 80, gravity: :face, radius: :max, crop: :fill, style: "border-radius: 50%"  %>
+                      </div>
+                    <% else %>
+                      <div class="avatar-initials-large">
+                        <%= friend.name.first %><%= friend.name.split(' ')[1].first %>
+                      </div>
+                    <% end %>
+                  <% end %>
+                </div>
+                <h5 class="modal-title px-2 text-primary" id="exampleModalLabel"><%= friend.name.partition(" ").first %>'s events</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
               </div>
-              <div class="modal-body">
+              <div class="modal-body d-flex">
                 
                 <%# Friend's events %>
                   <div class="friend-event">
@@ -75,8 +90,9 @@
                       </div>
                     <% else %>
                       <% friend.events.each do |event| %>
-                      <div class="friend-event-info">
-                        <h6><%= event.date.strftime("%d/%m") %></h6> <p><%= "#{event.event_type}" %></p>
+                      <div class="friend-event-info d-flex mb-2 ">
+                        <h6><%= event.date.strftime("%d/%m") %></h6> 
+                        <p class="event-info"><%= "#{event.event_type}" %></p>
                         <div class="friend-event-emoji">
                           <% if  event.event_type == 'Birthday'%>
                             <%= "🎂" %>
@@ -103,11 +119,25 @@
                 </div>
                 <%# Friend's events END %>
 
+                <%# Event link btn %>
+                <div class="d-flex justify-content-between px-5 mb-4">
+                  <div>
+                    <%= link_to 'All event', friend_events_path(friend) , class: "btn btn-outline-primary", style: "border-radius: 25px" %>
+                  </div>
+                  <div>
+                    <%= link_to 'Add event', 
+                              new_friend_event_path(friend), 
+                              class: "btn btn-primary",
+                              style: "border-radius: 25px" %>
+                  </div>
+                </div>
+                <%# Event link btn END%>
+
               </div>
-              <%# <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
-              </div> %>
+              <%# <div class="modal-footer"> %>
+                <%# <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button> %>
+              <%# </div> %>
             </div>
           </div>
         </div>
