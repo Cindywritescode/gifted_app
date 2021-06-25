@@ -3,7 +3,7 @@
 
   <%# Search Bar %>
   <%= form_tag friends_path, method: :get do %>
-  <div class="d-flex p-3">
+  <div class="d-flex p-3 mb-4">
     <%= text_field_tag :query,
       params[:query],
       class: "form-control",
@@ -58,31 +58,35 @@
         <!-- Modal -->
         <div class="modal fade" id="friendModal<%= friend.id %>"  tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
           <div class="modal-dialog modal-dialog-scrollable">
-            <div class="modal-content">
+            <div class="modal-content shadow friend-modal-card">
               <div class="modal-header">
-                <div>
-                 <%= link_to friend_path(friend), class: "friend-circle" do %>
-                    <% if friend.photo.attached? %>
-                      <div>
-                      <%=  cl_image_tag friend.photo.key, height: 80, width: 80, gravity: :face, radius: :max, crop: :fill, style: "border-radius: 50%"  %>
-                      </div>
-                    <% else %>
-                      <div class="avatar-initials-large">
-                        <%= friend.name.first %><%= friend.name.split(' ')[1].first %>
-                      </div>
+                <div class="d-flex align-items-center">
+                  <div>
+                  <%= link_to friend_path(friend), class: "friend-circle" do %>
+                      <% if friend.photo.attached? %>
+                        <div>
+                        <%=  cl_image_tag friend.photo.key, height: 80, width: 80, gravity: :face, radius: :max, crop: :fill, style: "border-radius: 50%"  %>
+                        </div>
+                      <% else %>
+                        <div class="avatar-initials-large">
+                          <%= friend.name.first %><%= friend.name.split(' ')[1].first %>
+                        </div>
+                      <% end %>
                     <% end %>
-                  <% end %>
+                  </div>
+
+                  <h4 class="modal-title pl-4 text-primary font-weight-bold" id="exampleModalLabel"><%= friend.name.partition(" ").first %>'s events</h4>
                 </div>
-                <h5 class="modal-title px-2 text-primary" id="exampleModalLabel"><%= friend.name.partition(" ").first %>'s events</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"></button>
+                
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
               </div>
               <div class="modal-body d-flex justify-content-center">
                 
                 <%# Friend's events %>
                   <div class="friend-event">
                     <% if friend.events.count == 0 %>
-                      <div class="pl-2">
-                        <p>No Events Yet!</p>
+                      <div>
+                        <h5 class="m-3">No Events Yet!</h5>
                         <p><%= link_to 'Create a new event', 
                             new_friend_event_path(friend), 
                             class: "btn btn-outline-primary",
@@ -90,9 +94,9 @@
                       </div>
                     <% else %>
                       <% friend.events.each do |event| %>
-                      <div class="friend-event-info d-flex mb-2 ">
-                          <h6><%= event.date.strftime("%d/%m") %></h6> 
-                          <p class="event-info"><%= "#{event.event_type}" %></p>
+                      <div class="friend-event-info d-flex m-3 align-items-center">
+                          <h5><%= event.date.strftime("%d/%m") %></h5> 
+                          <h5 class="event-info"><%= "#{event.event_type}" %></h5>
                           <div class="friend-event-emoji">
                             <% if  event.event_type == 'Birthday'%>
                               <%= "🎂" %>

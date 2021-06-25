@@ -25,16 +25,18 @@
   position: relative;
   text-align: left;
   margin-right: 5px;
-}
-
-.friend-event-info h6 {
-  margin: 3px;
-  padding: 0px 3px 0px 10px;
+  .event-info {
+    width: 180px;
+  }
+  h5 {
+    margin: 3px;
+    padding: 0px 3px 0px 10px;
+  }
 }
 
 .friend-event-emoji {
-  font-size: 16px;
-  padding-left: 8px;
+  font-size: 32px;
+  // padding-left: 8px;
 }
 
 .event-name {
@@ -71,4 +73,8 @@
   .friend-grid-btn {
     padding: 4px 16px;
   }
+}
+
+.friend-modal-card {
+  border-radius: 8px;
 }
