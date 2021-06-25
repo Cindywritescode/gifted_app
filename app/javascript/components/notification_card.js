@@ -1,11 +1,12 @@
 const notificationCard = () => {
   const notification = document.querySelector(".notification-card");
   const button = document.querySelector('.click');
+  const audio = document.querySelector("audio")
     $(notification).hide();
-    $(button).click(function(e) {
+    $(button).click(function playAudio() {
     $(notification).slideDown();
-
-    console.log("Hello")
+     audio.play();
+     console.log("Hello")
   });
 }
 
