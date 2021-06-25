@@ -41,9 +41,8 @@
           <div class="pr-1 text-primary font-weight-bolder"><%= friend.name.partition(" ").first %></div>
           <%# Delete friend %>
           <div class= "delete">
-            <%= link_to friend_path(friend),
-              method: :delete, data: { confirm: "Are you sure you want to delete #{friend.name} from your friend list?" } do %>
-              <i class="fas fa-trash-alt"></i>
+            <i id="sweet-alert-demo" data-friend-name=<%= "#{friend.name}" %> data-friend-id=<%= "#{friend.id}" %> class="fas fa-trash-alt" style="color: rgb(35,62,130);"></i>
+            <%= link_to friend_path(friend), method: :delete, class: "hidden", id: "delete-#{friend.id}"  do %>
             <% end %>
           </div>
         </div>

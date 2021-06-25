@@ -28,6 +28,7 @@ import {callEtsyAPI} from "../components/etsy_api"
 import {notificationCard} from "../components/notification_card"
 // import {flipCard} from "../components/flip_card"
 import AOS from 'aos';
+import { initSweetalert } from '../plugins/init_sweetalert';
 
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
@@ -42,6 +43,7 @@ document.addEventListener('turbolinks:load', () => {
   });
   AOS.refresh();
   notificationCard();
+  initSweetalert('#sweet-alert-demo');
 });
 
 
