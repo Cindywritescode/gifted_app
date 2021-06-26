@@ -16,12 +16,12 @@
       <h4 class="my-3 text-center">More ideas from Etsy</h4>
       <div class="card-grid">
       <% @api_search_results.each do |result| %>
-          <div data-aos="fade-up" data-aos-duration="1500" class="card m-1 ">
-          <%= image_tag result[:img], height: 180, crop: :cover %>
-          <div class="card-body p-0">
+          <div data-aos="fade-up" data-aos-duration="1500" class="etsy-card card m-1 shadow">
+          <%= image_tag result[:img], height: 180, style: "object-fit:cover"%>
+          <div class="card-body p-2">
             <h5 class="card-title"><%= result[:title] %></h5>
-            <p class="card-text"><%= result[:price] %></p>
-            <%= link_to "Add this gift +", new_gift_path(:gift_idea => result[:url]) %>
+            <p class="card-text mb-1"><%= result[:price] %></p>
+            <%= link_to 'Add this gift <i class="fas fa-plus-circle"></i>'.html_safe, new_gift_path(:gift_idea => result[:url]), class:"btn btn-primary", style:"border-radius: 25px" %>
           </div>
         </div>
       <% end %>
@@ -112,12 +112,12 @@
         <h4 class="my-3 text-center">More ideas from Etsy</h4>
           <div class="card-grid">
             <% @api_search_results.each do |result| %>
-                <div data-aos="fade-up" data-aos-duration="1500"class="card m-1 ">
+                <div data-aos="fade-up" data-aos-duration="1500"class="etsy-card card m-1 shadow">
                 <%= image_tag result[:img], height: 220, :style => "object-fit: cover" %>
-                <div class="card-body p-0">
+                <div class="card-body p-2">
                   <h5 class="card-title"><%= result[:title] %></h5>
-                  <p class="card-text"><%= result[:price] %></p>
-                  <%= link_to "Add this gift +", new_gift_path(:gift_idea => result[:url]) %>
+                  <p class="card-text mb-1"><%= result[:price] %></p>
+                  <%= link_to 'Add this gift <i class="fas fa-plus-circle"></i>'.html_safe, new_gift_path(:gift_idea => result[:url]),class:"btn btn-primary", style:"border-radius: 25px" %>
                 </div>
               </div>
               <% end %>
